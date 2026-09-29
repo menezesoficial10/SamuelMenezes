@@ -1,63 +1,101 @@
+Perfeito. Fiz os ajustes exatamente nessa direção:
+
+* Fundo geral do site com sua foto em 30% de opacidade sobre preto, com leve blur/movimento.
+* Nome inicial: SAMUEL MENEZES + Pastor e escritor.
+* Removido o nome/frase do rodapé.
+* Fotos dos cartazes usando IMG_2845.jpeg até IMG_2851.jpeg e IMG_2852.png, agora com object-fit: cover e posicionamento para aproveitar melhor cada imagem sem distorcer.
+* Removido o botão/emoji vermelho sobre os vídeos do YouTube.
+* SOBRE MIM como título.
+* Agenda: CONTATOS PARA AGENDAS, apenas botão abaixo.
+* Livros: apenas LIVROS.
+* YouTube: apenas PREGAÇÕES.
+* Fotos: FOTOS PARA CARTAZ.
+* Mantidas as setas interativas nos conteúdos horizontais.
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Samuel Menezes | Ministério e Conteúdo</title>
-  <meta name="description" content="Samuel Menezes — Ministério, livros, mensagens e conteúdos para edificação.">
-
+  <title>Samuel Menezes | Pastor e Escritor</title>
+  <meta name="description" content="Samuel Menezes — Pastor, escritor e ministro do Evangelho.">
   <style>
     :root {
       --vinho: #6f1024;
       --vinho-dark: #4e0b1a;
-      --preto: #111111;
+      --preto: #080808;
       --branco: #ffffff;
       --offwhite: #f7f5f3;
       --cinza: #666666;
       --linha: #e8e8e8;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: var(--preto);
-      background: var(--branco);
+      background: var(--preto);
       line-height: 1.5;
       overflow-x: hidden;
     }
-
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -8%;
+      z-index: -3;
+      background-image:
+        linear-gradient(
+          rgba(0, 0, 0, .70),
+          rgba(0, 0, 0, .70)
+        ),
+        url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(4px);
+      opacity: .30;
+      transform: scale(1.08);
+      animation: backgroundMove 18s ease-in-out infinite alternate;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: rgba(0,0,0,.72);
+      pointer-events: none;
+    }
+    @keyframes backgroundMove {
+      from {
+        transform: scale(1.08) translate3d(-8px, -4px, 0);
+      }
+      to {
+        transform: scale(1.13) translate3d(8px, 5px, 0);
+      }
+    }
     a {
       color: inherit;
       text-decoration: none;
     }
-
     button {
       font-family: inherit;
     }
-
     img {
       max-width: 100%;
     }
-
     .container {
       width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
     }
-
     .section {
       padding: 100px 0;
     }
-
     .eyebrow {
       display: inline-block;
       margin-bottom: 18px;
@@ -67,18 +105,15 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
     h2 {
       font-size: clamp(38px, 5vw, 64px);
       line-height: 1;
       letter-spacing: -2px;
       margin-bottom: 35px;
     }
-
     /* =========================
        HEADER
     ========================= */
-
     header {
       position: sticky;
       top: 0;
@@ -88,7 +123,6 @@
       border-bottom: 1px solid var(--linha);
       backdrop-filter: blur(12px);
     }
-
     .header-inner {
       min-height: 76px;
       display: flex;
@@ -96,24 +130,20 @@
       justify-content: space-between;
       gap: 30px;
     }
-
     .logo {
       font-size: 20px;
       font-weight: 900;
       letter-spacing: -.5px;
       white-space: nowrap;
     }
-
     .logo span {
       color: var(--vinho);
     }
-
     nav {
       display: flex;
       align-items: center;
       gap: 25px;
     }
-
     nav a {
       font-size: 12px;
       font-weight: 800;
@@ -122,68 +152,66 @@
       transition: color .2s ease;
       white-space: nowrap;
     }
-
     nav a:hover {
       color: var(--vinho);
     }
-
+    /* =========================
+       ABERTURA
+    ========================= */
+    .intro {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      background: rgba(0,0,0,.35);
+      color: white;
+    }
+    .intro-content {
+      max-width: 850px;
+      padding: 100px 0;
+    }
+    .intro-name {
+      font-size: clamp(58px, 10vw, 125px);
+      line-height: .86;
+      letter-spacing: -6px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .intro-subtitle {
+      margin-top: 28px;
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 500;
+      letter-spacing: .3px;
+    }
     /* =========================
        SOBRE
     ========================= */
-
     #sobre {
-      background: var(--branco);
-      padding-top: 0;
+      background: rgba(255,255,255,.97);
+      padding-top: 100px;
     }
-
-    .about-cover {
-      width: 100%;
-      height: clamp(280px, 42vw, 560px);
-      overflow: hidden;
-      background: #111;
-    }
-
-    .about-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      display: block;
-    }
-
-    #sobre .container {
-      padding-top: 75px;
-      padding-bottom: 80px;
-    }
-
     .about-content {
       max-width: 900px;
       margin: 0 auto;
     }
-
     .about-content h2 {
       max-width: 720px;
       margin-bottom: 30px;
     }
-
     .about-text {
       max-width: 780px;
     }
-
     .about-text p {
       color: var(--cinza);
       font-size: 17px;
       line-height: 1.8;
       margin-bottom: 18px;
     }
-
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 28px;
     }
-
     .tag {
       border: 1px solid var(--vinho);
       color: var(--vinho);
@@ -193,46 +221,29 @@
       text-transform: uppercase;
       letter-spacing: .6px;
     }
-
     /* =========================
        LIVROS
     ========================= */
-
     #livros {
-      background: var(--offwhite);
+      background: rgba(247,245,243,.97);
     }
-
     .book-group {
       margin-bottom: 65px;
     }
-
     .book-group:last-child {
       margin-bottom: 0;
     }
-
     .book-group-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
       margin-bottom: 22px;
     }
-
     .book-group-title h3 {
-      font-size: 16px;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
-
-    .book-group-title span {
-      color: var(--cinza);
-      font-size: 12px;
-    }
-
     .horizontal-slider {
       position: relative;
     }
-
     .books-track {
       display: grid;
       grid-auto-flow: column;
@@ -244,24 +255,20 @@
       padding: 3px 3px 18px;
       scroll-snap-type: x mandatory;
     }
-
     .books-track::-webkit-scrollbar {
       display: none;
     }
-
     .book-card {
       background: var(--branco);
       overflow: hidden;
       scroll-snap-align: start;
     }
-
     .book-cover {
       width: 100%;
       aspect-ratio: 2 / 3;
       overflow: hidden;
       background: #111;
     }
-
     .book-cover img {
       width: 100%;
       height: 100%;
@@ -269,21 +276,17 @@
       display: block;
       transition: transform .4s ease;
     }
-
     .book-card:hover .book-cover img {
       transform: scale(1.03);
     }
-
     .book-info {
       padding: 20px;
     }
-
     .book-info h4 {
       font-size: 20px;
       line-height: 1.2;
       margin-bottom: 16px;
     }
-
     .book-type {
       display: block;
       color: var(--vinho);
@@ -293,7 +296,6 @@
       letter-spacing: 1px;
       margin-bottom: 8px;
     }
-
     .book-button {
       display: inline-flex;
       align-items: center;
@@ -308,13 +310,12 @@
       letter-spacing: .5px;
       transition: background .2s ease;
     }
-
     .book-button:hover {
       background: var(--vinho-dark);
     }
-
-    /* Setas dos sliders */
-
+    /* =========================
+       SETAS DOS SLIDERS
+    ========================= */
     .slider-arrow {
       position: absolute;
       top: 42%;
@@ -323,7 +324,7 @@
       height: 44px;
       border: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.97);
       color: var(--vinho);
       box-shadow: 0 5px 18px rgba(0,0,0,.18);
       display: flex;
@@ -335,26 +336,21 @@
       z-index: 5;
       transition: .2s ease;
     }
-
     .slider-arrow:hover {
       background: var(--vinho);
       color: white;
       transform: translateY(-50%) scale(1.08);
     }
-
     .slider-arrow.left {
       left: -18px;
     }
-
     .slider-arrow.right {
       right: -18px;
     }
-
     .slider-arrow.hidden {
       opacity: 0;
       pointer-events: none;
     }
-
     .slider-hint {
       display: flex;
       align-items: center;
@@ -366,34 +362,21 @@
       text-transform: uppercase;
       letter-spacing: .7px;
     }
-
     .slider-hint span {
       font-size: 15px;
     }
-
     /* =========================
        AGENDA
     ========================= */
-
     #agenda {
-      background: var(--offwhite);
+      background: rgba(255,255,255,.97);
     }
-
     .agenda-simple-content {
       max-width: 680px;
     }
-
     .agenda-simple-content h2 {
-      margin-bottom: 20px;
-    }
-
-    .agenda-simple-content p {
-      color: var(--cinza);
-      font-size: 16px;
-      max-width: 600px;
       margin-bottom: 30px;
     }
-
     .button {
       display: inline-flex;
       align-items: center;
@@ -406,75 +389,44 @@
       letter-spacing: .5px;
       transition: background .2s ease, transform .2s ease;
     }
-
     .button:hover {
       background: var(--vinho-dark);
       transform: translateY(-2px);
     }
-
     .agenda-button {
       min-height: 50px;
       padding: 0 25px;
     }
-
     /* =========================
-       YOUTUBE
+       PREGAÇÕES
     ========================= */
-
     #youtube {
-      background: var(--branco);
+      background: rgba(255,255,255,.97);
     }
-
     .youtube-grid {
       display: flex;
       flex-direction: column;
       gap: 32px;
       max-width: 620px;
     }
-
     .video-item {
       width: 100%;
       max-width: 620px;
     }
-
     .video-thumb {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       overflow: hidden;
       background: #222;
+      display: block;
     }
-
     .video-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
-    .video-play {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .video-play span {
-      width: 58px;
-      height: 42px;
-      border-radius: 10px;
-      background: #ff0000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 22px;
-      padding-left: 3px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.25);
-    }
-
     .youtube-button {
       display: flex;
       align-items: center;
@@ -489,15 +441,12 @@
       letter-spacing: .5px;
       transition: background .2s ease;
     }
-
     .youtube-button:hover {
       background: var(--vinho-dark);
     }
-
     .youtube-channel {
       margin-top: 40px;
     }
-
     .youtube-channel a {
       display: inline-flex;
       align-items: center;
@@ -512,20 +461,16 @@
       letter-spacing: .5px;
       transition: all .2s ease;
     }
-
     .youtube-channel a:hover {
       background: var(--vinho);
       color: white;
     }
-
     /* =========================
        FOTOS
     ========================= */
-
     #fotos {
-      background: var(--offwhite);
+      background: rgba(247,245,243,.97);
     }
-
     .photos-track {
       display: grid;
       grid-auto-flow: column;
@@ -537,21 +482,19 @@
       scroll-snap-type: x mandatory;
       padding: 5px 3px 18px;
     }
-
     .photos-track::-webkit-scrollbar {
       display: none;
     }
-
     .photo-card {
       scroll-snap-align: start;
       min-width: 0;
     }
-
     /*
-      O enquadramento usa contain para preservar
-      o máximo possível da foto original.
+      O quadrado mantém a proporção da área,
+      mas a imagem é ajustada sem distorção.
+      A posição central permite aproveitar melhor
+      fotos verticais e horizontais.
     */
-
     .photo-image {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -561,14 +504,13 @@
       align-items: center;
       justify-content: center;
     }
-
     .photo-image img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center center;
       display: block;
     }
-
     .download-photo {
       display: flex;
       align-items: center;
@@ -582,77 +524,52 @@
       letter-spacing: .5px;
       transition: background .2s ease;
     }
-
     .download-photo:hover {
       background: var(--vinho-dark);
     }
-
     /* =========================
        FOOTER
     ========================= */
-
     footer {
       background: var(--preto);
       color: var(--branco);
-      padding: 55px 0 25px;
+      padding: 45px 0 25px;
     }
-
     .footer-main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      padding-bottom: 45px;
+      display: flex;
+      justify-content: flex-start;
+      padding-bottom: 35px;
       border-bottom: 1px solid rgba(255,255,255,.15);
     }
-
-    .footer-brand h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .footer-brand p {
-      max-width: 330px;
-      color: rgba(255,255,255,.65);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
     .footer-column h4 {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       margin-bottom: 18px;
     }
-
     .footer-links {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
     .footer-links a {
       color: rgba(255,255,255,.7);
       font-size: 13px;
       transition: color .2s ease;
     }
-
     .footer-links a:hover {
       color: white;
     }
-
     .footer-bottom {
       padding-top: 25px;
     }
-
     .footer-bottom p {
       color: rgba(255,255,255,.45);
       font-size: 11px;
     }
-
     /* =========================
        WHATSAPP
     ========================= */
-
     .whatsapp-float {
       position: fixed;
       right: 22px;
@@ -669,21 +586,17 @@
       box-shadow: 0 7px 25px rgba(0,0,0,.2);
       transition: transform .2s ease;
     }
-
     .whatsapp-float:hover {
       transform: scale(1.08);
     }
-
     .whatsapp-float svg {
       width: 28px;
       height: 28px;
       fill: currentColor;
     }
-
     /* =========================
-       SCROLL ARROWS VERTICAIS
+       SCROLL VERTICAL
     ========================= */
-
     .scroll-arrows {
       position: fixed;
       right: 22px;
@@ -695,7 +608,6 @@
       gap: 5px;
       pointer-events: none;
     }
-
     .scroll-arrow {
       width: 42px;
       height: 42px;
@@ -718,157 +630,118 @@
         background .2s ease,
         color .2s ease;
     }
-
     .scroll-arrow.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
       cursor: pointer;
     }
-
     .scroll-arrow.visible:hover {
       background: var(--vinho);
       color: white;
       border-color: var(--vinho);
       transform: scale(1.08);
     }
-
     /* =========================
        RESPONSIVO
     ========================= */
-
     @media (max-width: 900px) {
-
       .header-inner {
         min-height: 68px;
       }
-
       nav {
         gap: 14px;
         overflow-x: auto;
         scrollbar-width: none;
       }
-
       nav::-webkit-scrollbar {
         display: none;
       }
-
       nav a {
         font-size: 10px;
       }
-
       .books-track {
         grid-auto-columns: 280px;
       }
-
       .photos-track {
         grid-auto-columns: calc((100% - 24px) / 2);
       }
-
       .slider-arrow.left {
         left: -10px;
       }
-
       .slider-arrow.right {
         right: -10px;
       }
     }
-
     @media (max-width: 650px) {
-
       .container {
         width: min(100% - 30px, 1180px);
       }
-
       .section {
         padding: 70px 0;
       }
-
-      .about-cover {
-        height: 260px;
+      .intro {
+        min-height: 75vh;
       }
-
-      .about-cover img {
-        object-position: center 25%;
+      .intro-name {
+        font-size: clamp(48px, 15vw, 80px);
+        letter-spacing: -3px;
       }
-
-      #sobre .container {
-        padding-top: 55px;
-        padding-bottom: 60px;
+      .intro-subtitle {
+        margin-top: 20px;
+        font-size: 18px;
       }
-
       .about-content h2 {
         font-size: 32px;
         letter-spacing: -1px;
       }
-
       .about-text p {
         font-size: 15px;
         line-height: 1.7;
       }
-
       .book-group {
         margin-bottom: 50px;
       }
-
-      .book-group-title {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 5px;
-      }
-
       .books-track {
         grid-auto-columns: 220px;
         gap: 14px;
       }
-
       .book-info {
         padding: 14px;
       }
-
       .book-info h4 {
         font-size: 16px;
       }
-
       .book-button {
         width: 100%;
         padding: 0 10px;
         font-size: 10px;
       }
-
       .slider-arrow {
         width: 38px;
         height: 38px;
         font-size: 23px;
       }
-
       .slider-arrow.left {
         left: -8px;
       }
-
       .slider-arrow.right {
         right: -8px;
       }
-
       .photos-track {
         grid-auto-columns: calc((100% - 14px) / 2);
         gap: 14px;
       }
-
       .download-photo {
         font-size: 9px;
       }
-
       .footer-main {
-        grid-template-columns: 1fr;
-        gap: 35px;
+        width: 100%;
       }
-
       .scroll-arrows {
         right: 15px;
         bottom: 88px;
       }
-
       .whatsapp-float {
         right: 15px;
         bottom: 20px;
@@ -876,20 +749,15 @@
     }
   </style>
 </head>
-
 <body>
-
   <!-- =========================
        HEADER
   ========================= -->
-
   <header>
     <div class="container header-inner">
-
-      <a href="#sobre" class="logo">
+      <a href="#inicio" class="logo">
         Samuel <span>Menezes</span>
       </a>
-
       <nav>
         <a href="#sobre">Sobre</a>
         <a href="#livros">Livros</a>
@@ -898,88 +766,60 @@
         <a href="#fotos">Fotos</a>
         <a href="#contato">Contato</a>
       </nav>
-
     </div>
   </header>
-
-
   <main>
-
     <!-- =========================
-         SOBRE
+         ABERTURA
     ========================= -->
-
-    <section id="sobre" class="section">
-
-      <div class="about-cover">
-        <img
-          src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
-          alt="Samuel Menezes"
-        >
-      </div>
-
+    <section id="inicio" class="intro">
       <div class="container">
-
+        <div class="intro-content">
+          <h1 class="intro-name">
+            SAMUEL<br>MENEZES
+          </h1>
+          <p class="intro-subtitle">
+            Pastor e escritor.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- =========================
+         SOBRE MIM
+    ========================= -->
+    <section id="sobre" class="section">
+      <div class="container">
         <div class="about-content">
-
-          <span class="eyebrow">Sobre mim</span>
-
-          <h2>Uma mensagem para pessoas reais.</h2>
-
+          <h2>SOBRE MIM</h2>
           <div class="about-text">
-
             <p>
               Sou pastor, escritor e ministro do Evangelho. Minha missão é comunicar a Palavra de Deus de forma bíblica, prática e relevante, servindo à Igreja e às pessoas que Deus coloca em meu caminho.
             </p>
-
             <p>
               Minha caminhada ministerial tem sido marcada por temas como propósito, vocação, identidade, santidade, oração, liderança e os desafios de viver uma fé verdadeira em meio à realidade da vida cotidiana.
             </p>
-
             <p>
               Acredito que a mensagem do Evangelho não deve apenas ser ouvida, mas vivida. Por isso, meu desejo é contribuir para que pessoas conheçam a Deus, compreendam Sua Palavra e vivam aquilo que Ele confiou às suas mãos.
             </p>
-
           </div>
-
           <div class="tags">
             <span class="tag">Teologia</span>
             <span class="tag">Administração</span>
             <span class="tag">Escritor</span>
             <span class="tag">Ministério</span>
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
     <!-- =========================
          LIVROS
     ========================= -->
-
     <section id="livros" class="section">
-
       <div class="container">
-
-        <span class="eyebrow">Livros</span>
-
-        <h2>Palavras que<br>continuam falando.</h2>
-
-
+        <h2>LIVROS</h2>
         <!-- LIVROS FÍSICOS -->
-
         <div class="book-group">
-
-          <div class="book-group-title">
-            <h3>Livros</h3>
-            <span>Publicações físicas</span>
-          </div>
-
           <div class="horizontal-slider">
-
             <button
               class="slider-arrow left"
               type="button"
@@ -989,26 +829,21 @@
             >
               ‹
             </button>
-
             <div class="books-track" id="physicalBooks">
-
               <article class="book-card">
-
                 <div class="book-cover">
                   <img
                     src="assets/IMG_2855.jpg"
                     alt="Livro Identidade: Obtendo o caráter de Cristo"
                   >
                 </div>
-
                 <div class="book-info">
-
-                  <span class="book-type">Livro físico</span>
-
+                  <span class="book-type">
+                    Livro físico
+                  </span>
                   <h4>
                     Identidade: Obtendo o caráter de Cristo
                   </h4>
-
                   <a
                     href="https://uiclap.com/"
                     target="_blank"
@@ -1017,13 +852,9 @@
                   >
                     Comprar livro
                   </a>
-
                 </div>
-
               </article>
-
             </div>
-
             <button
               class="slider-arrow right"
               type="button"
@@ -1033,28 +864,15 @@
             >
               ›
             </button>
-
           </div>
-
           <div class="slider-hint">
             <span>↔</span>
             Arraste para navegar
           </div>
-
         </div>
-
-
         <!-- E-BOOKS -->
-
         <div class="book-group">
-
-          <div class="book-group-title">
-            <h3>E-books</h3>
-            <span>Versões digitais</span>
-          </div>
-
           <div class="horizontal-slider">
-
             <button
               class="slider-arrow left"
               type="button"
@@ -1064,28 +882,21 @@
             >
               ‹
             </button>
-
             <div class="books-track" id="ebooks">
-
               <article class="book-card">
-
                 <div class="book-cover">
-
                   <img
                     src="assets/IMG_2854.jpg"
                     alt="E-book Lealdade sob ataque"
                   >
-
                 </div>
-
                 <div class="book-info">
-
-                  <span class="book-type">E-book</span>
-
+                  <span class="book-type">
+                    E-book
+                  </span>
                   <h4>
                     Lealdade sob ataque
                   </h4>
-
                   <a
                     href="https://hotmart.com/"
                     target="_blank"
@@ -1094,31 +905,22 @@
                   >
                     Comprar e-book
                   </a>
-
                 </div>
-
               </article>
-
-
               <article class="book-card">
-
                 <div class="book-cover">
-
                   <img
                     src="assets/IMG_2856.jpg"
                     alt="E-book A Escolha de Deus"
                   >
-
                 </div>
-
                 <div class="book-info">
-
-                  <span class="book-type">E-book</span>
-
+                  <span class="book-type">
+                    E-book
+                  </span>
                   <h4>
                     A Escolha de Deus
                   </h4>
-
                   <a
                     href="https://hotmart.com/"
                     target="_blank"
@@ -1127,13 +929,9 @@
                   >
                     Comprar e-book
                   </a>
-
                 </div>
-
               </article>
-
             </div>
-
             <button
               class="slider-arrow right"
               type="button"
@@ -1143,90 +941,52 @@
             >
               ›
             </button>
-
           </div>
-
           <div class="slider-hint">
             <span>↔</span>
             Arraste para navegar
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
     <!-- =========================
-         AGENDA
+         AGENDAS
     ========================= -->
-
     <section id="agenda" class="section">
-
       <div class="container">
-
         <div class="agenda-simple-content">
-
-          <span class="eyebrow">Agenda</span>
-
-          <h2>Ministrações e<br>agendas</h2>
-
-          <p>
-            Para consultar a disponibilidade de uma data para ministração, preencha as informações do formulário.
-          </p>
-
+          <h2>CONTATOS PARA AGENDAS</h2>
           <a
             href="agenda.html"
             target="_blank"
             rel="noopener"
             class="button agenda-button"
           >
-            Verificar disponibilidade de agenda
+            Verificar disponibilidade
           </a>
-
         </div>
-
       </div>
-
     </section>
-
-
     <!-- =========================
-         YOUTUBE
+         PREGAÇÕES
     ========================= -->
-
     <section id="youtube" class="section">
-
       <div class="container">
-
-        <span class="eyebrow">YouTube</span>
-
-        <h2>Mensagens para<br>ouvir e viver.</h2>
-
+        <h2>PREGAÇÕES</h2>
         <div class="youtube-grid">
-
           <article class="video-item">
-
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
               target="_blank"
               rel="noopener"
               class="video-thumb"
             >
-
               <img
                 src="https://img.youtube.com/vi/EkQAF_J76v0/maxresdefault.jpg"
                 onerror="this.src='https://img.youtube.com/vi/EkQAF_J76v0/hqdefault.jpg'"
-                alt="Vídeo de Samuel Menezes no YouTube"
+                alt="Pregação de Samuel Menezes"
               >
-
-              <div class="video-play">
-                <span>▶</span>
-              </div>
-
             </a>
-
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
               target="_blank"
@@ -1235,31 +995,20 @@
             >
               Assistir no YouTube
             </a>
-
           </article>
-
-
           <article class="video-item">
-
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
               target="_blank"
               rel="noopener"
               class="video-thumb"
             >
-
               <img
                 src="https://img.youtube.com/vi/nJARUdrWcsU/maxresdefault.jpg"
                 onerror="this.src='https://img.youtube.com/vi/nJARUdrWcsU/hqdefault.jpg'"
-                alt="Vídeo de Samuel Menezes no YouTube"
+                alt="Pregação de Samuel Menezes"
               >
-
-              <div class="video-play">
-                <span>▶</span>
-              </div>
-
             </a>
-
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
               target="_blank"
@@ -1268,14 +1017,9 @@
             >
               Assistir no YouTube
             </a>
-
           </article>
-
         </div>
-
-
         <div class="youtube-channel">
-
           <a
             href="https://youtube.com/@samuelmeenezes?si=ueKLQpiju411n2gg"
             target="_blank"
@@ -1283,29 +1027,16 @@
           >
             Ver canal completo
           </a>
-
         </div>
-
       </div>
-
     </section>
-
-
     <!-- =========================
          FOTOS PARA CARTAZ
     ========================= -->
-
     <section id="fotos" class="section">
-
       <div class="container">
-
-        <span class="eyebrow">Fotos para cartaz</span>
-
-        <h2>Materiais para<br>divulgação.</h2>
-
-
+        <h2>FOTOS PARA CARTAZ</h2>
         <div class="horizontal-slider">
-
           <button
             class="slider-arrow left"
             type="button"
@@ -1315,19 +1046,14 @@
           >
             ‹
           </button>
-
-
           <div class="photos-track" id="photosTrack">
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2845.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2845.jpeg"
                 download="IMG_2845.jpeg"
@@ -1335,19 +1061,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2846.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2846.jpeg"
                 download="IMG_2846.jpeg"
@@ -1355,19 +1076,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2847.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2847.jpeg"
                 download="IMG_2847.jpeg"
@@ -1375,19 +1091,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2848.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2848.jpeg"
                 download="IMG_2848.jpeg"
@@ -1395,19 +1106,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2849.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2849.jpeg"
                 download="IMG_2849.jpeg"
@@ -1415,19 +1121,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2850.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2850.jpeg"
                 download="IMG_2850.jpeg"
@@ -1435,19 +1136,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2851.jpeg"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2851.jpeg"
                 download="IMG_2851.jpeg"
@@ -1455,19 +1151,14 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
-
             <article class="photo-card">
-
               <div class="photo-image">
                 <img
                   src="assets/IMG_2852.png"
                   alt="Foto de Samuel Menezes para cartaz"
                 >
               </div>
-
               <a
                 href="assets/IMG_2852.png"
                 download="IMG_2852.png"
@@ -1475,12 +1166,8 @@
               >
                 Baixar foto
               </a>
-
             </article>
-
           </div>
-
-
           <button
             class="slider-arrow right"
             type="button"
@@ -1490,53 +1177,26 @@
           >
             ›
           </button>
-
         </div>
-
-
         <div class="slider-hint">
           <span>↔</span>
           Arraste para navegar
         </div>
-
       </div>
-
     </section>
-
   </main>
-
-
   <!-- =========================
-       FOOTER / CONTATO
-  ========================= -->
-
+       CONTATOS
+    ========================= -->
   <footer id="contato">
-
     <div class="container">
-
       <div class="footer-main">
-
-        <div class="footer-brand">
-
-          <h3>Samuel Menezes</h3>
-
-          <p>
-            Ministério, livros, mensagens e conteúdos para edificação.
-          </p>
-
-        </div>
-
-
         <div class="footer-column">
-
           <h4>Contato</h4>
-
           <div class="footer-links">
-
             <a href="mailto:pregador.samuelmenezes@gmail.com">
               pregador.samuelmenezes@gmail.com
             </a>
-
             <a
               href="https://wa.me/5521969581007"
               target="_blank"
@@ -1544,7 +1204,6 @@
             >
               (21) 96958-1007
             </a>
-
             <a
               href="https://www.instagram.com/samuelmenezes.ievad?stkn=aHRvb3NxNzVuYWY%3D&utm_source=qr"
               target="_blank"
@@ -1552,33 +1211,20 @@
             >
               @samuelmenezes.ievad
             </a>
-
           </div>
-
         </div>
-
       </div>
-
-
       <div class="footer-bottom">
-
         <p>
           © 2026 Samuel Menezes. Todos os direitos reservados.
         </p>
-
       </div>
-
     </div>
-
   </footer>
-
-
   <!-- =========================
        SCROLL VERTICAL
   ========================= -->
-
   <div class="scroll-arrows">
-
     <button
       id="arrowUp"
       class="scroll-arrow"
@@ -1587,7 +1233,6 @@
     >
       ↑
     </button>
-
     <button
       id="arrowDown"
       class="scroll-arrow"
@@ -1596,14 +1241,10 @@
     >
       ↓
     </button>
-
   </div>
-
-
   <!-- =========================
        WHATSAPP
   ========================= -->
-
   <a
     class="whatsapp-float"
     href="https://wa.me/5521969581007?text=a%20paz%20do%20senhor%2C%20motivo%20do%20meu%20contato%20%C3%A9%20verificar%20disponibilidade%20de%20data%20para%20agenda"
@@ -1611,7 +1252,6 @@
     rel="noopener"
     aria-label="Entrar em contato pelo WhatsApp"
   >
-
     <svg
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
@@ -1619,37 +1259,29 @@
     >
       <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.53 0 .22 5.3.22 11.84c0 2.09.55 4.13 1.6 5.93L.12 24l6.39-1.67a11.83 11.83 0 0 0 5.55 1.41h.01c6.53 0 11.84-5.31 11.84-11.84 0-3.17-1.23-6.15-3.39-8.42ZM12.07 21.7h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.83 9.83 0 0 1-1.51-5.2C2.17 6.42 6.6 1.99 12.06 1.99a9.79 9.79 0 0 1 6.98 2.9 9.82 9.82 0 0 1 2.89 6.99c0 5.46-4.43 9.82-9.86 9.82Zm5.39-7.36c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.29-.75.95-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.2-.44-2.28-1.4-.84-.75-1.41-1.68-1.58-1.97-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.37-.02-.51-.07-.15-.65-1.57-.89-2.15-.23-.56-.47-.48-.65-.49h-.56c-.19 0-.49.07-.75.37-.26.29-1 0.98-1 2.39s1.02 2.77 1.16 2.96c.15.19 2.01 3.07 4.88 4.31.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34Z"/>
     </svg>
-
   </a>
-
-
   <script>
-
     /* =========================
        SLIDERS HORIZONTAIS
     ========================= */
-
-    const sliderButtons = document.querySelectorAll(".slider-arrow");
-
+    const sliderButtons =
+      document.querySelectorAll(".slider-arrow");
     function updateSliderButtons(track) {
-
-      const wrapper = track.closest(".horizontal-slider");
-
+      const wrapper =
+        track.closest(".horizontal-slider");
       if (!wrapper) return;
-
-      const leftButton = wrapper.querySelector(".slider-arrow.left");
-      const rightButton = wrapper.querySelector(".slider-arrow.right");
-
+      const leftButton =
+        wrapper.querySelector(".slider-arrow.left");
+      const rightButton =
+        wrapper.querySelector(".slider-arrow.right");
       const maxScroll =
         track.scrollWidth - track.clientWidth;
-
       if (leftButton) {
         leftButton.classList.toggle(
           "hidden",
           track.scrollLeft <= 5
         );
       }
-
       if (rightButton) {
         rightButton.classList.toggle(
           "hidden",
@@ -1657,132 +1289,98 @@
         );
       }
     }
-
-
-    document.querySelectorAll(".books-track, .photos-track").forEach(track => {
-
-      updateSliderButtons(track);
-
-      track.addEventListener("scroll", () => {
+    document
+      .querySelectorAll(".books-track, .photos-track")
+      .forEach(track => {
         updateSliderButtons(track);
-      }, { passive: true });
-
-    });
-
-
+        track.addEventListener(
+          "scroll",
+          () => updateSliderButtons(track),
+          { passive: true }
+        );
+      });
     sliderButtons.forEach(button => {
-
       button.addEventListener("click", () => {
-
-        const targetId = button.dataset.target;
-        const direction = Number(button.dataset.direction);
-
-        const track = document.getElementById(targetId);
-
+        const targetId =
+          button.dataset.target;
+        const direction =
+          Number(button.dataset.direction);
+        const track =
+          document.getElementById(targetId);
         if (!track) return;
-
         const amount =
-          Math.max(track.clientWidth * 0.8, 250);
-
+          Math.max(track.clientWidth * .8, 250);
         track.scrollBy({
           left: amount * direction,
           behavior: "smooth"
         });
-
       });
-
     });
-
-
     window.addEventListener("resize", () => {
-
       document
         .querySelectorAll(".books-track, .photos-track")
-        .forEach(track => updateSliderButtons(track));
-
+        .forEach(track =>
+          updateSliderButtons(track)
+        );
     });
-
-
     /* =========================
        SCROLL VERTICAL
     ========================= */
-
-    const arrowUp = document.getElementById("arrowUp");
-    const arrowDown = document.getElementById("arrowDown");
-
-
+    const arrowUp =
+      document.getElementById("arrowUp");
+    const arrowDown =
+      document.getElementById("arrowDown");
     function updateScrollArrows() {
-
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
+      const scrollTop =
+        window.scrollY;
+      const windowHeight =
+        window.innerHeight;
       const documentHeight =
         document.documentElement.scrollHeight;
-
       const chegouInicio =
         scrollTop <= 10;
-
       const chegouFim =
-        scrollTop + windowHeight >= documentHeight - 10;
-
-
+        scrollTop + windowHeight >=
+        documentHeight - 10;
       arrowUp.classList.remove("visible");
       arrowDown.classList.remove("visible");
-
-
       if (chegouInicio) {
-
         arrowDown.classList.add("visible");
-
-      } else if (chegouFim) {
-
-        arrowUp.classList.add("visible");
-
-      } else {
-
-        arrowUp.classList.add("visible");
-        arrowDown.classList.add("visible");
-
       }
-
+      else if (chegouFim) {
+        arrowUp.classList.add("visible");
+      }
+      else {
+        arrowUp.classList.add("visible");
+        arrowDown.classList.add("visible");
+      }
     }
-
-
     window.addEventListener(
       "scroll",
       updateScrollArrows,
       { passive: true }
     );
-
-
     window.addEventListener(
       "resize",
       updateScrollArrows
     );
-
-
     updateScrollArrows();
-
-
     arrowDown.addEventListener("click", () => {
-
       window.scrollBy({
-        top: window.innerHeight * 0.75,
-        behavior: "smooth"
+        top:
+          window.innerHeight * .75,
+        behavior:
+          "smooth"
       });
-
     });
-
-
     arrowUp.addEventListener("click", () => {
-
       window.scrollBy({
-        top: -(window.innerHeight * 0.75),
-        behavior: "smooth"
+        top:
+          -(window.innerHeight * .75),
+        behavior:
+          "smooth"
       });
-
     });
-
   </script>
-
 </body>
 </html>
