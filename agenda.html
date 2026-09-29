@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Verificar disponibilidade | Samuel Menezes</title>
+
+  <meta
+    name="description"
+    content="Formulário para verificar disponibilidade de agenda de Samuel Menezes."
+  >
+
+  <style>
+
+    :root {
+      --vinho: #6f1024;
+      --vinho-escuro: #4d0b19;
+      --branco: #ffffff;
+      --offwhite: #faf8f8;
+      --texto: #181516;
+      --cinza: #6f686a;
+      --borda: #e8dfe1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--offwhite);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+
+    .container {
+      width: min(700px, 100%);
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: inline-block;
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 45px;
+    }
+
+    .brand span {
+      color: var(--vinho);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--vinho);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--vinho);
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 55px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      color: var(--cinza);
+      max-width: 600px;
+      margin-bottom: 35px;
+    }
+
+    form {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      padding: 32px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--borda);
+      background: #fff;
+      padding: 14px;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+      border-radius: 0;
+    }
+
+    input:focus {
+      border-color: var(--vinho);
+    }
+
+    button {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 25px;
+      border: 0;
+      background: var(--vinho);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      background: var(--vinho-escuro);
+    }
+
+    .note {
+      margin-top: 18px;
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+
+      .page {
+        padding: 35px 15px;
+      }
+
+      .brand {
+        margin-bottom: 35px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main class="page">
+
+    <div class="container">
+
+      <a href="index.html" class="brand">
+        Samuel <span>Menezes</span>
+      </a>
+
+
+      <span class="eyebrow">
+        Agenda
+      </span>
+
+
+      <h1>
+        Verificar disponibilidade
+      </h1>
+
+
+      <p class="intro">
+        Preencha as informações abaixo para consultar a disponibilidade
+        de uma data para ministração. Após o envio, você será direcionado
+        ao WhatsApp para continuar o contato.
+      </p>
+
+
+      <form id="agendaForm">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label for="nome">
+              Nome
+            </label>
+
+            <input
+              type="text"
+              id="nome"
+              placeholder="Seu nome"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="telefone">
+              Telefone
+            </label>
+
+            <input
+              type="tel"
+              id="telefone"
+              placeholder="(00) 00000-0000"
+              required
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="igreja">
+              Igreja / Organização
+            </label>
+
+            <input
+              type="text"
+              id="igreja"
+              placeholder="Nome da igreja ou organização"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="instagram">
+              Instagram da igreja
+            </label>
+
+            <input
+              type="text"
+              id="instagram"
+              placeholder="@instagramdaigreja"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="data">
+              Data
+            </label>
+
+            <input
+              type="date"
+              id="data"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="hora">
+              Horário
+            </label>
+
+            <input
+              type="time"
+              id="hora"
+              required
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="endereco">
+              Endereço
+            </label>
+
+            <input
+              type="text"
+              id="endereco"
+              placeholder="Endereço do evento"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <button type="submit">
+          Verificar disponibilidade
+        </button>
+
+
+        <p class="note">
+          O envio do formulário não confirma a agenda.
+          Ele inicia apenas a consulta de disponibilidade.
+        </p>
+
+      </form>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const form =
+      document.getElementById("agendaForm");
+
+
+    form.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const nome =
+        document.getElementById("nome").value.trim();
+
+      const telefone =
+        document.getElementById("telefone").value.trim();
+
+      const igreja =
+        document.getElementById("igreja").value.trim();
+
+      const instagram =
+        document.getElementById("instagram").value.trim();
+
+      const data =
+        document.getElementById("data").value;
+
+      const horario =
+        document.getElementById("hora").value;
+
+      const endereco =
+        document.getElementById("endereco").value.trim();
+
+
+      const partes =
+        data.split("-");
+
+
+      const dataFormatada =
+        `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+
+      const mensagem =
+        `Paz do Senhor. Me chamo ${nome}, entrego em contato para verificar a disponibilidade de data para o dia ${dataFormatada} às ${horario}, na ${igreja}, localizado no endereço ${endereco}, segue o Instagram da igreja ${instagram || "Não informado"} e meu telefone para contato ${telefone}.`;
+
+
+      const numeroWhatsApp =
+        "5521969581007";
+
+
+      const url =
+        `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+
+      window.location.href = url;
+
+    });
+
+  </script>
+
+</body>
+
+</html>
