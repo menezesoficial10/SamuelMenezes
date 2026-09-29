@@ -26,15 +26,11 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--branco);
+      color: #fff;
       background: var(--preto);
       line-height: 1.5;
       overflow-x: hidden;
     }
-
-    /* =========================================
-       FUNDO GERAL
-    ========================================== */
 
     body::before {
       content: "";
@@ -91,8 +87,13 @@
       max-width: 100%;
     }
 
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
     /* =========================================
-       TOPO MINIMALISTA
+       TOPO
     ========================================== */
 
     .topbar {
@@ -101,7 +102,7 @@
       left: 0;
       right: 0;
 
-      height: 64px;
+      height: 58px;
 
       z-index: 1000;
 
@@ -117,7 +118,7 @@
     .topbar-name {
       color: #fff;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
 
       letter-spacing: 1px;
@@ -126,8 +127,8 @@
     }
 
     .menu-button {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
 
       border: 0;
       background: transparent;
@@ -148,7 +149,7 @@
     .menu-button span {
       display: block;
 
-      width: 17px;
+      width: 16px;
       height: 1px;
 
       background: #fff;
@@ -208,9 +209,7 @@
 
       align-items: center;
 
-      gap: 22px;
-
-      text-align: center;
+      gap: 20px;
     }
 
     .menu-links a {
@@ -218,8 +217,6 @@
 
       font-size: 20px;
       font-weight: 700;
-
-      transition: color .2s ease;
     }
 
     .menu-links a:hover {
@@ -227,20 +224,11 @@
     }
 
     /* =========================================
-       CONTAINER
-    ========================================== */
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* =========================================
        INTRO
     ========================================== */
 
     .intro {
-      min-height: 52vh;
+      min-height: 43vh;
 
       display: flex;
       align-items: center;
@@ -249,7 +237,6 @@
       background: rgba(0,0,0,.20);
 
       color: #fff;
-
       text-align: center;
     }
 
@@ -257,7 +244,7 @@
       width: 100%;
       max-width: 1000px;
 
-      padding: 85px 0 50px;
+      padding: 42px 0 24px;
 
       display: flex;
       flex-direction: column;
@@ -271,8 +258,9 @@
     .intro-name {
       width: 100%;
 
-      font-size: clamp(58px, 10vw, 125px);
-      line-height: .86;
+      font-size: clamp(56px, 10vw, 120px);
+
+      line-height: .84;
 
       letter-spacing: -6px;
 
@@ -284,13 +272,11 @@
     }
 
     .intro-subtitle {
-      margin-top: 22px;
+      margin-top: 15px;
 
-      font-size: clamp(18px, 2.5vw, 28px);
+      font-size: clamp(17px, 2.5vw, 26px);
 
       font-weight: 500;
-
-      letter-spacing: .3px;
 
       text-align: center;
     }
@@ -300,7 +286,7 @@
     ========================================== */
 
     .section {
-      padding: 65px 0;
+      padding: 34px 0;
     }
 
     #sobre,
@@ -314,7 +300,7 @@
 
       color: #fff;
 
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255,255,255,.06);
     }
 
     /* =========================================
@@ -322,7 +308,8 @@
     ========================================== */
 
     #sobre {
-      padding-top: 28px;
+      padding-top: 22px;
+      padding-bottom: 30px;
     }
 
     .about-content {
@@ -334,22 +321,26 @@
     }
 
     .about-text p {
-      margin-bottom: 18px;
+      margin-bottom: 12px;
 
       color: rgba(255,255,255,.82);
 
-      font-size: 18px;
+      font-size: 17px;
 
-      line-height: 1.65;
+      line-height: 1.55;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
     }
 
     .tags {
-      margin-top: 28px;
+      margin-top: 20px;
 
       display: flex;
       flex-wrap: wrap;
 
-      gap: 10px;
+      gap: 8px;
     }
 
     .tag {
@@ -359,25 +350,43 @@
 
       background: rgba(111,16,36,.18);
 
-      padding: 8px 14px;
+      padding: 7px 12px;
 
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .6px;
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      letter-spacing: .5px;
     }
 
     /* =========================================
        LIVROS
     ========================================== */
 
+    #livros {
+      padding-top: 30px;
+      padding-bottom: 34px;
+    }
+
+    #livros > .container > h2 {
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      color: #fff;
+
+      font-size: clamp(29px, 5vw, 48px);
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+
+      font-weight: 900;
+    }
+
     .books-category {
-      margin-bottom: 50px;
+      margin-bottom: 28px;
     }
 
     .books-category:last-child {
@@ -385,14 +394,15 @@
     }
 
     .books-category-title {
-      margin-bottom: 20px;
+      margin-bottom: 13px;
 
-      color: rgba(255,255,255,.65);
+      color: rgba(255,255,255,.58);
 
-      font-size: 12px;
+      font-size: 10px;
+
       font-weight: 800;
 
-      letter-spacing: 1.5px;
+      letter-spacing: 1.3px;
 
       text-transform: uppercase;
     }
@@ -406,9 +416,9 @@
 
       grid-auto-flow: column;
 
-      grid-auto-columns: 320px;
+      grid-auto-columns: 280px;
 
-      gap: 24px;
+      gap: 18px;
 
       overflow-x: auto;
 
@@ -416,7 +426,7 @@
 
       scrollbar-width: none;
 
-      padding: 3px 3px 18px;
+      padding: 2px 2px 8px;
 
       scroll-snap-type: x mandatory;
     }
@@ -426,22 +436,23 @@
     }
 
     .book-card {
-      background: rgba(0,0,0,.55);
+      position: relative;
 
       overflow: hidden;
 
       scroll-snap-align: start;
 
+      background: #111;
+
       border: 1px solid rgba(255,255,255,.12);
 
       box-shadow:
-        0 12px 35px rgba(0,0,0,.35);
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+        0 10px 28px rgba(0,0,0,.35);
     }
 
     .book-cover {
+      position: relative;
+
       width: 100%;
 
       aspect-ratio: 2 / 3;
@@ -460,20 +471,37 @@
       display: block;
     }
 
-    .book-info {
-      color: #fff;
+    /*
+      BOTÃO SOBRE A CAPA
+    */
 
-      padding: 20px;
+    .book-info {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      padding: 18px 15px 16px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.88),
+          rgba(0,0,0,.48),
+          transparent
+        );
     }
 
     .book-info h4 {
-      margin-bottom: 15px;
-
-      color: #fff;
-
-      font-size: 18px;
-
-      line-height: 1.25;
+      display: none;
     }
 
     .book-button {
@@ -482,7 +510,7 @@
       align-items: center;
       justify-content: center;
 
-      min-height: 42px;
+      min-height: 38px;
 
       padding: 0 18px;
 
@@ -490,13 +518,16 @@
 
       color: #fff;
 
-      font-size: 12px;
+      font-size: 10px;
 
       font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .4px;
+      letter-spacing: .5px;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,.35);
 
       transition:
         background .2s ease,
@@ -525,8 +556,8 @@
     }
 
     .slider-arrow {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
 
       border: 1px solid rgba(255,255,255,.18);
 
@@ -535,18 +566,15 @@
       color: #fff;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       cursor: pointer;
 
-      font-size: 20px;
+      font-size: 18px;
 
       pointer-events: auto;
-
-      transition:
-        background .2s ease,
-        opacity .2s ease;
     }
 
     .slider-arrow:hover {
@@ -560,11 +588,11 @@
     }
 
     .slider-hint {
-      margin-top: 5px;
+      margin-top: 2px;
 
-      color: rgba(255,255,255,.45);
+      color: rgba(255,255,255,.38);
 
-      font-size: 11px;
+      font-size: 9px;
 
       font-weight: 700;
 
@@ -579,8 +607,13 @@
        AGENDA
     ========================================== */
 
+    #agenda {
+      padding-top: 30px;
+      padding-bottom: 32px;
+    }
+
     .agenda-simple-content {
-      min-height: 230px;
+      min-height: 150px;
 
       display: flex;
 
@@ -592,17 +625,7 @@
     }
 
     .agenda-simple-content h2 {
-      margin-bottom: 28px;
-
-      color: #fff;
-
-      font-size: clamp(30px, 5vw, 52px);
-
-      line-height: 1;
-
-      letter-spacing: -2px;
-
-      font-weight: 900;
+      margin-bottom: 20px;
     }
 
     .agenda-button {
@@ -611,36 +634,35 @@
       align-items: center;
       justify-content: center;
 
-      min-height: 50px;
+      min-height: 44px;
 
-      padding: 0 25px;
+      padding: 0 20px;
 
       background: var(--vinho);
 
       color: #fff;
 
-      font-size: 13px;
+      font-size: 11px;
 
       font-weight: 800;
 
       text-transform: uppercase;
 
       letter-spacing: .5px;
-
-      transition:
-        background .2s ease,
-        transform .2s ease;
-    }
-
-    .agenda-button:hover {
-      background: var(--vinho-dark);
-
-      transform: translateY(-2px);
     }
 
     /* =========================================
-       YOUTUBE
+       PREGAÇÕES
     ========================================== */
+
+    #youtube {
+      padding-top: 30px;
+      padding-bottom: 32px;
+    }
+
+    #youtube > .container > h2 {
+      margin-bottom: 22px;
+    }
 
     .youtube-grid {
       display: grid;
@@ -648,14 +670,7 @@
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-      gap: 28px;
-    }
-
-    .youtube-grid h2,
-    #youtube > .container > h2,
-    #fotos > .container > h2,
-    #livros > .container > h2 {
-      color: #fff;
+      gap: 20px;
     }
 
     .video-item {
@@ -663,7 +678,7 @@
 
       flex-direction: column;
 
-      gap: 14px;
+      gap: 9px;
     }
 
     .video-thumb {
@@ -676,9 +691,6 @@
       background: #111;
 
       border: 1px solid rgba(255,255,255,.10);
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.35);
     }
 
     .video-thumb img {
@@ -688,12 +700,6 @@
       object-fit: cover;
 
       display: block;
-
-      transition: transform .3s ease;
-    }
-
-    .video-thumb:hover img {
-      transform: scale(1.03);
     }
 
     .youtube-button {
@@ -704,52 +710,51 @@
 
       width: fit-content;
 
-      min-height: 42px;
+      min-height: 38px;
 
-      padding: 0 18px;
+      padding: 0 15px;
 
       background: var(--vinho);
 
       color: #fff;
 
-      font-size: 12px;
+      font-size: 10px;
 
       font-weight: 800;
 
       text-transform: uppercase;
 
       letter-spacing: .4px;
-
-      transition:
-        background .2s ease,
-        transform .2s ease;
-    }
-
-    .youtube-button:hover {
-      background: var(--vinho-dark);
-
-      transform: translateY(-2px);
     }
 
     .youtube-channel {
-      margin-top: 35px;
+      margin-top: 18px;
     }
 
     .youtube-channel a {
       color: #fff;
 
-      font-size: 13px;
+      font-size: 11px;
 
       font-weight: 800;
 
       border-bottom: 1px solid var(--vinho);
 
-      padding-bottom: 4px;
+      padding-bottom: 3px;
     }
 
     /* =========================================
        FOTOS
     ========================================== */
+
+    #fotos {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    #fotos > .container > h2 {
+      margin-bottom: 22px;
+    }
 
     .photos-track {
       display: grid;
@@ -769,7 +774,7 @@
 
       scroll-snap-type: x mandatory;
 
-      padding: 5px 3px 18px;
+      padding: 2px 2px 8px;
     }
 
     .photos-track::-webkit-scrollbar {
@@ -795,9 +800,6 @@
       justify-content: center;
 
       border: 1px solid rgba(255,255,255,.10);
-
-      box-shadow:
-        0 10px 28px rgba(0,0,0,.35);
     }
 
     .photo-image img {
@@ -806,7 +808,7 @@
 
       object-fit: cover;
 
-      object-position: center center;
+      object-position: center;
 
       display: block;
     }
@@ -814,15 +816,15 @@
     .download-photo {
       display: inline-flex;
 
-      margin-top: 10px;
+      margin-top: 6px;
 
       background: var(--vinho);
 
       color: #fff;
 
-      padding: 8px 12px;
+      padding: 6px 10px;
 
-      font-size: 10px;
+      font-size: 9px;
 
       font-weight: 800;
 
@@ -832,15 +834,15 @@
     }
 
     /* =========================================
-       FOOTER
+       FOOTER — BEM MENOR
     ========================================== */
 
     footer {
-      padding: 60px 0 30px;
+      padding: 22px 0 12px;
 
-      background: rgba(0,0,0,.72);
+      background: rgba(0,0,0,.76);
 
-      border-top: 1px solid rgba(255,255,255,.10);
+      border-top: 1px solid rgba(255,255,255,.08);
     }
 
     .footer-main {
@@ -850,11 +852,11 @@
     }
 
     .footer-column h4 {
-      margin-bottom: 18px;
+      margin-bottom: 8px;
 
       color: #fff;
 
-      font-size: 13px;
+      font-size: 9px;
 
       font-weight: 800;
 
@@ -866,35 +868,31 @@
     .footer-links {
       display: flex;
 
-      flex-direction: column;
+      flex-direction: row;
 
-      gap: 9px;
+      flex-wrap: wrap;
+
+      gap: 5px 14px;
     }
 
     .footer-links a {
-      color: rgba(255,255,255,.68);
+      color: rgba(255,255,255,.60);
 
-      font-size: 13px;
-
-      transition: color .2s ease;
-    }
-
-    .footer-links a:hover {
-      color: #fff;
+      font-size: 9px;
     }
 
     .footer-bottom {
-      margin-top: 45px;
+      margin-top: 12px;
 
-      padding-top: 20px;
+      padding-top: 8px;
 
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255,255,255,.06);
     }
 
     .footer-bottom p {
-      color: rgba(255,255,255,.40);
+      color: rgba(255,255,255,.30);
 
-      font-size: 11px;
+      font-size: 8px;
     }
 
     /* =========================================
@@ -904,11 +902,11 @@
     .whatsapp-float {
       position: fixed;
 
-      right: 22px;
-      bottom: 22px;
+      right: 20px;
+      bottom: 20px;
 
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
 
       border-radius: 50%;
 
@@ -924,36 +922,26 @@
       z-index: 1000;
 
       box-shadow:
-        0 10px 30px rgba(0,0,0,.45);
+        0 8px 25px rgba(0,0,0,.45);
 
       border: 1px solid rgba(255,255,255,.15);
-
-      transition:
-        transform .2s ease,
-        background .2s ease;
-    }
-
-    .whatsapp-float:hover {
-      transform: translateY(-3px);
-
-      background: var(--vinho-dark);
     }
 
     .whatsapp-float svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
 
       fill: currentColor;
     }
 
     /* =========================================
-       SETAS VERTICAIS
+       SETAS
     ========================================== */
 
     .scroll-arrows {
       position: fixed;
 
-      right: 20px;
+      right: 18px;
       top: 50%;
 
       transform: translateY(-50%);
@@ -964,12 +952,12 @@
 
       flex-direction: column;
 
-      gap: 8px;
+      gap: 6px;
     }
 
     .scroll-arrow {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
 
       display: flex;
 
@@ -982,17 +970,13 @@
 
       color: #fff;
 
-      font-size: 18px;
+      font-size: 16px;
 
       cursor: pointer;
 
       opacity: 0;
 
       pointer-events: none;
-
-      transition:
-        opacity .2s ease,
-        background .2s ease;
     }
 
     .scroll-arrow.visible {
@@ -1006,171 +990,242 @@
     }
 
     /* =========================================
-       RESPONSIVO
+       MOBILE
     ========================================== */
-
-    @media (max-width: 900px) {
-
-      .container {
-        width: min(100% - 30px, 700px);
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .photos-track {
-        grid-auto-columns:
-          calc((100% - 24px) / 2);
-
-        gap: 24px;
-      }
-
-      .slider-controls {
-        left: -8px;
-        right: -8px;
-      }
-
-    }
 
     @media (max-width: 700px) {
 
+      .container {
+        width: calc(100% - 28px);
+      }
+
       .topbar {
-        height: 58px;
+        height: 52px;
 
         padding: 0 18px;
       }
 
       .topbar-name {
-        font-size: 10px;
-
-        letter-spacing: .8px;
-      }
-
-      .menu-button {
-        width: 30px;
-        height: 30px;
-      }
-
-      .menu-button span {
-        width: 16px;
+        font-size: 9px;
       }
 
       .intro {
-        min-height: 48vh;
+        min-height: 39vh;
       }
 
       .intro-content {
-        padding: 65px 0 40px;
+        padding: 48px 0 18px;
       }
 
       .intro-name {
-        font-size: clamp(52px, 15vw, 85px);
+        font-size: clamp(50px, 15vw, 82px);
+
+        line-height: .82;
 
         letter-spacing: -4px;
       }
 
       .intro-subtitle {
-        margin-top: 18px;
+        margin-top: 12px;
 
-        font-size: 19px;
+        font-size: 18px;
       }
 
       .section {
-        padding: 55px 0;
+        padding: 27px 0;
       }
 
       #sobre {
-        padding-top: 20px;
+        padding-top: 15px;
+        padding-bottom: 25px;
       }
 
       .about-text p {
-        font-size: 16px;
+        font-size: 15px;
 
-        line-height: 1.6;
+        line-height: 1.5;
 
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+      }
+
+      .tags {
+        margin-top: 16px;
+
+        gap: 6px;
+      }
+
+      .tag {
+        padding: 6px 9px;
+
+        font-size: 9px;
+      }
+
+      #livros {
+        padding-top: 25px;
+        padding-bottom: 27px;
+      }
+
+      #livros > .container > h2,
+      #youtube > .container > h2,
+      #fotos > .container > h2 {
+        margin-bottom: 17px;
+      }
+
+      .books-category {
+        margin-bottom: 23px;
       }
 
       .books-track {
-        grid-auto-columns: 220px;
+        grid-auto-columns: 210px;
 
-        gap: 18px;
+        gap: 14px;
+      }
+
+      .book-info {
+        padding: 15px 10px 13px;
+      }
+
+      .book-button {
+        min-height: 35px;
+
+        padding: 0 15px;
+
+        font-size: 9px;
+      }
+
+      .slider-hint {
+        font-size: 8px;
+      }
+
+      #agenda {
+        padding-top: 25px;
+        padding-bottom: 27px;
+      }
+
+      .agenda-simple-content {
+        min-height: 120px;
+      }
+
+      .agenda-simple-content h2 {
+        margin-bottom: 17px;
+      }
+
+      .agenda-button {
+        min-height: 40px;
+
+        padding: 0 17px;
+
+        font-size: 10px;
+      }
+
+      #youtube {
+        padding-top: 25px;
+        padding-bottom: 27px;
       }
 
       .youtube-grid {
         grid-template-columns: 1fr;
+
+        gap: 16px;
+      }
+
+      .youtube-button {
+        min-height: 35px;
+
+        font-size: 9px;
+      }
+
+      .youtube-channel {
+        margin-top: 14px;
+      }
+
+      #fotos {
+        padding-top: 25px;
+        padding-bottom: 25px;
       }
 
       .photos-track {
         grid-auto-columns:
-          calc((100% - 14px) / 2);
+          calc((100% - 10px) / 2);
 
-        gap: 14px;
+        gap: 10px;
+      }
+
+      .download-photo {
+        margin-top: 5px;
+
+        padding: 5px 8px;
+
+        font-size: 8px;
+      }
+
+      footer {
+        padding: 16px 0 9px;
+      }
+
+      .footer-links {
+        gap: 4px 10px;
+      }
+
+      .footer-links a {
+        font-size: 8px;
+      }
+
+      .footer-bottom {
+        margin-top: 9px;
+
+        padding-top: 6px;
+      }
+
+      .footer-bottom p {
+        font-size: 7px;
+      }
+
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .whatsapp-float svg {
+        width: 24px;
+        height: 24px;
       }
 
       .slider-controls {
         display: none;
       }
 
-      .scroll-arrows {
-        right: 12px;
-      }
-
-      .scroll-arrow {
-        width: 34px;
-        height: 34px;
-      }
-
-      .whatsapp-float {
-        right: 16px;
-        bottom: 16px;
-
-        width: 54px;
-        height: 54px;
-      }
-
     }
 
     @media (max-width: 480px) {
 
-      .container {
-        width: calc(100% - 28px);
+      .intro-content {
+        padding-top: 43px;
+        padding-bottom: 14px;
       }
 
       .intro-name {
-        font-size: 54px;
+        font-size: 52px;
+      }
 
-        letter-spacing: -3px;
+      .intro-subtitle {
+        font-size: 17px;
       }
 
       .books-track {
-        grid-auto-columns: 210px;
-      }
-
-      .photos-track {
-        grid-auto-columns:
-          calc((100% - 12px) / 2);
-
-        gap: 12px;
-      }
-
-      .tag {
-        padding: 7px 11px;
-
-        font-size: 10px;
+        grid-auto-columns: 205px;
       }
 
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================
-       TOPO MINIMALISTA
-  ========================================== -->
+  <!-- TOPO -->
 
   <div class="topbar">
 
@@ -1193,24 +1248,17 @@
   </div>
 
 
-  <!-- =========================================
-       MENU
-  ========================================== -->
+  <!-- MENU -->
 
   <div class="menu-overlay" id="menuOverlay">
 
     <nav class="menu-links">
 
       <a href="#sobre">Sobre</a>
-
       <a href="#livros">Livros</a>
-
       <a href="#agenda">Agenda</a>
-
       <a href="#youtube">Pregações</a>
-
       <a href="#fotos">Fotos</a>
-
       <a href="#contato">Contato</a>
 
     </nav>
@@ -1218,9 +1266,7 @@
   </div>
 
 
-  <!-- =========================================
-       INTRO
-  ========================================== -->
+  <!-- INTRO -->
 
   <section id="inicio" class="intro">
 
@@ -1243,9 +1289,7 @@
   </section>
 
 
-  <!-- =========================================
-       SOBRE
-  ========================================== -->
+  <!-- SOBRE -->
 
   <section id="sobre" class="section">
 
@@ -1285,9 +1329,7 @@
   </section>
 
 
-  <!-- =========================================
-       LIVROS
-  ========================================== -->
+  <!-- LIVROS -->
 
   <section id="livros" class="section">
 
@@ -1295,6 +1337,8 @@
 
       <h2>LIVROS</h2>
 
+
+      <!-- FÍSICOS -->
 
       <div class="books-category">
 
@@ -1315,28 +1359,25 @@
                   alt="Capa do livro Identidade: Obtendo o caráter de Cristo"
                 >
 
-              </div>
+                <div class="book-info">
 
-              <div class="book-info">
+                  <a
+                    href="https://uiclap.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-button"
+                  >
+                    Comprar livro
+                  </a>
 
-                <h4>
-                  Identidade: Obtendo o caráter de Cristo
-                </h4>
-
-                <a
-                  href="https://uiclap.com/"
-                  target="_blank"
-                  rel="noopener"
-                  class="book-button"
-                >
-                  Comprar livro
-                </a>
+                </div>
 
               </div>
 
             </article>
 
           </div>
+
 
           <div class="slider-controls">
 
@@ -1369,6 +1410,8 @@
       </div>
 
 
+      <!-- E-BOOKS -->
+
       <div class="books-category">
 
         <div class="books-category-title">
@@ -1389,22 +1432,18 @@
                   alt="Capa do livro Lealdade sob ataque"
                 >
 
-              </div>
+                <div class="book-info">
 
-              <div class="book-info">
+                  <a
+                    href="https://hotmart.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-button"
+                  >
+                    Comprar e-book
+                  </a>
 
-                <h4>
-                  Lealdade sob ataque
-                </h4>
-
-                <a
-                  href="https://hotmart.com/"
-                  target="_blank"
-                  rel="noopener"
-                  class="book-button"
-                >
-                  Comprar e-book
-                </a>
+                </div>
 
               </div>
 
@@ -1420,22 +1459,18 @@
                   alt="Capa do livro A Escolha de Deus"
                 >
 
-              </div>
+                <div class="book-info">
 
-              <div class="book-info">
+                  <a
+                    href="https://hotmart.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="book-button"
+                  >
+                    Comprar e-book
+                  </a>
 
-                <h4>
-                  A Escolha de Deus
-                </h4>
-
-                <a
-                  href="https://hotmart.com/"
-                  target="_blank"
-                  rel="noopener"
-                  class="book-button"
-                >
-                  Comprar e-book
-                </a>
+                </div>
 
               </div>
 
@@ -1480,9 +1515,7 @@
   </section>
 
 
-  <!-- =========================================
-       AGENDA
-  ========================================== -->
+  <!-- AGENDA -->
 
   <section id="agenda" class="section">
 
@@ -1508,9 +1541,7 @@
   </section>
 
 
-  <!-- =========================================
-       PREGAÇÕES
-  ========================================== -->
+  <!-- PREGAÇÕES -->
 
   <section id="youtube" class="section">
 
@@ -1580,7 +1611,6 @@
 
       </div>
 
-
       <div class="youtube-channel">
 
         <a
@@ -1598,9 +1628,7 @@
   </section>
 
 
-  <!-- =========================================
-       FOTOS
-  ========================================== -->
+  <!-- FOTOS -->
 
   <section id="fotos" class="section">
 
@@ -1614,6 +1642,7 @@
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2845.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1625,10 +1654,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2846.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1640,10 +1671,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2847.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1655,10 +1688,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2848.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1670,10 +1705,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2849.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1685,10 +1722,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2850.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1700,10 +1739,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2851.jpeg" alt="Foto de Samuel Menezes">
             </div>
@@ -1715,10 +1756,12 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
           <article class="photo-card">
+
             <div class="photo-image">
               <img src="assets/IMG_2852.png" alt="Foto de Samuel Menezes">
             </div>
@@ -1730,6 +1773,7 @@
             >
               Baixar foto
             </a>
+
           </article>
 
 
@@ -1760,7 +1804,6 @@
 
       </div>
 
-
       <div class="slider-hint">
         ↔ Arraste para navegar
       </div>
@@ -1770,9 +1813,7 @@
   </section>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+  <!-- FOOTER -->
 
   <footer id="contato">
 
@@ -1825,9 +1866,7 @@
   </footer>
 
 
-  <!-- =========================================
-       WHATSAPP
-  ========================================== -->
+  <!-- WHATSAPP -->
 
   <a
     class="whatsapp-float"
@@ -1844,9 +1883,7 @@
   </a>
 
 
-  <!-- =========================================
-       SETAS VERTICAIS
-  ========================================== -->
+  <!-- SETAS -->
 
   <div class="scroll-arrows">
 
@@ -1870,10 +1907,6 @@
 
   </div>
 
-
-  <!-- =========================================
-       JAVASCRIPT
-  ========================================== -->
 
   <script>
 
