@@ -60,11 +60,16 @@
       width: 110%;
       height: 110%;
       z-index: -3;
+
       object-fit: cover;
       object-position: center;
+
       filter: blur(3px);
+
       opacity: .72;
+
       transform: scale(1.05);
+
       pointer-events: none;
     }
 
@@ -73,7 +78,9 @@
       position: fixed;
       inset: 0;
       z-index: -2;
+
       background: rgba(0,0,0,.40);
+
       pointer-events: none;
     }
 
@@ -86,6 +93,7 @@
       top: 0;
       left: 0;
       right: 0;
+
       z-index: 1000;
 
       display: flex;
@@ -100,8 +108,11 @@
     .topbar-name {
       font-size: 10px;
       font-weight: 800;
+
       letter-spacing: 1.5px;
+
       color: rgba(255,255,255,.75);
+
       pointer-events: auto;
     }
 
@@ -116,17 +127,23 @@
       flex-direction: column;
       align-items: flex-end;
       justify-content: center;
+
       gap: 4px;
 
       cursor: pointer;
+
       pointer-events: auto;
     }
 
     .menu-button span {
       display: block;
+
       height: 2px;
+
       background: #ffffff;
+
       border-radius: 10px;
+
       transition: .25s ease;
     }
 
@@ -163,9 +180,11 @@
     .menu-overlay {
       position: fixed;
       inset: 0;
+
       z-index: 900;
 
       background: rgba(0,0,0,.92);
+
       backdrop-filter: blur(12px);
 
       display: flex;
@@ -189,15 +208,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+
       gap: 18px;
+
       text-align: center;
     }
 
     .menu-links a {
       font-size: 22px;
+
       font-weight: 800;
+
       text-transform: uppercase;
+
       letter-spacing: 1px;
+
       transition: .2s ease;
     }
 
@@ -216,6 +241,7 @@
       align-items: center;
 
       background: rgba(0,0,0,.16);
+
       color: #fff;
     }
 
@@ -278,11 +304,13 @@
       margin: 0;
 
       font-size: clamp(45px, 8vw, 92px);
+
       line-height: .80;
 
       letter-spacing: -5px;
 
       font-weight: 900;
+
       text-transform: uppercase;
     }
 
@@ -290,6 +318,7 @@
       margin: 11px 0 0;
 
       font-size: clamp(16px, 2.2vw, 23px);
+
       font-weight: 500;
     }
 
@@ -299,6 +328,7 @@
 
     .section {
       padding: 30px 0 32px;
+
       background: rgba(0,0,0,.12);
     }
 
@@ -306,10 +336,13 @@
       margin-bottom: 22px;
 
       font-size: clamp(22px, 4vw, 34px);
+
       line-height: 1;
 
       font-weight: 900;
+
       letter-spacing: -1px;
+
       text-transform: uppercase;
     }
 
@@ -332,13 +365,16 @@
       color: rgba(255,255,255,.82);
 
       font-size: 17px;
+
       line-height: 1.55;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
+
       gap: 7px;
+
       margin-top: 15px;
     }
 
@@ -350,8 +386,11 @@
       color: rgba(255,255,255,.78);
 
       font-size: 9px;
+
       font-weight: 800;
+
       letter-spacing: .5px;
+
       text-transform: uppercase;
     }
 
@@ -372,7 +411,9 @@
       overflow-x: auto;
 
       scroll-behavior: smooth;
+
       scrollbar-width: none;
+
       scroll-snap-type: x mandatory;
 
       padding: 2px 2px 8px;
@@ -387,6 +428,7 @@
       position: absolute;
 
       top: 50%;
+
       z-index: 10;
 
       width: 34px;
@@ -395,6 +437,7 @@
       border: 1px solid rgba(255,255,255,.20);
 
       background: rgba(0,0,0,.65);
+
       color: #ffffff;
 
       border-radius: 50%;
@@ -434,6 +477,7 @@
 
     .books-track {
       grid-auto-columns: 280px;
+
       gap: 18px;
     }
 
@@ -509,12 +553,15 @@
       padding: 0 18px;
 
       background: var(--vinho);
+
       color: #fff;
 
       font-size: 10px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: .5px;
 
       box-shadow: 0 5px 15px rgba(0,0,0,.35);
@@ -563,9 +610,11 @@
       color: #fff;
 
       font-size: 10px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: .6px;
 
       transition: .2s ease;
@@ -643,9 +692,11 @@
       background: var(--vinho);
 
       font-size: 9px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: .5px;
 
       transition: .2s ease;
@@ -661,9 +712,11 @@
 
     .youtube-channel a {
       font-size: 10px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: .6px;
 
       color: rgba(255,255,255,.65);
@@ -679,6 +732,7 @@
 
     .photos-track {
       grid-auto-columns: calc((100% - 48px) / 3);
+
       gap: 24px;
     }
 
@@ -696,6 +750,7 @@
       background: #111;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -707,6 +762,7 @@
       height: 100%;
 
       object-fit: cover;
+
       object-position: center;
 
       display: block;
@@ -731,9 +787,11 @@
       background: rgba(0,0,0,.55);
 
       font-size: 8px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: .5px;
     }
 
@@ -753,15 +811,19 @@
       margin-bottom: 8px;
 
       font-size: 9px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: 1px;
     }
 
     .footer-links {
       display: flex;
+
       flex-direction: row;
+
       flex-wrap: wrap;
 
       gap: 5px 14px;
@@ -789,6 +851,7 @@
 
     .footer-bottom p {
       font-size: 8px;
+
       color: rgba(255,255,255,.30);
     }
 
@@ -822,6 +885,7 @@
 
     .whatsapp-float:hover {
       transform: scale(1.06);
+
       background: var(--vinho-dark);
     }
 
@@ -847,6 +911,7 @@
       transform: translateY(-50%);
 
       display: flex;
+
       flex-direction: column;
 
       gap: 7px;
@@ -905,12 +970,14 @@
 
       .intro-content {
         gap: 15px;
+
         padding: 20px 0 10px;
       }
 
       .story-ring {
         width: 88px;
         height: 88px;
+
         padding: 3px;
       }
 
@@ -920,12 +987,15 @@
 
       .intro-name {
         font-size: 43px;
+
         line-height: .80;
+
         letter-spacing: -3px;
       }
 
       .intro-subtitle {
         margin-top: 9px;
+
         font-size: 16px;
       }
 
@@ -935,6 +1005,7 @@
 
       .section h2 {
         font-size: 22px;
+
         margin-bottom: 17px;
       }
 
@@ -945,12 +1016,15 @@
 
       .about-text p {
         font-size: 15px;
+
         line-height: 1.5;
+
         margin-bottom: 10px;
       }
 
       .books-track {
         grid-auto-columns: 210px;
+
         gap: 14px;
       }
 
@@ -960,12 +1034,15 @@
 
       .book-button {
         min-height: 35px;
+
         padding: 0 15px;
+
         font-size: 9px;
       }
 
       .youtube-grid {
         grid-template-columns: 1fr;
+
         gap: 16px;
       }
 
@@ -976,6 +1053,7 @@
 
       .photos-track {
         grid-auto-columns: calc((100% - 10px) / 2);
+
         gap: 10px;
       }
 
@@ -1006,6 +1084,7 @@
 
       .footer-bottom {
         margin-top: 9px;
+
         padding-top: 6px;
       }
 
@@ -1025,6 +1104,7 @@
       .whatsapp-float {
         right: 13px;
         bottom: 13px;
+
         width: 48px;
         height: 48px;
       }
@@ -1249,8 +1329,6 @@
 
         <div class="books-track" id="booksTrack">
 
-          <!-- LIVRO 1 -->
-
           <article class="book-card">
 
             <div class="book-cover">
@@ -1278,8 +1356,6 @@
           </article>
 
 
-          <!-- E-BOOK 1 -->
-
           <article class="book-card">
 
             <div class="book-cover">
@@ -1306,8 +1382,6 @@
 
           </article>
 
-
-          <!-- E-BOOK 2 -->
 
           <article class="book-card">
 
@@ -1400,9 +1474,6 @@
 
       <div class="youtube-grid">
 
-
-        <!-- VÍDEO 1 -->
-
         <article class="video-item">
 
           <a
@@ -1431,8 +1502,6 @@
 
         </article>
 
-
-        <!-- VÍDEO 2 -->
 
         <article class="video-item">
 
@@ -1814,20 +1883,32 @@
   </div>
 
 
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================= -->
+
   <script>
 
     /* =========================================
        MENU
     ========================================= */
 
-    const menuButton = document.getElementById("menuButton");
-    const menuOverlay = document.getElementById("menuOverlay");
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menuOverlay =
+      document.getElementById("menuOverlay");
+
 
     menuButton.addEventListener("click", () => {
 
-      const isOpen = menuOverlay.classList.toggle("active");
+      const isOpen =
+        menuOverlay.classList.toggle("active");
 
-      menuButton.classList.toggle("active", isOpen);
+      menuButton.classList.toggle(
+        "active",
+        isOpen
+      );
 
       menuButton.setAttribute(
         "aria-expanded",
@@ -1837,22 +1918,117 @@
     });
 
 
-    document.querySelectorAll(".menu-links a").forEach(link => {
+    document
+      .querySelectorAll(".menu-links a")
+      .forEach(link => {
 
-      link.addEventListener("click", () => {
+        link.addEventListener("click", () => {
 
-        menuOverlay.classList.remove("active");
+          menuOverlay.classList.remove("active");
 
-        menuButton.classList.remove("active");
+          menuButton.classList.remove("active");
 
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
 
       });
 
-    });
+
+    /* =========================================
+       VÍDEO DE FUNDO
+    ========================================= */
+
+    const backgroundVideo =
+      document.querySelector(
+        ".site-background-video"
+      );
+
+
+    if (backgroundVideo) {
+
+      backgroundVideo.muted = true;
+
+
+      const iniciarVideo = () => {
+
+        const promise =
+          backgroundVideo.play();
+
+        if (promise !== undefined) {
+
+          promise.catch(() => {});
+
+        }
+
+      };
+
+
+      iniciarVideo();
+
+
+      /*
+       * O vídeo começa sem áudio para permitir
+       * o autoplay.
+       *
+       * Depois que o usuário rolar pelo menos
+       * 25px, tentamos liberar o áudio.
+       */
+
+      let audioLiberado = false;
+
+
+      function liberarAudio() {
+
+        if (
+          audioLiberado ||
+          window.scrollY < 25
+        ) {
+          return;
+        }
+
+
+        audioLiberado = true;
+
+
+        backgroundVideo.muted = false;
+
+
+        const playPromise =
+          backgroundVideo.play();
+
+
+        if (
+          playPromise !== undefined
+        ) {
+
+          playPromise.catch(() => {
+
+            /*
+             * Se o navegador impedir o áudio,
+             * o vídeo continua normalmente
+             * sem som.
+             */
+
+            backgroundVideo.muted = true;
+
+          });
+
+        }
+
+      }
+
+
+      window.addEventListener(
+        "scroll",
+        liberarAudio,
+        { passive: true }
+      );
+
+    }
 
 
     /* =========================================
@@ -1860,28 +2036,38 @@
     ========================================= */
 
     const sliderButtons =
-      document.querySelectorAll(".slider-arrow");
+      document.querySelectorAll(
+        ".slider-arrow"
+      );
 
 
     function updateSliderButtons(track) {
 
       const wrapper =
-        track.closest(".horizontal-slider");
+        track.closest(
+          ".horizontal-slider"
+        );
 
       if (!wrapper) return;
 
 
       const leftButton =
-        wrapper.querySelector(".slider-arrow.left");
+        wrapper.querySelector(
+          ".slider-arrow.left"
+        );
+
 
       const rightButton =
-        wrapper.querySelector(".slider-arrow.right");
+        wrapper.querySelector(
+          ".slider-arrow.right"
+        );
 
 
       const maxScroll =
         Math.max(
           0,
-          track.scrollWidth - track.clientWidth
+          track.scrollWidth -
+          track.clientWidth
         );
 
 
@@ -1899,8 +2085,10 @@
 
         rightButton.classList.toggle(
           "hidden",
+
           maxScroll <= 5 ||
-          track.scrollLeft >= maxScroll - 5
+          track.scrollLeft >=
+          maxScroll - 5
         );
 
       }
@@ -1909,14 +2097,18 @@
 
 
     document
-      .querySelectorAll(".books-track, .photos-track")
+      .querySelectorAll(
+        ".books-track, .photos-track"
+      )
       .forEach(track => {
 
         updateSliderButtons(track);
 
+
         track.addEventListener(
           "scroll",
-          () => updateSliderButtons(track),
+          () =>
+            updateSliderButtons(track),
           { passive: true }
         );
 
@@ -1925,46 +2117,63 @@
 
     sliderButtons.forEach(button => {
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        const targetId =
-          button.dataset.target;
+          const targetId =
+            button.dataset.target;
 
-        const direction =
-          Number(button.dataset.direction);
-
-        const track =
-          document.getElementById(targetId);
-
-        if (!track) return;
+          const direction =
+            Number(
+              button.dataset.direction
+            );
 
 
-        const amount =
-          Math.max(
-            track.clientWidth * .8,
-            250
+          const track =
+            document.getElementById(
+              targetId
+            );
+
+
+          if (!track) return;
+
+
+          const amount =
+            Math.max(
+              track.clientWidth * .8,
+              250
+            );
+
+
+          track.scrollBy({
+            left:
+              amount * direction,
+
+            behavior:
+              "smooth"
+          });
+
+        }
+      );
+
+    });
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        document
+          .querySelectorAll(
+            ".books-track, .photos-track"
+          )
+          .forEach(track =>
+            updateSliderButtons(track)
           );
 
-
-        track.scrollBy({
-          left: amount * direction,
-          behavior: "smooth"
-        });
-
-      });
-
-    });
-
-
-    window.addEventListener("resize", () => {
-
-      document
-        .querySelectorAll(".books-track, .photos-track")
-        .forEach(track =>
-          updateSliderButtons(track)
-        );
-
-    });
+      }
+    );
 
 
     /* =========================================
@@ -1972,10 +2181,15 @@
     ========================================= */
 
     const arrowUp =
-      document.getElementById("arrowUp");
+      document.getElementById(
+        "arrowUp"
+      );
+
 
     const arrowDown =
-      document.getElementById("arrowDown");
+      document.getElementById(
+        "arrowDown"
+      );
 
 
     function updateVerticalArrows() {
@@ -1983,8 +2197,10 @@
       const scrollTop =
         window.scrollY;
 
+
       const maxScroll =
-        document.documentElement.scrollHeight -
+        document.documentElement
+          .scrollHeight -
         window.innerHeight;
 
 
@@ -1996,30 +2212,43 @@
 
       arrowDown.classList.toggle(
         "hidden",
-        scrollTop >= maxScroll - 10
+        scrollTop >=
+        maxScroll - 10
       );
 
     }
 
 
-    arrowUp.addEventListener("click", () => {
+    arrowUp.addEventListener(
+      "click",
+      () => {
 
-      window.scrollBy({
-        top: -window.innerHeight * .75,
-        behavior: "smooth"
-      });
+        window.scrollBy({
+          top:
+            -window.innerHeight * .75,
 
-    });
+          behavior:
+            "smooth"
+        });
+
+      }
+    );
 
 
-    arrowDown.addEventListener("click", () => {
+    arrowDown.addEventListener(
+      "click",
+      () => {
 
-      window.scrollBy({
-        top: window.innerHeight * .75,
-        behavior: "smooth"
-      });
+        window.scrollBy({
+          top:
+            window.innerHeight * .75,
 
-    });
+          behavior:
+            "smooth"
+        });
+
+      }
+    );
 
 
     window.addEventListener(
@@ -2030,39 +2259,6 @@
 
 
     updateVerticalArrows();
-
-
-    /* =========================================
-       GARANTE AUTOPLAY DO VÍDEO
-    ========================================= */
-
-    const backgroundVideo =
-      document.querySelector(".site-background-video");
-
-    if (backgroundVideo) {
-
-      backgroundVideo.muted = true;
-
-      const playVideo = () => {
-
-        const promise =
-          backgroundVideo.play();
-
-        if (promise !== undefined) {
-          promise.catch(() => {});
-        }
-
-      };
-
-      playVideo();
-
-      document.addEventListener(
-        "touchstart",
-        playVideo,
-        { once: true, passive: true }
-      );
-
-    }
 
   </script>
 
