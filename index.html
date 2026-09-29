@@ -1,29 +1,1654 @@
-<section id="agenda" class="section agenda-simple">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="container">
+  <title>Samuel Menezes | Ministério e Conteúdo</title>
+  <meta
+    name="description"
+    content="Samuel Menezes — Ministério, livros, mensagens e conteúdos para edificação."
+  >
 
-    <div class="agenda-simple-content">
+  <style>
+    :root {
+      --vinho: #6f1024;
+      --vinho-escuro: #4d0b19;
+      --vinho-claro: #8c1d35;
+      --preto: #0d0d0d;
+      --branco: #ffffff;
+      --offwhite: #faf8f8;
+      --texto: #181516;
+      --cinza: #6f686a;
+      --borda: #e8dfe1;
+    }
 
-      <span class="eyebrow">Agenda</span>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      <h2>Ministrações e<br>agendas</h2>
+    html {
+      scroll-behavior: smooth;
+    }
 
-      <p>
-        Para consultar a disponibilidade de uma data para ministração,
-        preencha as informações do formulário.
-      </p>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--branco);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-      <a
-        href="agenda.html"
-        target="_blank"
-        rel="noopener"
-        class="button agenda-button"
-      >
-        Verificar disponibilidade de agenda
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--vinho);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: var(--vinho);
+    }
+
+    /* =========================
+       GERAL
+    ========================== */
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-header {
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--vinho);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--vinho);
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+    }
+
+    .section-description {
+      max-width: 620px;
+      margin-top: 15px;
+      color: var(--cinza);
+      font-size: 16px;
+    }
+
+    /* =========================
+       SOBRE
+    ========================== */
+
+    #sobre {
+      background: var(--branco);
+      padding-top: 0;
+    }
+
+    .about-cover {
+      width: 100%;
+      height: clamp(280px, 42vw, 560px);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .about-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+
+    #sobre .container {
+      padding-top: 75px;
+      padding-bottom: 80px;
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-content h2 {
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .about-text {
+      max-width: 780px;
+    }
+
+    .about-text p {
+      color: var(--cinza);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .tag {
+      border: 1px solid var(--borda);
+      padding: 8px 13px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      background: white;
+    }
+
+    /* =========================
+       LIVROS
+    ========================== */
+
+    #livros {
+      background: var(--branco);
+    }
+
+    .books-track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .book-card {
+      border: 1px solid var(--borda);
+      background: var(--branco);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .book-cover {
+      background: #eee;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .book-info {
+      padding: 20px;
+    }
+
+    .book-info h3 {
+      font-size: 19px;
+      line-height: 1.2;
+      margin-bottom: 9px;
+    }
+
+    .book-info p {
+      color: var(--cinza);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      background: var(--vinho);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      transition: .2s;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: var(--vinho-escuro);
+    }
+
+    /* =========================
+       AGENDA
+    ========================== */
+
+    #agenda {
+      background: var(--offwhite);
+    }
+
+    .agenda-simple-content {
+      max-width: 680px;
+    }
+
+    .agenda-simple-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .agenda-simple-content p {
+      color: var(--cinza);
+      font-size: 16px;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .agenda-button {
+      min-height: 50px;
+      padding: 0 25px;
+    }
+
+    /* =========================
+       YOUTUBE
+    ========================== */
+
+    #youtube {
+      background: var(--preto);
+      color: white;
+    }
+
+    #youtube .section-description {
+      color: #c9c5c6;
+    }
+
+    #youtube .eyebrow {
+      color: #d9a8b3;
+    }
+
+    #youtube .eyebrow::before {
+      background: #d9a8b3;
+    }
+
+    .youtube-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 620px;
+    }
+
+    .video-item {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .video-thumb-link {
+      display: block;
+    }
+
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #222;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+
+    .video-thumb-link:hover img {
+      transform: scale(1.03);
+    }
+
+    .play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: var(--vinho);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
+
+    .play::after {
+      content: "";
+      margin-left: 4px;
+      border-left: 17px solid white;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+    }
+
+    .youtube-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      margin-top: 8px;
+      background: var(--vinho);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: .2s;
+    }
+
+    .youtube-button:hover {
+      background: var(--vinho-claro);
+    }
+
+    .channel-button {
+      margin-top: 28px;
+    }
+
+    /* =========================
+       FOTOS
+    ========================== */
+
+    #fotos {
+      background: var(--branco);
+    }
+
+    .photos-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 48px) / 3);
+      gap: 24px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      padding: 5px 3px 18px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--vinho) transparent;
+    }
+
+    .photos-track::-webkit-scrollbar,
+    .books-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .photos-track::-webkit-scrollbar-track,
+    .books-track::-webkit-scrollbar-track {
+      background: #eee;
+    }
+
+    .photos-track::-webkit-scrollbar-thumb,
+    .books-track::-webkit-scrollbar-thumb {
+      background: var(--vinho);
+    }
+
+    .photo-card {
+      scroll-snap-align: start;
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      background: #f1eeee;
+      border: 1px solid var(--borda);
+    }
+
+    .photo-card a {
+      display: block;
+      position: relative;
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      transition: transform .3s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .download-label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: var(--vinho);
+      color: white;
+      padding: 8px 11px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .photo-help {
+      margin-top: 13px;
+      color: var(--cinza);
+      font-size: 13px;
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================== */
+
+    footer {
+      background: var(--preto);
+      color: white;
+    }
+
+    .footer-main {
+      padding: 45px 0 35px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .footer-title span {
+      color: #d9a8b3;
+    }
+
+    .footer-text {
+      color: #a9a4a5;
+      font-size: 13px;
+      max-width: 320px;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px 25px;
+    }
+
+    .footer-links a {
+      color: #c9c5c6;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-contacts a {
+      color: #c9c5c6;
+      font-size: 13px;
+      word-break: break-word;
+      transition: .2s;
+    }
+
+    .footer-contacts a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #292929;
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #777273;
+      font-size: 11px;
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================== */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 900;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--vinho);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-3px);
+      background: var(--vinho-escuro);
+    }
+
+    .whatsapp svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* =========================
+       SCROLL
+    ========================== */
+
+    .scroll-arrows {
+      position: fixed;
+      right: 22px;
+      bottom: 88px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+    }
+
+    .scroll-arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(111,16,36,.25);
+      background: rgba(255,255,255,.96);
+      color: var(--vinho);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1;
+      border-radius: 50%;
+      box-shadow: 0 5px 18px rgba(0,0,0,.14);
+
+      opacity: 0;
+      transform: translateY(8px) scale(.9);
+      transition:
+        opacity .25s ease,
+        transform .25s ease,
+        background .2s ease,
+        color .2s ease;
+    }
+
+    .scroll-arrow.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .scroll-arrow.visible:hover {
+      background: var(--vinho);
+      color: white;
+      border-color: var(--vinho);
+      transform: scale(1.08);
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================== */
+
+    @media (max-width: 900px) {
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .books-track {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 24px) / 2);
+        overflow-x: auto;
+        gap: 24px;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: var(--vinho) transparent;
+      }
+
+      .book-card {
+        scroll-snap-align: start;
+      }
+
+      .photos-track {
+        grid-auto-columns: calc((100% - 24px) / 2);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-about {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .header-inner {
+        min-height: 65px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      /* CAPA */
+
+      .about-cover {
+        height: 260px;
+      }
+
+      .about-cover img {
+        object-position: center 25%;
+      }
+
+      #sobre .container {
+        padding-top: 55px;
+        padding-bottom: 60px;
+      }
+
+      .about-content h2 {
+        font-size: 32px;
+      }
+
+      .about-text p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      /* LIVROS */
+
+      .books-track {
+        grid-auto-columns: calc((100% - 14px) / 2);
+        gap: 14px;
+      }
+
+      .book-info {
+        padding: 13px;
+      }
+
+      .book-info h3 {
+        font-size: 15px;
+      }
+
+      .book-info p {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .book-info .button {
+        width: 100%;
+        padding: 0 8px;
+        min-height: 40px;
+        font-size: 9px;
+      }
+
+      /* AGENDA */
+
+      .agenda-button {
+        width: 100%;
+      }
+
+      /* YOUTUBE */
+
+      .youtube-grid {
+        gap: 25px;
+      }
+
+      .play {
+        width: 48px;
+        height: 48px;
+      }
+
+      .play::after {
+        border-left-width: 13px;
+        border-top-width: 8px;
+        border-bottom-width: 8px;
+      }
+
+      .youtube-button {
+        height: 40px;
+        font-size: 9px;
+      }
+
+      .channel-button {
+        width: 100%;
+      }
+
+      /* FOTOS */
+
+      .photos-track {
+        grid-auto-columns: calc((100% - 14px) / 2);
+        gap: 14px;
+      }
+
+      .download-label {
+        left: 7px;
+        bottom: 7px;
+        padding: 6px 7px;
+        font-size: 8px;
+      }
+
+      /* RODAPÉ */
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-about {
+        grid-column: auto;
+      }
+
+      .footer-links {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-bottom {
+        min-height: auto;
+        padding: 22px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* WHATSAPP */
+
+      .whatsapp {
+        right: 15px;
+        bottom: 15px;
+        width: 52px;
+        height: 52px;
+      }
+
+      /* SCROLL */
+
+      .scroll-arrows {
+        right: 19px;
+        bottom: 77px;
+      }
+
+      .scroll-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+    <div class="container header-inner">
+
+      <a href="#sobre" class="logo">
+        Samuel <span>Menezes</span>
       </a>
+
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#livros">Livros</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         SOBRE
+    ========================== -->
+
+    <section id="sobre" class="section">
+
+      <!-- FOTO DE PONTA A PONTA -->
+
+      <div class="about-cover">
+
+        <img
+          src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
+          alt="Samuel Menezes"
+        >
+
+      </div>
+
+
+      <!-- SOBRE MIM -->
+
+      <div class="container">
+
+        <div class="about-content">
+
+          <span class="eyebrow">
+            Sobre mim
+          </span>
+
+          <h2>
+            Uma mensagem para pessoas reais.
+          </h2>
+
+          <div class="about-text">
+
+            <p>
+              Sou pastor, escritor e ministro do Evangelho. Minha missão é
+              comunicar a Palavra de Deus de forma bíblica, prática e relevante,
+              servindo à Igreja e às pessoas que Deus coloca em meu caminho.
+            </p>
+
+            <p>
+              Minha caminhada ministerial tem sido marcada por temas como
+              propósito, vocação, identidade, santidade, oração, liderança e
+              os desafios de viver uma fé verdadeira em meio à realidade da
+              vida cotidiana.
+            </p>
+
+            <p>
+              Acredito que a mensagem do Evangelho não deve apenas ser ouvida,
+              mas vivida. Por isso, meu desejo é contribuir para que pessoas
+              conheçam a Deus, compreendam Sua Palavra e vivam aquilo que Ele
+              confiou às suas mãos.
+            </p>
+
+          </div>
+
+          <div class="tags">
+
+            <span class="tag">Teologia</span>
+            <span class="tag">Administração</span>
+            <span class="tag">Escritor</span>
+            <span class="tag">Ministério</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LIVROS
+    ========================== -->
+
+    <section id="livros" class="section">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            Livros
+          </span>
+
+          <h2>
+            Palavras que<br>continuam.
+          </h2>
+
+          <p class="section-description">
+            Conteúdos escritos para provocar reflexão, fortalecer a fé
+            e conduzir o leitor a uma vida mais consciente diante de Deus.
+          </p>
+
+        </div>
+
+
+        <div class="books-track">
+
+          <article class="book-card">
+
+            <div class="book-cover">
+
+              <img
+                src="assets/identidade.jpg"
+                alt="Capa do livro Identidade: Obtendo o caráter de Cristo"
+              >
+
+            </div>
+
+            <div class="book-info">
+
+              <h3>
+                Identidade: Obtendo o caráter de Cristo
+              </h3>
+
+              <p>
+                Uma reflexão sobre quem somos em Cristo
+                e o processo de formação do Seu caráter em nós.
+              </p>
+
+              <a
+                href="https://uiclap.com/"
+                target="_blank"
+                rel="noopener"
+                class="button"
+              >
+                Comprar
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="book-card">
+
+            <div class="book-cover">
+
+              <img
+                src="assets/a-escolha-de-deus.jpg"
+                alt="Capa do livro A Escolha de Deus"
+              >
+
+            </div>
+
+            <div class="book-info">
+
+              <h3>
+                A Escolha de Deus
+              </h3>
+
+              <p>
+                Uma abordagem sobre escolhas, propósito
+                e a vontade de Deus para a vida.
+              </p>
+
+              <a
+                href="https://hotmart.com/"
+                target="_blank"
+                rel="noopener"
+                class="button"
+              >
+                Comprar
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="book-card">
+
+            <div class="book-cover">
+
+              <img
+                src="assets/lealdade-sob-ataque.jpg"
+                alt="Capa do livro Lealdade sob ataque"
+              >
+
+            </div>
+
+            <div class="book-info">
+
+              <h3>
+                Lealdade sob ataque
+              </h3>
+
+              <p>
+                Uma reflexão sobre fidelidade, honra,
+                relacionamentos e permanência.
+              </p>
+
+              <a
+                href="https://hotmart.com/"
+                target="_blank"
+                rel="noopener"
+                class="button"
+              >
+                Comprar
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AGENDA
+    ========================== -->
+
+    <section id="agenda" class="section">
+
+      <div class="container">
+
+        <div class="agenda-simple-content">
+
+          <span class="eyebrow">
+            Agenda
+          </span>
+
+          <h2>
+            Ministrações e<br>agendas
+          </h2>
+
+          <p>
+            Para consultar a disponibilidade de uma data para ministração,
+            preencha as informações do formulário.
+          </p>
+
+          <a
+            href="agenda.html"
+            target="_blank"
+            rel="noopener"
+            class="button agenda-button"
+          >
+            Verificar disponibilidade de agenda
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         YOUTUBE
+    ========================== -->
+
+    <section id="youtube" class="section">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            YouTube
+          </span>
+
+          <h2>
+            Mensagens em vídeo.
+          </h2>
+
+          <p class="section-description">
+            Assista às mensagens e conteúdos publicados no canal.
+          </p>
+
+        </div>
+
+
+        <div class="youtube-grid">
+
+          <!-- VÍDEO 1 -->
+
+          <article class="video-item">
+
+            <a
+              href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
+              target="_blank"
+              rel="noopener"
+              class="video-thumb-link"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://img.youtube.com/vi/EkQAF_J76v0/maxresdefault.jpg"
+                  onerror="this.src='https://img.youtube.com/vi/EkQAF_J76v0/hqdefault.jpg'"
+                  alt="Vídeo de Samuel Menezes no YouTube"
+                >
+
+                <span class="play"></span>
+
+              </div>
+
+            </a>
+
+            <a
+              href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
+              target="_blank"
+              rel="noopener"
+              class="youtube-button"
+            >
+              Assistir no YouTube
+            </a>
+
+          </article>
+
+
+          <!-- VÍDEO 2 -->
+
+          <article class="video-item">
+
+            <a
+              href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
+              target="_blank"
+              rel="noopener"
+              class="video-thumb-link"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://img.youtube.com/vi/nJARUdrWcsU/maxresdefault.jpg"
+                  onerror="this.src='https://img.youtube.com/vi/nJARUdrWcsU/hqdefault.jpg'"
+                  alt="Vídeo de Samuel Menezes no YouTube"
+                >
+
+                <span class="play"></span>
+
+              </div>
+
+            </a>
+
+            <a
+              href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
+              target="_blank"
+              rel="noopener"
+              class="youtube-button"
+            >
+              Assistir no YouTube
+            </a>
+
+          </article>
+
+        </div>
+
+
+        <a
+          href="https://youtube.com/@samuelmeenezes?si=ueKLQpiju411n2gg"
+          target="_blank"
+          rel="noopener"
+          class="button channel-button"
+        >
+          Ver canal completo
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOTOS PARA CARTAZ
+    ========================== -->
+
+    <section id="fotos" class="section">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            Fotos
+          </span>
+
+          <h2>
+            Fotos para cartaz.
+          </h2>
+
+          <p class="section-description">
+            Escolha uma foto para utilizar em cartazes,
+            divulgações e materiais de eventos.
+          </p>
+
+        </div>
+
+
+        <div class="photos-track">
+
+          <article class="photo-card">
+
+            <a
+              href="assets/cartaz.jpg"
+              download="Samuel-Menezes-cartaz.jpg"
+            >
+
+              <img
+                src="assets/cartaz.jpg"
+                alt="Foto de Samuel Menezes para cartaz"
+              >
+
+              <span class="download-label">
+                Baixar foto
+              </span>
+
+            </a>
+
+          </article>
+
+
+          <article class="photo-card">
+
+            <a
+              href="assets/foto-2.jpg"
+              download="Samuel-Menezes-foto-2.jpg"
+            >
+
+              <img
+                src="assets/foto-2.jpg"
+                alt="Foto de Samuel Menezes"
+              >
+
+              <span class="download-label">
+                Baixar foto
+              </span>
+
+            </a>
+
+          </article>
+
+
+          <article class="photo-card">
+
+            <a
+              href="assets/foto-3.jpg"
+              download="Samuel-Menezes-foto-3.jpg"
+            >
+
+              <img
+                src="assets/foto-3.jpg"
+                alt="Foto de Samuel Menezes"
+              >
+
+              <span class="download-label">
+                Baixar foto
+              </span>
+
+            </a>
+
+          </article>
+
+
+          <article class="photo-card">
+
+            <a
+              href="assets/foto-4.jpg"
+              download="Samuel-Menezes-foto-4.jpg"
+            >
+
+              <img
+                src="assets/foto-4.jpg"
+                alt="Foto de Samuel Menezes"
+              >
+
+              <span class="download-label">
+                Baixar foto
+              </span>
+
+            </a>
+
+          </article>
+
+        </div>
+
+
+        <p class="photo-help">
+          Deslize para o lado para visualizar todas as fotos.
+          Toque em uma foto para baixá-la.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       RODAPÉ
+  ========================== -->
+
+  <footer id="contato">
+
+    <div class="container">
+
+      <div class="footer-main">
+
+        <div class="footer-grid">
+
+          <div class="footer-about">
+
+            <div class="footer-title">
+              Samuel <span>Menezes</span>
+            </div>
+
+            <p class="footer-text">
+              Ministério, livros, mensagens e conteúdos
+              para edificação.
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <div class="footer-title">
+              Navegação
+            </div>
+
+            <div class="footer-links">
+
+              <a href="#sobre">Sobre</a>
+              <a href="#livros">Livros</a>
+              <a href="#agenda">Agenda</a>
+              <a href="#youtube">YouTube</a>
+              <a href="#fotos">Fotos</a>
+              <a href="#contato">Contato</a>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="footer-title">
+              Contato
+            </div>
+
+            <div class="footer-contacts">
+
+              <a href="mailto:pregador.samuelmenezes@gmail.com">
+                pregador.samuelmenezes@gmail.com
+              </a>
+
+              <a
+                href="https://wa.me/5521969581007"
+                target="_blank"
+                rel="noopener"
+              >
+                (21) 96958-1007
+              </a>
+
+              <a
+                href="https://www.instagram.com/samuelmenezes.ievad?stkn=aHRvb3NxNzVuYWY%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener"
+              >
+                @samuelmenezes.ievad
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © 2026 Samuel Menezes.
+        </div>
+
+        <div>
+          Todos os direitos reservados.
+        </div>
+
+      </div>
 
     </div>
 
+  </footer>
+
+
+  <!-- =========================
+       SETAS
+  ========================== -->
+
+  <div
+    class="scroll-arrows"
+    aria-hidden="true"
+  >
+
+    <span
+      class="scroll-arrow"
+      id="arrowUp"
+    >
+      ↑
+    </span>
+
+    <span
+      class="scroll-arrow"
+      id="arrowDown"
+    >
+      ↓
+    </span>
+
   </div>
 
-</section>
+
+  <!-- =========================
+       WHATSAPP
+  ========================== -->
+
+  <a
+    href="https://wa.me/5521969581007?text=a%20paz%20do%20senhor%2C%20motivo%20do%20meu%20contato%20%C3%A9%20verificar%20disponibilidade%20de%20data%20para%20agenda"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp"
+    aria-label="Falar com Samuel Menezes pelo WhatsApp"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.32.2 11.88c0 2.09.55 4.13 1.59 5.92L.1 24l6.34-1.66a11.87 11.87 0 0 0 5.64 1.43h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.15-3.45-8.4ZM12.09 21.76h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.76.98 1-3.67-.23-.38a9.84 9.84 0 0 1-1.51-5.23c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.89a9.8 9.8 0 0 1 2.89 6.97c0 5.44-4.43 9.87-9.82 9.87Zm5.41-7.39c-.3-.15-1.77-.87-2.05-.97-.28-.1-.49-.15-.7.15-.2.3-.8.97-.98 1.17-.18.2-.36.23-.66.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.36.46-.54.15-.18.2-.3.2-.51.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.51-.52-.7-.53h-.6c-.2 0-.54.08-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.52 1.11 2.99 1.26 3.19.15.2 2.18 3.33 5.28 4.67.74.32 1.32.51 1.77.65.74.24 1.41.2 1.94.12.59-.09 1.77-.72 2.02-1.42.25-.69.25-1.29.18-1.42-.08-.13-.28-.2-.58-.35Z"/>
+
+    </svg>
+
+  </a>
+
+
+  <script>
+
+    /* =========================
+       CONTROLE DE SCROLL
+    ========================== */
+
+    const arrowUp =
+      document.getElementById("arrowUp");
+
+    const arrowDown =
+      document.getElementById("arrowDown");
+
+
+    function updateScrollArrows() {
+
+      const scrollTop =
+        window.scrollY;
+
+      const windowHeight =
+        window.innerHeight;
+
+      const documentHeight =
+        document.documentElement.scrollHeight;
+
+      const chegouInicio =
+        scrollTop <= 10;
+
+      const chegouFim =
+        scrollTop + windowHeight >= documentHeight - 10;
+
+
+      arrowUp.classList.remove("visible");
+      arrowDown.classList.remove("visible");
+
+
+      if (chegouInicio) {
+
+        arrowDown.classList.add("visible");
+
+      } else if (chegouFim) {
+
+        arrowUp.classList.add("visible");
+
+      } else {
+
+        arrowUp.classList.add("visible");
+        arrowDown.classList.add("visible");
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateScrollArrows,
+      { passive: true }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      updateScrollArrows
+    );
+
+
+    updateScrollArrows();
+
+
+    arrowDown.addEventListener(
+      "click",
+      function() {
+
+        window.scrollBy({
+          top: window.innerHeight * 0.75,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    arrowUp.addEventListener(
+      "click",
+      function() {
+
+        window.scrollBy({
+          top: -(window.innerHeight * 0.75),
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
