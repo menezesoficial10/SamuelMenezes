@@ -59,13 +59,13 @@
 
     /* =========================
        HEADER
-    ========================= */
+    ========================== */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--borda);
     }
@@ -81,7 +81,7 @@
     .logo {
       font-size: 22px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: -.5px;
       white-space: nowrap;
     }
 
@@ -108,8 +108,8 @@
     }
 
     /* =========================
-       TITULOS
-    ========================= */
+       GERAL
+    ========================== */
 
     .section {
       padding: 95px 0;
@@ -153,7 +153,7 @@
 
     /* =========================
        SOBRE
-    ========================= */
+    ========================== */
 
     #sobre {
       background: var(--offwhite);
@@ -161,21 +161,26 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 70px;
+      grid-template-columns: 300px 1fr;
+      gap: 65px;
       align-items: center;
+      max-width: 980px;
+      margin: 0 auto;
     }
 
     .about-photo {
       position: relative;
+      width: 100%;
     }
 
     .about-photo img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       object-position: center;
-      border-radius: 3px;
+      border-radius: 2px;
+      position: relative;
+      z-index: 2;
     }
 
     .about-photo::after {
@@ -184,9 +189,9 @@
       width: 75%;
       height: 75%;
       border: 2px solid var(--vinho);
-      left: -14px;
-      bottom: -14px;
-      z-index: -1;
+      left: -12px;
+      bottom: -12px;
+      z-index: 1;
     }
 
     .about-content h3 {
@@ -220,7 +225,7 @@
 
     /* =========================
        LIVROS
-    ========================= */
+    ========================== */
 
     #livros {
       background: var(--branco);
@@ -293,20 +298,9 @@
       background: var(--vinho-escuro);
     }
 
-    .button-outline {
-      background: transparent;
-      color: var(--vinho);
-      border: 1px solid var(--vinho);
-    }
-
-    .button-outline:hover {
-      background: var(--vinho);
-      color: white;
-    }
-
     /* =========================
        AGENDA
-    ========================= */
+    ========================== */
 
     #agenda {
       background: var(--offwhite);
@@ -366,8 +360,7 @@
       letter-spacing: .5px;
     }
 
-    input,
-    textarea {
+    input {
       width: 100%;
       border: 1px solid var(--borda);
       background: #fff;
@@ -378,14 +371,8 @@
       border-radius: 0;
     }
 
-    input:focus,
-    textarea:focus {
+    input:focus {
       border-color: var(--vinho);
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
     }
 
     .form-submit {
@@ -395,7 +382,7 @@
 
     /* =========================
        YOUTUBE
-    ========================= */
+    ========================== */
 
     #youtube {
       background: var(--preto);
@@ -496,14 +483,10 @@
 
     /* =========================
        FOTOS PARA CARTAZ
-    ========================= */
+    ========================== */
 
     #fotos {
       background: var(--branco);
-    }
-
-    .photos-wrapper {
-      position: relative;
     }
 
     .photos-track {
@@ -519,15 +502,18 @@
       scrollbar-color: var(--vinho) transparent;
     }
 
-    .photos-track::-webkit-scrollbar {
+    .photos-track::-webkit-scrollbar,
+    .books-track::-webkit-scrollbar {
       height: 6px;
     }
 
-    .photos-track::-webkit-scrollbar-track {
+    .photos-track::-webkit-scrollbar-track,
+    .books-track::-webkit-scrollbar-track {
       background: #eee;
     }
 
-    .photos-track::-webkit-scrollbar-thumb {
+    .photos-track::-webkit-scrollbar-thumb,
+    .books-track::-webkit-scrollbar-thumb {
       background: var(--vinho);
     }
 
@@ -576,90 +562,102 @@
     }
 
     /* =========================
-       CONTATOS
-    ========================= */
+       RODAPÉ
+    ========================== */
 
     footer {
       background: var(--preto);
       color: white;
     }
 
-    .contact-bar {
+    .footer-main {
+      padding: 45px 0 35px;
+    }
+
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border-bottom: 1px solid #292929;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
     }
 
-    .contact-item {
-      min-height: 125px;
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 6px;
-      border-right: 1px solid #292929;
-    }
-
-    .contact-item:last-child {
-      border-right: 0;
-    }
-
-    .contact-label {
-      color: #a9a4a5;
-      font-size: 10px;
-      text-transform: uppercase;
+    .footer-title {
+      font-size: 17px;
       font-weight: 800;
-      letter-spacing: 1.2px;
+      margin-bottom: 17px;
     }
 
-    .contact-value {
-      font-size: 15px;
-      font-weight: 700;
-      word-break: break-word;
-    }
-
-    .contact-item:hover .contact-value {
+    .footer-title span {
       color: #d9a8b3;
     }
 
+    .footer-text {
+      color: #a9a4a5;
+      font-size: 13px;
+      max-width: 320px;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px 25px;
+    }
+
+    .footer-links a {
+      color: #c9c5c6;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-contacts a {
+      color: #c9c5c6;
+      font-size: 13px;
+      word-break: break-word;
+      transition: .2s;
+    }
+
+    .footer-contacts a:hover {
+      color: white;
+    }
+
     .footer-bottom {
-      min-height: 80px;
+      border-top: 1px solid #292929;
+      min-height: 65px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      color: #918d8e;
-      font-size: 12px;
-    }
-
-    .footer-brand {
-      color: white;
-      font-weight: 800;
-      font-size: 15px;
-    }
-
-    .footer-brand span {
-      color: #d9a8b3;
+      color: #777273;
+      font-size: 11px;
     }
 
     /* =========================
        WHATSAPP
-    ========================= */
+    ========================== */
 
     .whatsapp {
       position: fixed;
       right: 20px;
       bottom: 20px;
       z-index: 900;
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: var(--vinho);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
       transition: .2s;
     }
 
@@ -669,56 +667,44 @@
     }
 
     .whatsapp svg {
-      width: 25px;
-      height: 25px;
+      width: 26px;
+      height: 26px;
       fill: currentColor;
     }
 
     /* =========================
-       SCROLL INDICATOR
-    ========================= */
+       SETAS DE NAVEGAÇÃO
+    ========================== */
 
-    .scroll-indicator {
+    .scroll-arrows {
       position: fixed;
-      left: 18px;
-      bottom: 22px;
-      z-index: 800;
+      right: 24px;
+      bottom: 84px;
+      z-index: 899;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 1px;
       color: var(--vinho);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      writing-mode: vertical-rl;
-      transition: opacity .3s, transform .3s;
-    }
-
-    .scroll-indicator.hidden {
-      opacity: 0;
-      transform: translateY(10px);
       pointer-events: none;
     }
 
-    .scroll-line {
-      width: 1px;
-      height: 35px;
-      background: var(--vinho);
-      animation: scrollPulse 1.5s infinite;
+    .scroll-arrow {
+      font-size: 22px;
+      line-height: 18px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .25s, transform .25s;
     }
 
-    @keyframes scrollPulse {
-      0%, 100% {
-        opacity: .3;
-      }
-      50% {
-        opacity: 1;
-      }
+    .scroll-arrow.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* =========================
        RESPONSIVO
-    ========================= */
+    ========================== */
 
     @media (max-width: 900px) {
 
@@ -736,12 +722,15 @@
         gap: 45px;
       }
 
+      .about-grid {
+        max-width: 650px;
+      }
+
       .about-photo {
-        max-width: 520px;
+        width: 260px;
       }
 
       .books-track {
-        display: grid;
         grid-template-columns: none;
         grid-auto-flow: column;
         grid-auto-columns: calc((100% - 24px) / 2);
@@ -761,17 +750,12 @@
         grid-auto-columns: calc((100% - 24px) / 2);
       }
 
-      .contact-bar {
-        grid-template-columns: 1fr;
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .contact-item {
-        border-right: 0;
-        border-bottom: 1px solid #292929;
-      }
-
-      .contact-item:last-child {
-        border-bottom: 0;
+      .footer-about {
+        grid-column: 1 / -1;
       }
     }
 
@@ -797,15 +781,46 @@
         padding: 70px 0;
       }
 
-      .about-photo::after {
-        left: -7px;
-        bottom: -7px;
+      /* SOBRE */
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 115px 1fr;
+        gap: 22px;
+        align-items: start;
       }
 
-      /*
-        LIVROS:
-        2 livros visíveis no celular e rolagem horizontal.
-      */
+      .about-photo {
+        width: 115px;
+      }
+
+      .about-photo::after {
+        left: -6px;
+        bottom: -6px;
+      }
+
+      .about-content h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .about-content p {
+        font-size: 13px;
+        margin-bottom: 11px;
+      }
+
+      .tags {
+        margin-top: 16px;
+        gap: 5px;
+      }
+
+      .tag {
+        padding: 6px 8px;
+        font-size: 9px;
+      }
+
+      /* LIVROS */
+
       .books-track {
         grid-auto-columns: calc((100% - 14px) / 2);
         gap: 14px;
@@ -821,19 +836,18 @@
 
       .book-info p {
         font-size: 12px;
+        line-height: 1.45;
       }
 
       .book-info .button {
         width: 100%;
         padding: 0 8px;
-        font-size: 10px;
+        min-height: 40px;
+        font-size: 9px;
       }
 
-      /*
-        YOUTUBE:
-        Os 2 vídeos ficam lado a lado,
-        inclusive em telas pequenas.
-      */
+      /* YOUTUBE */
+
       .youtube-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
@@ -852,16 +866,17 @@
 
       .youtube-button {
         height: 40px;
-        font-size: 9px;
-        padding: 0 5px;
+        font-size: 8px;
+        padding: 0 4px;
         text-align: center;
       }
 
-      /*
-        FOTOS:
-        2 fotos visíveis no celular
-        e rolagem para o lado.
-      */
+      .channel-button {
+        width: 100%;
+      }
+
+      /* FOTOS */
+
       .photos-track {
         grid-auto-columns: calc((100% - 14px) / 2);
         gap: 14px;
@@ -873,6 +888,8 @@
         padding: 6px 7px;
         font-size: 8px;
       }
+
+      /* AGENDA */
 
       form {
         padding: 20px;
@@ -887,20 +904,42 @@
         grid-column: auto;
       }
 
-      .scroll-indicator {
-        left: 8px;
-        bottom: 18px;
+      /* RODAPÉ */
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
       }
+
+      .footer-about {
+        grid-column: auto;
+      }
+
+      .footer-links {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-bottom {
+        min-height: auto;
+        padding: 22px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* WHATSAPP */
 
       .whatsapp {
         right: 15px;
         bottom: 15px;
+        width: 52px;
+        height: 52px;
       }
 
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 25px 0;
+      /* SETAS */
+
+      .scroll-arrows {
+        right: 19px;
+        bottom: 77px;
       }
     }
   </style>
@@ -932,23 +971,27 @@
   </header>
 
 
-  <!-- =========================
-       SOBRE
-  ========================== -->
-
   <main>
 
+    <!-- =========================
+         SOBRE
+    ========================== -->
+
     <section id="sobre" class="section">
+
       <div class="container">
 
         <div class="about-grid">
 
           <div class="about-photo">
+
             <img
               src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
               alt="Samuel Menezes"
             >
+
           </div>
+
 
           <div class="about-content">
 
@@ -986,6 +1029,7 @@
         </div>
 
       </div>
+
     </section>
 
 
@@ -998,18 +1042,20 @@
       <div class="container">
 
         <div class="section-header">
+
           <span class="eyebrow">Livros</span>
+
           <h2>Palavras que<br>continuam.</h2>
+
           <p class="section-description">
             Conteúdos escritos para provocar reflexão, fortalecer a fé
             e conduzir o leitor a uma vida mais consciente diante de Deus.
           </p>
+
         </div>
 
 
         <div class="books-track">
-
-          <!-- LIVRO 1 -->
 
           <article class="book-card">
 
@@ -1043,8 +1089,6 @@
           </article>
 
 
-          <!-- LIVRO 2 -->
-
           <article class="book-card">
 
             <div class="book-cover">
@@ -1076,8 +1120,6 @@
 
           </article>
 
-
-          <!-- LIVRO 3 -->
 
           <article class="book-card">
 
@@ -1157,6 +1199,7 @@
 
               <div class="field">
                 <label for="nome">Nome</label>
+
                 <input
                   type="text"
                   id="nome"
@@ -1169,6 +1212,7 @@
 
               <div class="field">
                 <label for="telefone">Telefone</label>
+
                 <input
                   type="tel"
                   id="telefone"
@@ -1180,7 +1224,10 @@
 
 
               <div class="field full">
-                <label for="igreja">Igreja / Organização</label>
+                <label for="igreja">
+                  Igreja / Organização
+                </label>
+
                 <input
                   type="text"
                   id="igreja"
@@ -1192,18 +1239,22 @@
 
 
               <div class="field">
-                <label for="instagram">Instagram</label>
+                <label for="instagram">
+                  Instagram da igreja
+                </label>
+
                 <input
                   type="text"
                   id="instagram"
                   name="instagram"
-                  placeholder="@instagram"
+                  placeholder="@instagramdaigreja"
                 >
               </div>
 
 
               <div class="field">
                 <label for="data">Data</label>
+
                 <input
                   type="date"
                   id="data"
@@ -1215,6 +1266,7 @@
 
               <div class="field">
                 <label for="hora">Horário</label>
+
                 <input
                   type="time"
                   id="hora"
@@ -1226,6 +1278,7 @@
 
               <div class="field full">
                 <label for="endereco">Endereço</label>
+
                 <input
                   type="text"
                   id="endereco"
@@ -1302,6 +1355,7 @@
 
             </a>
 
+
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
               target="_blank"
@@ -1338,6 +1392,7 @@
               </div>
 
             </a>
+
 
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
@@ -1389,114 +1444,106 @@
         </div>
 
 
-        <div class="photos-wrapper">
+        <div class="photos-track">
 
-          <div class="photos-track">
+          <!-- FOTO 1 -->
 
+          <article class="photo-card">
 
-            <!-- FOTO 1 -->
+            <a
+              href="assets/cartaz.jpg"
+              download="Samuel-Menezes-cartaz.jpg"
+            >
 
-            <article class="photo-card">
-
-              <a
-                href="assets/cartaz.jpg"
-                download="Samuel-Menezes-cartaz.jpg"
+              <img
+                src="assets/cartaz.jpg"
+                alt="Foto de Samuel Menezes para cartaz"
               >
 
-                <img
-                  src="assets/cartaz.jpg"
-                  alt="Foto de Samuel Menezes para cartaz"
-                >
+              <span class="download-label">
+                Baixar foto
+              </span>
 
-                <span class="download-label">
-                  Baixar foto
-                </span>
+            </a>
 
-              </a>
-
-            </article>
+          </article>
 
 
-            <!-- FOTO 2
-                 Duplique este bloco para adicionar
-                 outras fotos.
-            -->
+          <!-- FOTO 2 -->
 
-            <article class="photo-card">
+          <article class="photo-card">
 
-              <a
-                href="assets/foto-2.jpg"
-                download="Samuel-Menezes-foto-2.jpg"
+            <a
+              href="assets/foto-2.jpg"
+              download="Samuel-Menezes-foto-2.jpg"
+            >
+
+              <img
+                src="assets/foto-2.jpg"
+                alt="Foto de Samuel Menezes"
               >
 
-                <img
-                  src="assets/foto-2.jpg"
-                  alt="Foto de Samuel Menezes"
-                >
+              <span class="download-label">
+                Baixar foto
+              </span>
 
-                <span class="download-label">
-                  Baixar foto
-                </span>
+            </a>
 
-              </a>
-
-            </article>
+          </article>
 
 
-            <!-- FOTO 3 -->
+          <!-- FOTO 3 -->
 
-            <article class="photo-card">
+          <article class="photo-card">
 
-              <a
-                href="assets/foto-3.jpg"
-                download="Samuel-Menezes-foto-3.jpg"
+            <a
+              href="assets/foto-3.jpg"
+              download="Samuel-Menezes-foto-3.jpg"
+            >
+
+              <img
+                src="assets/foto-3.jpg"
+                alt="Foto de Samuel Menezes"
               >
 
-                <img
-                  src="assets/foto-3.jpg"
-                  alt="Foto de Samuel Menezes"
-                >
+              <span class="download-label">
+                Baixar foto
+              </span>
 
-                <span class="download-label">
-                  Baixar foto
-                </span>
+            </a>
 
-              </a>
-
-            </article>
+          </article>
 
 
-            <!-- FOTO 4 -->
+          <!-- FOTO 4 -->
 
-            <article class="photo-card">
+          <article class="photo-card">
 
-              <a
-                href="assets/foto-4.jpg"
-                download="Samuel-Menezes-foto-4.jpg"
+            <a
+              href="assets/foto-4.jpg"
+              download="Samuel-Menezes-foto-4.jpg"
+            >
+
+              <img
+                src="assets/foto-4.jpg"
+                alt="Foto de Samuel Menezes"
               >
 
-                <img
-                  src="assets/foto-4.jpg"
-                  alt="Foto de Samuel Menezes"
-                >
+              <span class="download-label">
+                Baixar foto
+              </span>
 
-                <span class="download-label">
-                  Baixar foto
-                </span>
+            </a>
 
-              </a>
-
-            </article>
-
-
-          </div>
-
-          <p class="photo-help">
-            Deslize para o lado para visualizar todas as fotos.
-            Toque em uma foto para baixá-la.
-          </p>
+          </article>
 
         </div>
+
+
+        <p class="photo-help">
+          Deslize para o lado para visualizar todas as fotos.
+          Toque em uma foto para baixá-la.
+        </p>
 
       </div>
 
@@ -1506,62 +1553,107 @@
 
 
   <!-- =========================
-       CONTATOS / RODAPÉ
+       RODAPÉ / CONTATO
   ========================== -->
 
   <footer id="contato">
 
     <div class="container">
 
-      <div class="contact-bar">
+      <div class="footer-main">
 
-        <a
-          href="mailto:SEUEMAIL@EMAIL.COM"
-          class="contact-item"
-        >
-          <span class="contact-label">E-mail</span>
-          <span class="contact-value">
-            SEUEMAIL@EMAIL.COM
-          </span>
-        </a>
+        <div class="footer-grid">
 
+          <!-- MARCA -->
 
-        <a
-          href="https://wa.me/5521969581007"
-          target="_blank"
-          rel="noopener"
-          class="contact-item"
-        >
-          <span class="contact-label">Telefone / WhatsApp</span>
-          <span class="contact-value">
-            (21) 96958-1007
-          </span>
-        </a>
+          <div class="footer-about">
+
+            <div class="footer-title">
+              Samuel <span>Menezes</span>
+            </div>
+
+            <p class="footer-text">
+              Ministério, livros, mensagens e conteúdos
+              para edificação.
+            </p>
+
+          </div>
 
 
-        <a
-          href="https://www.instagram.com/samuelmenezes.ievad?stkn=aHRvb3NxNzVuYWY%3D&utm_source=qr"
-          target="_blank"
-          rel="noopener"
-          class="contact-item"
-        >
-          <span class="contact-label">Instagram</span>
-          <span class="contact-value">
-            @samuelmenezes.ievad
-          </span>
-        </a>
+          <!-- TODAS AS ABAS -->
+
+          <div>
+
+            <div class="footer-title">
+              Navegação
+            </div>
+
+            <div class="footer-links">
+
+              <a href="#sobre">Sobre</a>
+
+              <a href="#livros">Livros</a>
+
+              <a href="#agenda">Agenda</a>
+
+              <a href="#youtube">YouTube</a>
+
+              <a href="#fotos">Fotos</a>
+
+              <a href="#contato">Contato</a>
+
+            </div>
+
+          </div>
+
+
+          <!-- CONTATOS -->
+
+          <div>
+
+            <div class="footer-title">
+              Contato
+            </div>
+
+            <div class="footer-contacts">
+
+              <a href="mailto:pregador.samuelmenezes@gmail.com">
+                pregador.samuelmenezes@gmail.com
+              </a>
+
+              <a
+                href="https://wa.me/5521969581007"
+                target="_blank"
+                rel="noopener"
+              >
+                (21) 96958-1007
+              </a>
+
+              <a
+                href="https://www.instagram.com/samuelmenezes.ievad?stkn=aHRvb3NxNzVuYWY%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener"
+              >
+                @samuelmenezes.ievad
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
 
       <div class="footer-bottom">
 
-        <div class="footer-brand">
-          Samuel <span>Menezes</span>
+        <div>
+          © 2026 Samuel Menezes.
         </div>
 
         <div>
-          © 2026 Samuel Menezes. Todos os direitos reservados.
+          Todos os direitos reservados.
         </div>
 
       </div>
@@ -1572,11 +1664,38 @@
 
 
   <!-- =========================
-       WHATSAPP FLUTUANTE
+       SETAS DE NAVEGAÇÃO
+  ========================== -->
+
+  <div
+    class="scroll-arrows"
+    id="scrollArrows"
+    aria-hidden="true"
+  >
+
+    <span
+      class="scroll-arrow"
+      id="arrowUp"
+    >
+      ↑
+    </span>
+
+    <span
+      class="scroll-arrow"
+      id="arrowDown"
+    >
+      ↓
+    </span>
+
+  </div>
+
+
+  <!-- =========================
+       WHATSAPP
   ========================== -->
 
   <a
-    href="https://wa.me/5521969581007"
+    href="https://wa.me/5521969581007?text=a%20paz%20do%20senhor%2C%20motivo%20do%20meu%20contato%20%C3%A9%20verificar%20disponibilidade%20de%20data%20para%20agenda"
     target="_blank"
     rel="noopener"
     class="whatsapp"
@@ -1587,36 +1706,19 @@
       viewBox="0 0 24 24"
       aria-hidden="true"
     >
+
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.32.2 11.88c0 2.09.55 4.13 1.59 5.92L.1 24l6.34-1.66a11.87 11.87 0 0 0 5.64 1.43h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.15-3.45-8.4ZM12.09 21.76h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.76.98 1-3.67-.23-.38a9.84 9.84 0 0 1-1.51-5.23c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.89a9.8 9.8 0 0 1 2.89 6.97c0 5.44-4.43 9.87-9.82 9.87Zm5.41-7.39c-.3-.15-1.77-.87-2.05-.97-.28-.1-.49-.15-.7.15-.2.3-.8.97-.98 1.17-.18.2-.36.23-.66.08-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.36.46-.54.15-.18.2-.3.3-.51.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.51-.52-.7-.53h-.6c-.2 0-.54.08-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.52 1.11 2.99 1.26 3.19.15.2 2.18 3.33 5.28 4.67.74.32 1.32.51 1.77.65.74.24 1.41.2 1.94.12.59-.09 1.77-.72 2.02-1.42.25-.69.25-1.29.18-1.42-.08-.13-.28-.2-.58-.35Z"/>
+
     </svg>
 
   </a>
 
 
-  <!-- =========================
-       INDICADOR DE SCROLL
-  ========================== -->
-
-  <div
-    class="scroll-indicator"
-    id="scrollIndicator"
-    aria-hidden="true"
-  >
-    <span>SCROLL</span>
-    <span class="scroll-line"></span>
-    <span>↓</span>
-  </div>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
   <script>
 
-    /*
-      FORMULÁRIO DA AGENDA
-    */
+    /* =========================
+       FORMULÁRIO DA AGENDA
+    ========================== */
 
     const agendaForm = document.getElementById("agendaForm");
 
@@ -1624,13 +1726,27 @@
 
       event.preventDefault();
 
-      const nome = document.getElementById("nome").value.trim();
-      const telefone = document.getElementById("telefone").value.trim();
-      const igreja = document.getElementById("igreja").value.trim();
-      const instagram = document.getElementById("instagram").value.trim();
-      const data = document.getElementById("data").value;
-      const horario = document.getElementById("hora").value;
-      const endereco = document.getElementById("endereco").value.trim();
+      const nome =
+        document.getElementById("nome").value.trim();
+
+      const telefone =
+        document.getElementById("telefone").value.trim();
+
+      const igreja =
+        document.getElementById("igreja").value.trim();
+
+      const instagram =
+        document.getElementById("instagram").value.trim();
+
+      const data =
+        document.getElementById("data").value;
+
+      const horario =
+        document.getElementById("hora").value;
+
+      const endereco =
+        document.getElementById("endereco").value.trim();
+
 
       let dataFormatada = "";
 
@@ -1643,43 +1759,111 @@
 
       }
 
-      /*
-        MENSAGEM EXATAMENTE COMO SOLICITADA.
-      */
 
       const mensagem =
         `Paz do Senhor. Me chamo ${nome}, entrego em contato para verificar a disponibilidade de data para o dia ${dataFormatada} às ${horario}, na ${igreja}, localizado no endereço ${endereco}, segue o Instagram da igreja ${instagram || "Não informado"} e meu telefone para contato ${telefone}.`;
 
-      const numeroWhatsApp = "5521969581007";
+
+      const numeroWhatsApp =
+        "5521969581007";
+
 
       const url =
         `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
 
       window.open(url, "_blank");
 
     });
 
 
-    /*
-      INDICADOR DE SCROLL
-    */
+    /* =========================
+       SETAS DE SCROLL
+    ========================== */
 
-    const scrollIndicator =
-      document.getElementById("scrollIndicator");
+    const arrowUp =
+      document.getElementById("arrowUp");
 
-    function checkScroll() {
+    const arrowDown =
+      document.getElementById("arrowDown");
 
-      if (window.scrollY > 100) {
-        scrollIndicator.classList.add("hidden");
+
+    function updateScrollArrows() {
+
+      const scrollTop =
+        window.scrollY;
+
+      const windowHeight =
+        window.innerHeight;
+
+      const documentHeight =
+        document.documentElement.scrollHeight;
+
+      const chegouInicio =
+        scrollTop <= 10;
+
+      const chegouFim =
+        scrollTop + windowHeight >= documentHeight - 10;
+
+
+      arrowUp.classList.remove("visible");
+      arrowDown.classList.remove("visible");
+
+
+      if (chegouInicio) {
+
+        arrowDown.classList.add("visible");
+
+      } else if (chegouFim) {
+
+        arrowUp.classList.add("visible");
+
       } else {
-        scrollIndicator.classList.remove("hidden");
+
+        arrowUp.classList.add("visible");
+        arrowDown.classList.add("visible");
+
       }
 
     }
 
-    window.addEventListener("scroll", checkScroll);
 
-    checkScroll();
+    window.addEventListener(
+      "scroll",
+      updateScrollArrows
+    );
+
+    window.addEventListener(
+      "resize",
+      updateScrollArrows
+    );
+
+
+    updateScrollArrows();
+
+
+    /* =========================
+       CLIQUE NAS SETAS
+    ========================== */
+
+    arrowDown.addEventListener("click", function() {
+
+      window.scrollBy({
+        top: window.innerHeight * 0.75,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    arrowUp.addEventListener("click", function() {
+
+      window.scrollBy({
+        top: -(window.innerHeight * 0.75),
+        behavior: "smooth"
+      });
+
+    });
 
   </script>
 
