@@ -54,10 +54,8 @@
 
     body::before {
       content: "";
-
       position: fixed;
       inset: 0;
-
       z-index: -3;
 
       background-image:
@@ -73,10 +71,8 @@
 
     body::after {
       content: "";
-
       position: fixed;
       inset: 0;
-
       z-index: -2;
 
       background: rgba(0,0,0,.68);
@@ -147,7 +143,6 @@
 
     .eyebrow {
       display: inline-flex;
-
       align-items: center;
       gap: 7px;
 
@@ -211,6 +206,8 @@
 
       padding: 18px;
 
+      border-radius: 10px;
+
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
     }
@@ -220,7 +217,7 @@
 
       grid-template-columns: 1fr 1fr;
 
-      gap: 11px 13px;
+      gap: 11px 22px;
     }
 
     .field {
@@ -262,7 +259,7 @@
 
       outline: none;
 
-      border-radius: 0;
+      border-radius: 7px;
 
       transition:
         border-color .2s ease,
@@ -319,6 +316,8 @@
       letter-spacing: .7px;
 
       cursor: pointer;
+
+      border-radius: 7px;
 
       transition:
         background .2s ease,
@@ -404,11 +403,12 @@
 
       form {
         padding: 14px;
+        border-radius: 9px;
       }
 
       .form-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 9px 10px;
+        gap: 9px 16px;
       }
 
       .field.full {
@@ -423,6 +423,7 @@
       textarea {
         font-size: 11px;
         padding: 8px 9px;
+        border-radius: 7px;
       }
 
       input {
@@ -437,6 +438,7 @@
         min-height: 40px;
         margin-top: 12px;
         font-size: 8px;
+        border-radius: 7px;
       }
 
       .note {
@@ -449,6 +451,10 @@
       }
 
     }
+
+    /* =========================
+       TELAS MUITO PEQUENAS
+    ========================= */
 
     @media (max-width: 380px) {
 
@@ -579,6 +585,24 @@
           </div>
 
 
+          <!-- ENDEREÇO -->
+
+          <div class="field full">
+
+            <label for="endereco">
+              Endereço
+            </label>
+
+            <input
+              type="text"
+              id="endereco"
+              placeholder="Endereço da igreja"
+              required
+            >
+
+          </div>
+
+
           <!-- INSTAGRAM -->
 
           <div class="field full">
@@ -642,7 +666,7 @@
             <input
               type="text"
               id="responsavel"
-              placeholder="Nome do responsável"
+              placeholder="Seu nome"
               required
             >
 
@@ -724,16 +748,16 @@
             .trim();
 
 
-        const instagram =
+        const endereco =
           document
-            .getElementById("instagram")
+            .getElementById("endereco")
             .value
             .trim();
 
 
-        const pastor =
+        const instagram =
           document
-            .getElementById("pastor")
+            .getElementById("instagram")
             .value
             .trim();
 
@@ -768,21 +792,18 @@
 
 
         const mensagem =
-`Paz do Senhor!
+`Paz do Senhor Jesus.
 
-Gostaria de verificar a disponibilidade de agenda para uma ministração.
+Me chamo ${responsavel}, falo em nome ${igreja} e o motivo do meu contato é para verificar a disponibilidade de data.
 
-Data: ${dataFormatada}
-Hora: ${hora}
-
-Igreja: ${igreja}
-Instagram da Igreja: ${instagram || "Não informado"}
-Pastor da Igreja: ${pastor}
-
+Vou deixar abaixo as informações:
+Data: ${dataFormatada} às ${hora},
+Igreja: ${igreja}, Endereço ${endereco}, Instagram ${instagram || "Não informado"}
 Programação: ${programacao}
+Responsável: ${responsavel}
+telefone para contato ${telefone}.
 
-Responsável pelo contato: ${responsavel}
-Telefone: ${telefone}`;
+Aguardo um retorno. Fique na paz.`;
 
 
         const numeroWhatsApp =
