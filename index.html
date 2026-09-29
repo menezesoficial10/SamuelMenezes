@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -77,7 +78,7 @@
       position: fixed;
       inset: 0;
       z-index: -2;
-      background: rgba(0, 0, 0, .40);
+      background: rgba(0,0,0,.40);
       pointer-events: none;
     }
 
@@ -311,7 +312,7 @@
     ========================= */
 
     #sobre {
-      padding-top: 22px;
+      padding-top: 5px;
       padding-bottom: 30px;
     }
 
@@ -457,7 +458,7 @@
 
       width: 100%;
 
-      aspect-ratio: 2 / 3;
+      aspect-ratio: 2/3;
 
       overflow: hidden;
 
@@ -586,7 +587,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(2, minmax(0,1fr));
+        repeat(2,minmax(0,1fr));
 
       gap: 20px;
     }
@@ -600,7 +601,7 @@
     .video-thumb {
       display: block;
 
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16/9;
 
       overflow: hidden;
 
@@ -669,7 +670,7 @@
 
     .photos-track {
       grid-auto-columns:
-        calc((100% - 48px) / 3);
+        calc((100% - 48px)/3);
 
       gap: 24px;
     }
@@ -681,7 +682,7 @@
     .photo-image {
       width: 100%;
 
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1/1;
 
       overflow: hidden;
 
@@ -717,17 +718,24 @@
       align-items: center;
       justify-content: center;
 
-      min-height: 32px;
+      min-height: 34px;
 
       margin-top: 7px;
 
-      background: rgba(0,0,0,.55);
+      background: var(--vinho);
+      color: #ffffff;
 
       font-size: 8px;
       font-weight: 800;
 
       text-transform: uppercase;
       letter-spacing: .5px;
+
+      transition: background .2s ease;
+    }
+
+    .photo-download:hover {
+      background: var(--vinho-dark);
     }
 
 
@@ -923,7 +931,7 @@
       /* SOBRE */
 
       #sobre {
-        padding-top: 15px;
+        padding-top: 3px;
         padding-bottom: 25px;
       }
 
@@ -976,9 +984,13 @@
 
       .photos-track {
         grid-auto-columns:
-          calc((100% - 10px) / 2);
+          calc((100% - 10px)/2);
 
         gap: 10px;
+      }
+
+      .photo-download {
+        min-height: 33px;
       }
 
 
@@ -1033,6 +1045,7 @@
         right: 15px;
         bottom: 73px;
       }
+
     }
 
 
@@ -1059,12 +1072,14 @@
       .books-track {
         grid-auto-columns: 205px;
       }
+
     }
   </style>
 </head>
 
 
 <body>
+
 
   <!-- =========================
        VÍDEO DE FUNDO
@@ -1078,10 +1093,12 @@
     playsinline
     preload="auto"
   >
+
     <source
       src="assets/5407dea3-2c25-45a0-ad65-d5087fcee4ca.mov"
       type="video/quicktime"
     >
+
   </video>
 
 
@@ -1098,6 +1115,7 @@
       SAMUEL MENEZES
     </a>
 
+
     <button
       class="menu-button"
       id="menuButton"
@@ -1105,9 +1123,11 @@
       aria-label="Abrir menu"
       aria-expanded="false"
     >
+
       <span></span>
       <span></span>
       <span></span>
+
     </button>
 
   </div>
@@ -1154,10 +1174,15 @@
 
 
   <!-- =========================
-       INTRO
+       CONTEÚDO
   ========================== -->
 
   <main>
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
 
     <section
       id="inicio"
@@ -1167,6 +1192,7 @@
       <div class="container">
 
         <div class="intro-content">
+
 
           <div class="intro-photo">
 
@@ -1181,6 +1207,7 @@
 
           </div>
 
+
           <div class="intro-text">
 
             <h1 class="intro-name">
@@ -1193,6 +1220,7 @@
             </p>
 
           </div>
+
 
         </div>
 
@@ -1214,18 +1242,21 @@
 
         <div class="about-content">
 
+
           <div class="about-text">
 
             <p>
-              Sou pastor, escritor e ministro do Evangelho. Minha missão é comunicar a Palavra de Deus de forma bíblica, prática e relevante, servindo à Igreja e às pessoas que Deus coloca em meu caminho.
+              Casado com Melissa Menezes, é bacharel em Administração pela Estácio de Sá, pós-graduado em Gestão de Processos e em Ciências da Religião. Atualmente, é estudante do curso de Bacharelado em Teologia pela Unicesumar.
             </p>
 
-            <p>
-              Minha caminhada ministerial tem sido marcada por temas como propósito, vocação, identidade, santidade, oração, liderança e os desafios de viver uma fé verdadeira em meio à realidade da vida cotidiana.
-            </p>
 
             <p>
-              Acredito que a mensagem do Evangelho não deve apenas ser ouvida, mas vivida. Por isso, meu desejo é contribuir para que pessoas conheçam a Deus, compreendam Sua Palavra e vivam aquilo que Ele confiou às suas mãos.
+              Escritor, pregador e pastor vice-presidente da Igreja Evangélica Valentes de Davi (IEVAD), em Curicica, Rio de Janeiro, é idealizador da Conferência Identidade, um projeto voltado à ministração e à edificação de jovens cristãos.
+            </p>
+
+
+            <p>
+              Apaixonado pela Palavra de Deus desde a adolescência, prega o Evangelho há quase duas décadas, levando a mensagem de Cristo com fidelidade às Escrituras e o fervor do Espírito Santo em seu coração.
             </p>
 
           </div>
@@ -1250,6 +1281,7 @@
             </span>
 
           </div>
+
 
         </div>
 
@@ -1276,6 +1308,7 @@
 
         <div class="horizontal-slider">
 
+
           <button
             class="slider-arrow left hidden"
             data-target="booksTrack"
@@ -1292,6 +1325,7 @@
             id="booksTrack"
           >
 
+
             <article class="book-card">
 
               <div class="book-cover">
@@ -1300,6 +1334,7 @@
                   src="assets/IMG_2855.jpeg"
                   alt="Capa do livro Identidade: Obtendo o caráter de Cristo"
                 >
+
 
                 <div class="book-info">
 
@@ -1328,6 +1363,7 @@
                   alt="Capa do livro Lealdade sob ataque"
                 >
 
+
                 <div class="book-info">
 
                   <a
@@ -1355,6 +1391,7 @@
                   alt="Capa do livro A Escolha de Deus"
                 >
 
+
                 <div class="book-info">
 
                   <a
@@ -1372,6 +1409,7 @@
 
             </article>
 
+
           </div>
 
 
@@ -1384,6 +1422,7 @@
           >
             →
           </button>
+
 
         </div>
 
@@ -1408,6 +1447,7 @@
           <h2>
             CONTATOS PARA AGENDAS
           </h2>
+
 
           <a
             href="agenda.html"
@@ -1443,6 +1483,7 @@
 
         <div class="youtube-grid">
 
+
           <article class="video-item">
 
             <a
@@ -1459,6 +1500,7 @@
               >
 
             </a>
+
 
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
@@ -1489,6 +1531,7 @@
 
             </a>
 
+
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
               target="_blank"
@@ -1499,6 +1542,7 @@
             </a>
 
           </article>
+
 
         </div>
 
@@ -1538,6 +1582,7 @@
 
         <div class="horizontal-slider">
 
+
           <button
             class="slider-arrow left hidden"
             data-target="photosTrack"
@@ -1553,6 +1598,7 @@
             class="photos-track"
             id="photosTrack"
           >
+
 
             <article class="photo-card">
 
@@ -1729,6 +1775,7 @@
 
             </article>
 
+
           </div>
 
 
@@ -1742,11 +1789,13 @@
             →
           </button>
 
+
         </div>
 
       </div>
 
     </section>
+
 
   </main>
 
@@ -1767,11 +1816,15 @@
             Contato
           </h4>
 
+
           <div class="footer-links">
 
-            <a href="mailto:pregador.samuelmenezes@gmail.com">
+            <a
+              href="mailto:pregador.samuelmenezes@gmail.com"
+            >
               pregador.samuelmenezes@gmail.com
             </a>
+
 
             <a
               href="https://wa.me/5521969581007"
@@ -1780,6 +1833,7 @@
             >
               (21) 96958-1007
             </a>
+
 
             <a
               href="https://www.instagram.com/samuelmenezes.ievad?stkn=aHRvb3NxNzVuYWY%3D&utm_source=qr"
@@ -1825,7 +1879,9 @@
       viewBox="0 0 24 24"
       aria-hidden="true"
     >
+
       <path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.09.55 4.13 1.59 5.93L.1 24l6.33-1.66a11.86 11.86 0 0 0 5.65 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.18-1.24-6.17-3.45-8.41ZM12.09 21.7h-.01a9.84 9.84 0 0 1-5.02-1.38l-.36-.21-3.76.99 1-3.67-.23-.38a9.83 9.83 0 0 1-1.51-5.17C2.2 6.45 6.64 2 12.09 2c2.64 0 5.12 1.03 6.98 2.9a9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.44 9.82-9.87 9.82Zm5.4-7.37c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.84 1.21 3.03c.15.2 2.08 3.18 5.03 4.46.7.3 1.25.48 1.68.61.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/>
+
     </svg>
 
   </a>
@@ -1845,6 +1901,7 @@
     >
       ↑
     </button>
+
 
     <button
       id="arrowDown"
@@ -1873,6 +1930,7 @@
         ".site-background-video"
       );
 
+
     if (backgroundVideo) {
 
       backgroundVideo.muted = true;
@@ -1883,6 +1941,7 @@
 
         const promise =
           backgroundVideo.play();
+
 
         if (promise !== undefined) {
 
@@ -1934,10 +1993,12 @@
           liberarAudio
         );
 
+
         document.removeEventListener(
           "touchstart",
           liberarAudio
         );
+
 
         document.removeEventListener(
           "click",
@@ -1947,25 +2008,19 @@
       }
 
 
-      /*
-       * O primeiro toque/clique do usuário
-       * libera o áudio.
-       *
-       * Isso é mais confiável no iPhone/Safari
-       * do que tentar liberar pelo scroll.
-       */
-
       document.addEventListener(
         "pointerdown",
         liberarAudio,
         { passive: true }
       );
 
+
       document.addEventListener(
         "touchstart",
         liberarAudio,
         { passive: true }
       );
+
 
       document.addEventListener(
         "click",
@@ -1984,6 +2039,7 @@
       document.getElementById(
         "menuButton"
       );
+
 
     const menuOverlay =
       document.getElementById(
@@ -2027,6 +2083,7 @@
                 "active"
               );
 
+
               menuButton.setAttribute(
                 "aria-expanded",
                 "false"
@@ -2048,6 +2105,7 @@
       document.getElementById(
         "arrowUp"
       );
+
 
     const arrowDown =
       document.getElementById(
@@ -2086,9 +2144,12 @@
       () => {
 
         window.scrollBy({
+
           top:
             -window.innerHeight * .75,
+
           behavior: "smooth"
+
         });
 
       }
@@ -2100,9 +2161,12 @@
       () => {
 
         window.scrollBy({
+
           top:
             window.innerHeight * .75,
+
           behavior: "smooth"
+
         });
 
       }
@@ -2177,6 +2241,7 @@
       if (rightButton) {
 
         rightButton.classList.toggle(
+
           "hidden",
 
           maxScroll <= 5 ||
