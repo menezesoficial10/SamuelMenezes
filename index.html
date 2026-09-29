@@ -445,8 +445,6 @@
         0 10px 28px rgba(0,0,0,.35);
     }
 
-    /* DESTAQUE DO PRÉ-LANÇAMENTO */
-
     .book-card.featured-book {
       border: 1px solid rgba(255,255,255,.45);
 
@@ -475,8 +473,6 @@
 
       display: block;
     }
-
-    /* SELO PRÉ-LANÇAMENTO */
 
     .prelaunch-badge {
       position: absolute;
@@ -1092,6 +1088,8 @@
 
   <!-- =========================
        VÍDEO DE FUNDO
+       TOCA UMA VEZ A CADA
+       CARREGAMENTO DA PÁGINA
   ========================== -->
 
   <video
@@ -1284,10 +1282,7 @@
             id="booksTrack"
           >
 
-            <!-- =========================
-                 NAS RÉDEAS DA VOCAÇÃO
-                 PRÉ-LANÇAMENTO
-            ========================== -->
+            <!-- NAS RÉDEAS DA VOCAÇÃO -->
 
             <article class="book-card featured-book">
 
@@ -1320,9 +1315,7 @@
             </article>
 
 
-            <!-- =========================
-                 IDENTIDADE
-            ========================== -->
+            <!-- IDENTIDADE -->
 
             <article class="book-card">
 
@@ -1351,9 +1344,7 @@
             </article>
 
 
-            <!-- =========================
-                 LEALDADE SOB ATAQUE
-            ========================== -->
+            <!-- LEALDADE SOB ATAQUE -->
 
             <article class="book-card">
 
@@ -1382,9 +1373,7 @@
             </article>
 
 
-            <!-- =========================
-                 A ESCOLHA DE DEUS
-            ========================== -->
+            <!-- A ESCOLHA DE DEUS -->
 
             <article class="book-card">
 
@@ -1797,9 +1786,7 @@
 
           <div class="footer-links">
 
-            <a
-              href="mailto:pregador.samuelmenezes@gmail.com"
-            >
+            <a href="mailto:pregador.samuelmenezes@gmail.com">
               pregador.samuelmenezes@gmail.com
             </a>
 
@@ -1891,13 +1878,17 @@
 
   <!-- =========================
        JAVASCRIPT
-  ========================== -->
+  ========================= -->
 
   <script>
 
     /* =========================
        VÍDEO DE FUNDO
-       TOCA APENAS UMA VEZ
+
+       - NÃO possui loop
+       - começa do zero ao carregar
+       - toca apenas uma vez
+       - ao terminar, permanece parado
     ========================= */
 
     const backgroundVideo =
@@ -1907,14 +1898,61 @@
 
     if (backgroundVideo) {
 
+      backgroundVideo.loop = false;
       backgroundVideo.muted = true;
 
-      const videoPromise =
-        backgroundVideo.play();
+      /*
+       * Garante que cada carregamento
+       * da página comece o vídeo do início.
+       */
 
-      if (videoPromise !== undefined) {
+      backgroundVideo.addEventListener(
+        "loadedmetadata",
+        () => {
 
-        videoPromise.catch(() => {});
+          try {
+            backgroundVideo.currentTime = 0;
+          } catch (error) {}
+
+          const videoPromise =
+            backgroundVideo.play();
+
+          if (
+            videoPromise !== undefined
+          ) {
+
+            videoPromise.catch(() => {});
+
+          }
+
+        },
+        { once: true }
+      );
+
+      /*
+       * Se o navegador já tiver carregado
+       * os metadados antes do listener,
+       * executa imediatamente.
+       */
+
+      if (
+        backgroundVideo.readyState >= 1
+      ) {
+
+        try {
+          backgroundVideo.currentTime = 0;
+        } catch (error) {}
+
+        const videoPromise =
+          backgroundVideo.play();
+
+        if (
+          videoPromise !== undefined
+        ) {
+
+          videoPromise.catch(() => {});
+
+        }
 
       }
 
