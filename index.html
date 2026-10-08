@@ -1088,20 +1088,24 @@
 
   <!-- =========================
        VÍDEO DE FUNDO
-       TOCA UMA VEZ A CADA
-       CARREGAMENTO DA PÁGINA
+
+       - NÃO possui loop
+       - NÃO começa automaticamente com áudio
+       - primeira interação libera o vídeo
+       - volume médio (50%)
+       - toca uma única vez
+       - recarregar a página reinicia
   ========================== -->
 
   <video
     class="site-background-video"
-    autoplay
-    muted
     playsinline
     preload="auto"
+    aria-hidden="true"
   >
 
     <source
-      src="assets/5407dea3-2c25-45a0-ad65-d5087fcee4ca.mov"
+      src="assets/48762a289f784088aed13f6606be34b3.mov"
       type="video/quicktime"
     >
 
@@ -1665,28 +1669,6 @@
               <div class="photo-image">
 
                 <img
-                  src="assets/IMG_2849.jpeg"
-                  alt="Foto de Samuel Menezes"
-                >
-
-              </div>
-
-              <a
-                href="assets/IMG_2849.jpeg"
-                download
-                class="photo-download"
-              >
-                Baixar foto
-              </a>
-
-            </article>
-
-
-            <article class="photo-card">
-
-              <div class="photo-image">
-
-                <img
                   src="assets/IMG_2850.jpeg"
                   alt="Foto de Samuel Menezes"
                 >
@@ -1878,17 +1860,21 @@
 
   <!-- =========================
        JAVASCRIPT
-  ========================= -->
+  ========================== -->
 
   <script>
 
     /* =========================
        VÍDEO DE FUNDO
 
+       - começa somente após a primeira
+         interação do usuário
+       - qualquer interação na tela libera
+         o áudio e inicia o vídeo
+       - volume: 50%
        - NÃO possui loop
-       - começa do zero ao carregar
        - toca apenas uma vez
-       - ao terminar, permanece parado
+       - cada recarregamento começa do zero
     ========================= */
 
     const backgroundVideo =
@@ -1899,49 +1885,25 @@
     if (backgroundVideo) {
 
       backgroundVideo.loop = false;
-      backgroundVideo.muted = true;
+      backgroundVideo.muted = false;
+      backgroundVideo.volume = 0.5;
 
-      /*
-       * Garante que cada carregamento
-       * da página comece o vídeo do início.
-       */
+      let videoStarted = false;
 
-      backgroundVideo.addEventListener(
-        "loadedmetadata",
-        () => {
+      function startBackgroundVideo() {
 
-          try {
-            backgroundVideo.currentTime = 0;
-          } catch (error) {}
+        if (videoStarted) {
+          return;
+        }
 
-          const videoPromise =
-            backgroundVideo.play();
-
-          if (
-            videoPromise !== undefined
-          ) {
-
-            videoPromise.catch(() => {});
-
-          }
-
-        },
-        { once: true }
-      );
-
-      /*
-       * Se o navegador já tiver carregado
-       * os metadados antes do listener,
-       * executa imediatamente.
-       */
-
-      if (
-        backgroundVideo.readyState >= 1
-      ) {
+        videoStarted = true;
 
         try {
           backgroundVideo.currentTime = 0;
         } catch (error) {}
+
+        backgroundVideo.muted = false;
+        backgroundVideo.volume = 0.5;
 
         const videoPromise =
           backgroundVideo.play();
@@ -1950,11 +1912,55 @@
           videoPromise !== undefined
         ) {
 
-          videoPromise.catch(() => {});
+          videoPromise.catch(() => {
+
+            /*
+             * Caso o navegador bloqueie o áudio
+             * mesmo após a interação, tentamos
+             * novamente mantendo o volume médio.
+             */
+
+            videoStarted = false;
+
+          });
 
         }
 
       }
+
+
+      /*
+       * Qualquer interação do usuário
+       * libera o vídeo.
+       *
+       * pointerdown cobre:
+       * - toque no celular
+       * - clique do mouse
+       * - toque em elementos da página
+       */
+
+      document.addEventListener(
+        "pointerdown",
+        startBackgroundVideo,
+        {
+          once: true,
+          passive: true
+        }
+      );
+
+
+      /*
+       * Também permite iniciar através
+       * do teclado, como Tab, Enter ou Espaço.
+       */
+
+      document.addEventListener(
+        "keydown",
+        startBackgroundVideo,
+        {
+          once: true
+        }
+      );
 
     }
 
