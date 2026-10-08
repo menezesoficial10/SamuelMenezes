@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -12,16 +14,21 @@
 
   <meta
     name="description"
-    content="Samuel Menezes — Pastor e escritor. Agenda, livros, pregações e conteúdos."
+    content="Samuel Menezes — Pastor, pregador e escritor. Agenda, livros, pregações e conteúdos."
   >
 
   <style>
 
     :root {
-      --dourado: #B08A52;
-      --dourado-dark: #8F6D3F;
+      --dourado: #c9a45c;
+      --dourado-claro: #e0c27a;
+      --dourado-escuro: #9b7837;
+
       --branco: #ffffff;
       --preto: #050505;
+
+      --fundo: rgba(5,5,5,.38);
+      --borda: rgba(255,255,255,.18);
     }
 
 
@@ -39,9 +46,60 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #050505;
+
+      background:
+        #050505
+        url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg")
+        center center / cover
+        fixed no-repeat;
+
       color: #ffffff;
+
       overflow-x: hidden;
+    }
+
+
+    /* =========================
+       FUNDO DO SITE
+    ========================= */
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      inset: -5%;
+
+      z-index: -3;
+
+      background:
+        url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg")
+        center center / cover
+        no-repeat;
+
+      filter: blur(8px);
+
+      transform: scale(1.06);
+
+      opacity: .62;
+
+      pointer-events: none;
+    }
+
+
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -2;
+
+      background:
+        rgba(0,0,0,.52);
+
+      pointer-events: none;
     }
 
 
@@ -57,60 +115,22 @@
 
 
     .container {
-      width: min(1180px, calc(100% - 40px));
+      width: min(
+        1180px,
+        calc(100% - 40px)
+      );
+
       margin: 0 auto;
     }
 
 
     /* =========================
-       FUNDO COM FOTO
-    ========================= */
-
-    .site-background-image {
-      position: fixed;
-
-      inset: -5%;
-
-      width: 110%;
-      height: 110%;
-
-      z-index: -3;
-
-      object-fit: cover;
-      object-position: center 35%;
-
-      filter: blur(3px);
-
-      opacity: .72;
-
-      transform: scale(1.05);
-
-      pointer-events: none;
-    }
-
-
-    body::after {
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      z-index: -2;
-
-      background: rgba(0,0,0,.40);
-
-      pointer-events: none;
-    }
-
-
-    /* =========================
-       ÁUDIO DO VÍDEO
-       O vídeo não aparece.
+       VÍDEO / ÁUDIO DE FUNDO
+       O vídeo fica invisível.
        Apenas o áudio é reproduzido.
     ========================= */
 
-    .background-audio {
+    .site-background-video {
       position: fixed;
 
       width: 1px;
@@ -120,8 +140,10 @@
 
       pointer-events: none;
 
-      left: -9999px;
-      top: -9999px;
+      left: -100px;
+      top: -100px;
+
+      z-index: -10;
     }
 
 
@@ -141,11 +163,19 @@
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
-      padding: 18px 24px;
+      padding: 20px 24px;
 
       pointer-events: none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.45),
+          transparent
+        );
     }
 
 
@@ -154,17 +184,18 @@
 
       font-weight: 800;
 
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
 
-      color: rgba(255,255,255,.75);
+      color:
+        rgba(255,255,255,.82);
 
       pointer-events: auto;
     }
 
 
     .menu-button {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
 
       border: 0;
 
@@ -178,7 +209,7 @@
 
       justify-content: center;
 
-      gap: 4px;
+      gap: 5px;
 
       cursor: pointer;
 
@@ -200,17 +231,17 @@
 
 
     .menu-button span:nth-child(1) {
-      width: 22px;
+      width: 27px;
     }
 
 
     .menu-button span:nth-child(2) {
-      width: 17px;
+      width: 20px;
     }
 
 
     .menu-button span:nth-child(3) {
-      width: 22px;
+      width: 27px;
     }
 
 
@@ -225,14 +256,17 @@
 
       z-index: 999;
 
-      background: rgba(5,5,5,.96);
+      background:
+        rgba(5,5,5,.96);
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       opacity: 0;
+
       visibility: hidden;
 
       transition:
@@ -243,6 +277,7 @@
 
     .menu-overlay.active {
       opacity: 1;
+
       visibility: visible;
     }
 
@@ -259,7 +294,8 @@
 
 
     .menu-links a {
-      font-size: clamp(24px, 4vw, 42px);
+      font-size:
+        clamp(24px, 4vw, 42px);
 
       font-weight: 900;
 
@@ -267,7 +303,8 @@
 
       letter-spacing: -1px;
 
-      transition: color .2s ease;
+      transition:
+        color .2s ease;
     }
 
 
@@ -281,25 +318,20 @@
     ========================= */
 
     .intro {
-      min-height: 34vh;
+      min-height: auto;
 
       display: flex;
 
       align-items: center;
 
-      background: rgba(0,0,0,.16);
+      background:
+        rgba(0,0,0,.10);
 
       color: #fff;
 
-      /*
-       * Espaço para a barra superior.
-       * Evita que o primeiro bloco fique
-       * escondido atrás do menu fixo.
-       */
+      padding-top: 125px;
 
-      padding-top: 105px;
-
-      padding-bottom: 18px;
+      padding-bottom: 25px;
     }
 
 
@@ -308,69 +340,17 @@
 
       display: flex;
 
-      align-items: center;
+      flex-direction: column;
+
+      align-items: flex-start;
 
       justify-content: flex-start;
-
-      gap: 22px;
-
-      padding: 0;
-    }
-
-
-    .story-ring {
-      width: 125px;
-      height: 125px;
-
-      padding: 4px;
-
-      border-radius: 50%;
-
-      background:
-        conic-gradient(
-          from 0deg,
-          var(--dourado),
-          #ffffff,
-          var(--dourado),
-          #ffffff,
-          var(--dourado)
-        );
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      flex-shrink: 0;
-
-      overflow: hidden;
-    }
-
-
-    .story-ring img {
-      width: 100%;
-      height: 100%;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      /*
-       * Aumenta visualmente o rosto
-       * dentro do círculo.
-       */
-
-      object-position: center 30%;
-
-      transform: scale(1.28);
-
-      border: 3px solid #050505;
-
-      display: block;
     }
 
 
     .intro-text {
+      width: 100%;
+
       text-align: left;
     }
 
@@ -378,24 +358,47 @@
     .intro-name {
       margin: 0;
 
-      font-size: clamp(45px, 8vw, 92px);
+      width: 100%;
 
-      line-height: .80;
+      font-size:
+        clamp(38px, 7vw, 86px);
 
-      letter-spacing: -5px;
+      line-height: .88;
+
+      letter-spacing: -4px;
 
       font-weight: 900;
 
       text-transform: uppercase;
+
+      white-space: nowrap;
     }
 
 
     .intro-subtitle {
-      margin: 11px 0 0;
+      margin: 14px 0 0;
 
-      font-size: clamp(16px, 2.2vw, 23px);
+      width: 80%;
+
+      font-size:
+        clamp(13px, 2vw, 20px);
+
+      line-height: 1;
 
       font-weight: 500;
+
+      letter-spacing:
+        .18em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255,255,255,.88);
+    }
+
+
+    .intro-subtitle::first-letter {
+      color: inherit;
     }
 
 
@@ -404,16 +407,18 @@
     ========================= */
 
     .section {
-      padding: 55px 0;
+      padding: 28px 0;
 
-      background: rgba(0,0,0,.10);
+      background:
+        rgba(0,0,0,.08);
     }
 
 
     .section h2 {
-      margin-bottom: 25px;
+      margin-bottom: 18px;
 
-      font-size: clamp(22px, 3vw, 34px);
+      font-size:
+        clamp(23px, 3vw, 34px);
 
       line-height: 1;
 
@@ -430,14 +435,9 @@
     ========================= */
 
     #sobre {
-      padding-top: 5px;
+      padding-top: 12px;
 
-      /*
-       * Aproxima o final do primeiro bloco
-       * da próxima seção.
-       */
-
-      padding-bottom: 8px;
+      padding-bottom: 20px;
     }
 
 
@@ -454,21 +454,14 @@
     .about-text p {
       margin-bottom: 12px;
 
-      color: rgba(255,255,255,.88);
+      color:
+        rgba(255,255,255,.88);
 
       font-size: 17px;
 
-      /*
-       * Entrelinha menor.
-       */
-
       line-height: 1.42;
 
-      /*
-       * Tracking mais fechado.
-       */
-
-      letter-spacing: -0.35px;
+      letter-spacing: -.25px;
     }
 
 
@@ -478,8 +471,15 @@
 
 
     /* =========================
-       SLIDERS
+       LIVROS
     ========================= */
+
+    #livros {
+      padding-top: 18px;
+
+      padding-bottom: 24px;
+    }
+
 
     .horizontal-slider {
       position: relative;
@@ -496,7 +496,8 @@
 
       overflow-y: hidden;
 
-      scroll-snap-type: x mandatory;
+      scroll-snap-type:
+        x mandatory;
 
       scrollbar-width: none;
 
@@ -520,22 +521,27 @@
       width: 38px;
       height: 38px;
 
-      border: 1px solid rgba(255,255,255,.22);
+      border:
+        1px solid
+        rgba(255,255,255,.25);
 
-      background: rgba(0,0,0,.72);
+      background:
+        rgba(0,0,0,.72);
 
       color: #ffffff;
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       cursor: pointer;
 
       font-size: 18px;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       transition:
         opacity .2s ease,
@@ -544,7 +550,10 @@
 
 
     .slider-arrow:hover {
-      background: var(--dourado);
+      background:
+        var(--dourado);
+
+      color: #050505;
     }
 
 
@@ -565,22 +574,6 @@
     }
 
 
-    /* =========================
-       LIVROS
-    ========================= */
-
-    #livros {
-      /*
-       * Livros ficam mais próximos
-       * do texto acima.
-       */
-
-      padding-top: 32px;
-
-      padding-bottom: 55px;
-    }
-
-
     .books-track {
       grid-auto-columns: 280px;
 
@@ -597,19 +590,27 @@
 
       background: #111;
 
-      border: 1px solid rgba(255,255,255,.12);
+      border:
+        1px solid
+        rgba(255,255,255,.12);
 
       box-shadow:
-        0 10px 28px rgba(0,0,0,.35);
+        0 10px 28px
+        rgba(0,0,0,.40);
     }
 
 
     .book-card.featured-book {
-      border: 1px solid rgba(255,255,255,.45);
+      border:
+        1px solid
+        rgba(201,164,92,.70);
 
       box-shadow:
-        0 12px 35px rgba(0,0,0,.50),
-        0 0 0 1px rgba(176,138,82,.35);
+        0 12px 35px
+        rgba(0,0,0,.50),
+
+        0 0 0 1px
+        rgba(201,164,92,.20);
     }
 
 
@@ -644,11 +645,12 @@
 
       z-index: 5;
 
-      padding: 7px 10px;
+      padding: 8px 11px;
 
-      background: var(--dourado);
+      background:
+        var(--dourado);
 
-      color: #fff;
+      color: #050505;
 
       font-size: 8px;
 
@@ -659,7 +661,8 @@
       text-transform: uppercase;
 
       box-shadow:
-        0 5px 15px rgba(0,0,0,.35);
+        0 5px 15px
+        rgba(0,0,0,.35);
     }
 
 
@@ -670,7 +673,8 @@
       right: 0;
       bottom: 0;
 
-      padding: 18px 15px 16px;
+      padding:
+        18px 15px 16px;
 
       display: flex;
 
@@ -683,8 +687,8 @@
       background:
         linear-gradient(
           to top,
-          rgba(0,0,0,.92),
-          rgba(0,0,0,.55),
+          rgba(0,0,0,.94),
+          rgba(0,0,0,.58),
           transparent
         );
     }
@@ -699,41 +703,42 @@
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
-      min-height: 38px;
+      min-height: 40px;
 
-      padding: 0 18px;
+      padding: 0 19px;
 
-      background: var(--dourado);
+      background:
+        var(--dourado);
 
-      color: #fff;
+      color: #050505;
 
       font-size: 10px;
 
-      font-weight: 800;
+      font-weight: 900;
 
       text-transform: uppercase;
 
       letter-spacing: .5px;
 
       box-shadow:
-        0 5px 15px rgba(0,0,0,.35);
+        0 5px 18px
+        rgba(0,0,0,.40);
 
       transition:
         background .2s ease,
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform .2s ease;
     }
 
 
     .book-button:hover {
-      background: var(--dourado-dark);
+      background:
+        var(--dourado-claro);
 
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 8px 20px rgba(0,0,0,.45);
+      transform:
+        translateY(-2px);
     }
 
 
@@ -742,50 +747,90 @@
     ========================= */
 
     #agenda {
-      padding-top: 35px;
+      padding-top: 28px;
 
-      padding-bottom: 45px;
+      padding-bottom: 28px;
+    }
+
+
+    .agenda-box {
+      position: relative;
+
+      padding:
+        28px 24px;
+
+      border:
+        1px solid
+        rgba(201,164,92,.55);
 
       background:
-        rgba(0,0,0,.20);
+        linear-gradient(
+          135deg,
+          rgba(0,0,0,.68),
+          rgba(30,30,30,.48)
+        );
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.30),
+
+        inset 0 0 0 1px
+        rgba(255,255,255,.04);
     }
 
 
-    .agenda-simple-content {
-      min-height: 180px;
+    .agenda-box::before {
+      content: "";
 
-      display: flex;
+      position: absolute;
 
-      flex-direction: column;
+      left: 0;
+      top: 0;
+      bottom: 0;
 
-      align-items: flex-start;
+      width: 4px;
 
-      justify-content: center;
+      background:
+        var(--dourado);
     }
 
 
-    .agenda-simple-content h2 {
-      margin-bottom: 22px;
+    .agenda-box h2 {
+      margin-bottom: 9px;
+
+      color: #ffffff;
     }
 
 
-    /*
-     * BOTÃO DE AGENDA COM MAIS DESTAQUE
-     */
+    .agenda-text {
+      margin-bottom: 20px;
+
+      max-width: 650px;
+
+      color:
+        rgba(255,255,255,.76);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
 
     .agenda-button {
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
-      min-height: 52px;
+      min-height: 48px;
 
-      padding: 0 28px;
+      padding: 0 25px;
 
-      background: var(--dourado);
+      background:
+        var(--dourado);
 
-      color: #ffffff;
+      color: #050505;
 
       font-size: 11px;
 
@@ -793,28 +838,29 @@
 
       text-transform: uppercase;
 
-      letter-spacing: .9px;
-
-      border: 1px solid rgba(255,255,255,.35);
+      letter-spacing: .8px;
 
       box-shadow:
-        0 10px 30px rgba(0,0,0,.45),
-        0 0 0 1px rgba(176,138,82,.20);
+        0 8px 25px
+        rgba(0,0,0,.42);
 
       transition:
-        transform .2s ease,
         background .2s ease,
+        transform .2s ease,
         box-shadow .2s ease;
     }
 
 
     .agenda-button:hover {
-      background: var(--dourado-dark);
+      background:
+        var(--dourado-claro);
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
 
       box-shadow:
-        0 14px 35px rgba(0,0,0,.55);
+        0 12px 30px
+        rgba(0,0,0,.50);
     }
 
 
@@ -823,14 +869,14 @@
     ========================= */
 
     #youtube {
-      padding-top: 45px;
+      padding-top: 22px;
 
-      padding-bottom: 45px;
+      padding-bottom: 24px;
     }
 
 
     #youtube > .container > h2 {
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
 
@@ -838,7 +884,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(2,minmax(0,1fr));
+        repeat(2, minmax(0,1fr));
 
       gap: 20px;
     }
@@ -862,7 +908,9 @@
 
       background: #111;
 
-      border: 1px solid rgba(255,255,255,.10);
+      border:
+        1px solid
+        rgba(255,255,255,.10);
     }
 
 
@@ -879,7 +927,8 @@
 
 
     .video-thumb:hover img {
-      transform: scale(1.03);
+      transform:
+        scale(1.03);
     }
 
 
@@ -887,34 +936,30 @@
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
-      min-height: 36px;
+      min-height: 38px;
 
       padding: 0 15px;
 
-      background: var(--dourado);
+      background:
+        var(--dourado);
+
+      color: #050505;
 
       font-size: 9px;
 
-      font-weight: 800;
+      font-weight: 900;
 
       text-transform: uppercase;
 
       letter-spacing: .5px;
-
-      transition:
-        background .2s ease;
-    }
-
-
-    .youtube-button:hover {
-      background: var(--dourado-dark);
     }
 
 
     .youtube-channel {
-      margin-top: 17px;
+      margin-top: 14px;
     }
 
 
@@ -927,10 +972,12 @@
 
       letter-spacing: .6px;
 
-      color: rgba(255,255,255,.65);
+      color:
+        rgba(255,255,255,.72);
 
       border-bottom:
-        1px solid rgba(255,255,255,.30);
+        1px solid
+        rgba(255,255,255,.30);
 
       padding-bottom: 3px;
     }
@@ -939,6 +986,13 @@
     /* =========================
        FOTOS
     ========================= */
+
+    #fotos {
+      padding-top: 22px;
+
+      padding-bottom: 25px;
+    }
+
 
     .photos-track {
       grid-auto-columns:
@@ -965,10 +1019,12 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       border:
-        1px solid rgba(255,255,255,.10);
+        1px solid
+        rgba(255,255,255,.10);
     }
 
 
@@ -987,7 +1043,8 @@
 
 
     .photo-image:hover img {
-      transform: scale(1.03);
+      transform:
+        scale(1.03);
     }
 
 
@@ -995,19 +1052,21 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       min-height: 34px;
 
       margin-top: 7px;
 
-      background: var(--dourado);
+      background:
+        var(--dourado);
 
-      color: #ffffff;
+      color: #050505;
 
       font-size: 8px;
 
-      font-weight: 800;
+      font-weight: 900;
 
       text-transform: uppercase;
 
@@ -1019,7 +1078,8 @@
 
 
     .photo-download:hover {
-      background: var(--dourado-dark);
+      background:
+        var(--dourado-claro);
     }
 
 
@@ -1028,12 +1088,15 @@
     ========================= */
 
     footer {
-      padding: 22px 0 12px;
+      padding:
+        22px 0 12px;
 
-      background: rgba(0,0,0,.76);
+      background:
+        rgba(0,0,0,.78);
 
       border-top:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
     }
 
 
@@ -1064,7 +1127,8 @@
     .footer-links a {
       font-size: 9px;
 
-      color: rgba(255,255,255,.60);
+      color:
+        rgba(255,255,255,.65);
     }
 
 
@@ -1074,14 +1138,16 @@
       padding-top: 8px;
 
       border-top:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
     }
 
 
     .footer-bottom p {
       font-size: 8px;
 
-      color: rgba(255,255,255,.30);
+      color:
+        rgba(255,255,255,.30);
     }
 
 
@@ -1093,6 +1159,7 @@
       position: fixed;
 
       right: 20px;
+
       bottom: 20px;
 
       z-index: 900;
@@ -1107,10 +1174,12 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       box-shadow:
-        0 8px 25px rgba(0,0,0,.40);
+        0 8px 25px
+        rgba(0,0,0,.40);
     }
 
 
@@ -1130,6 +1199,7 @@
       position: fixed;
 
       right: 20px;
+
       bottom: 85px;
 
       z-index: 800;
@@ -1143,24 +1213,27 @@
 
 
     .scroll-arrow {
-      width: 30px;
-      height: 30px;
+      width: 38px;
+      height: 38px;
 
       border:
-        1px solid rgba(255,255,255,.20);
+        1px solid
+        rgba(201,164,92,.45);
 
       background:
-        rgba(0,0,0,.58);
+        rgba(0,0,0,.68);
 
-      color: #fff;
+      color:
+        var(--dourado);
 
       cursor: pointer;
 
-      font-size: 15px;
+      font-size: 17px;
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       transition: .2s ease;
@@ -1168,7 +1241,10 @@
 
 
     .scroll-arrow:hover {
-      background: var(--dourado);
+      background:
+        var(--dourado);
+
+      color: #050505;
     }
 
 
@@ -1184,102 +1260,88 @@
     @media (max-width: 700px) {
 
       .container {
-        width: min(
-          100% - 30px,
-          1180px
-        );
+        width:
+          min(
+            100% - 30px,
+            1180px
+          );
       }
 
 
       .topbar {
-        padding: 15px 17px;
+        padding:
+          15px 17px;
+      }
+
+
+      .topbar-name {
+        font-size: 9px;
+
+        letter-spacing: 1.7px;
       }
 
 
       .intro {
-        min-height: auto;
-
-        /*
-         * Mais espaço para não encostar
-         * na barra superior.
-         */
-
         padding-top: 105px;
 
-        padding-bottom: 20px;
-      }
-
-
-      .intro-content {
-        gap: 15px;
-
-        padding: 0;
-      }
-
-
-      .story-ring {
-        width: 88px;
-        height: 88px;
-
-        padding: 3px;
-      }
-
-
-      .story-ring img {
-        border-width: 2px;
-
-        transform: scale(1.30);
-
-        object-position: center 30%;
+        padding-bottom: 18px;
       }
 
 
       .intro-name {
-        font-size: 43px;
+        font-size:
+          clamp(34px, 10.2vw, 55px);
 
-        line-height: .80;
+        line-height: .90;
 
-        letter-spacing: -3px;
+        letter-spacing:
+          -3px;
       }
 
 
       .intro-subtitle {
-        margin-top: 9px;
+        margin-top: 10px;
 
-        font-size: 16px;
+        width: 80%;
+
+        font-size: 11px;
+
+        letter-spacing:
+          .15em;
+
+        line-height: 1.25;
+      }
+
+
+      .section {
+        padding:
+          21px 0;
       }
 
 
       #sobre {
-        padding-top: 5px;
+        padding-top: 8px;
 
-        padding-bottom: 5px;
+        padding-bottom: 15px;
       }
 
 
       .about-text p {
         font-size: 15px;
 
-        /*
-         * Entrelinha menor no celular.
-         */
-
         line-height: 1.38;
 
-        /*
-         * Tracking mais fechado.
-         */
+        letter-spacing:
+          -.25px;
 
-        letter-spacing: -0.38px;
-
-        margin-bottom: 9px;
+        margin-bottom: 11px;
       }
 
 
       #livros {
-        padding-top: 25px;
+        padding-top: 15px;
 
-        padding-bottom: 40px;
+        padding-bottom: 19px;
       }
 
 
@@ -1291,14 +1353,16 @@
 
 
       .book-info {
-        padding: 15px 10px 13px;
+        padding:
+          15px 10px 13px;
       }
 
 
       .book-button {
-        min-height: 35px;
+        min-height: 36px;
 
-        padding: 0 15px;
+        padding:
+          0 15px;
 
         font-size: 9px;
       }
@@ -1308,35 +1372,55 @@
         top: 9px;
         left: 9px;
 
-        padding: 6px 8px;
+        padding:
+          6px 8px;
 
         font-size: 7px;
       }
 
 
       #agenda {
-        padding-top: 30px;
+        padding-top: 17px;
 
-        padding-bottom: 35px;
+        padding-bottom: 20px;
       }
 
 
-      .agenda-simple-content {
-        min-height: 145px;
+      .agenda-box {
+        padding:
+          23px 18px;
       }
 
 
-      .agenda-simple-content h2 {
-        margin-bottom: 18px;
+      .agenda-box h2 {
+        font-size: 25px;
+
+        margin-bottom: 8px;
+      }
+
+
+      .agenda-text {
+        font-size: 13px;
+
+        line-height: 1.45;
+
+        margin-bottom: 17px;
       }
 
 
       .agenda-button {
-        min-height: 50px;
+        width: 100%;
 
-        padding: 0 23px;
+        min-height: 48px;
 
         font-size: 10px;
+      }
+
+
+      #youtube {
+        padding-top: 18px;
+
+        padding-bottom: 20px;
       }
 
 
@@ -1361,12 +1445,14 @@
 
 
       footer {
-        padding: 16px 0 9px;
+        padding:
+          16px 0 9px;
       }
 
 
       .footer-links {
-        gap: 4px 10px;
+        gap:
+          4px 10px;
       }
 
 
@@ -1405,6 +1491,7 @@
 
       .whatsapp-float {
         right: 15px;
+
         bottom: 15px;
 
         width: 48px;
@@ -1414,6 +1501,7 @@
 
       .scroll-arrows {
         right: 15px;
+
         bottom: 73px;
       }
 
@@ -1425,70 +1513,62 @@
       .intro {
         padding-top: 103px;
 
-        padding-bottom: 18px;
-      }
-
-
-      .intro-content {
-        padding: 0;
+        padding-bottom: 15px;
       }
 
 
       .intro-name {
-        font-size: 40px;
+        font-size:
+          clamp(
+            32px,
+            10vw,
+            46px
+          );
+
+        letter-spacing:
+          -2.5px;
       }
 
 
       .intro-subtitle {
-        font-size: 15px;
-      }
+        font-size: 10px;
 
-
-      .story-ring {
-        width: 80px;
-        height: 80px;
-      }
-
-
-      .story-ring img {
-        transform: scale(1.32);
+        letter-spacing:
+          .13em;
       }
 
 
       .books-track {
-        grid-auto-columns: 205px;
+        grid-auto-columns:
+          205px;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       FOTO DE FUNDO
-       MESMA FOTO DO CÍRCULO
-  ========================== -->
+  <!-- ==================================================
+       VÍDEO
 
-  <img
-    class="site-background-image"
-    src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
-    alt=""
-    aria-hidden="true"
-  >
+       O vídeo NÃO aparece visualmente.
 
+       O navegador libera o áudio depois da primeira
+       interação do usuário.
 
-  <!-- =========================
-       VÍDEO OCULTO
-       SOMENTE O ÁUDIO É UTILIZADO
-  ========================== -->
+       Volume: 50%
+       Loop: desativado
+       Ao recarregar a página: começa novamente.
+  =================================================== -->
 
   <video
-    class="background-audio"
-    id="backgroundAudio"
+    id="backgroundVideo"
+    class="site-background-video"
     playsinline
     preload="auto"
   >
@@ -1501,9 +1581,9 @@
   </video>
 
 
-  <!-- =========================
+  <!-- ==================================================
        TOPO
-  ========================== -->
+  =================================================== -->
 
   <div class="topbar">
 
@@ -1532,9 +1612,9 @@
   </div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        MENU
-  ========================== -->
+  =================================================== -->
 
   <div
     class="menu-overlay"
@@ -1543,33 +1623,45 @@
 
     <nav class="menu-links">
 
-      <a href="#sobre">Sobre</a>
+      <a href="#sobre">
+        Sobre
+      </a>
 
-      <a href="#livros">Livros</a>
+      <a href="#livros">
+        Livros
+      </a>
 
-      <a href="#agenda">Agenda</a>
+      <a href="#agenda">
+        Agenda
+      </a>
 
-      <a href="#youtube">Pregações</a>
+      <a href="#youtube">
+        Pregações
+      </a>
 
-      <a href="#fotos">Fotos</a>
+      <a href="#fotos">
+        Fotos
+      </a>
 
-      <a href="#contato">Contato</a>
+      <a href="#contato">
+        Contato
+      </a>
 
     </nav>
 
   </div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        CONTEÚDO
-  ========================== -->
+  =================================================== -->
 
   <main>
 
 
-    <!-- =========================
+    <!-- ==================================================
          INTRO
-    ========================== -->
+    =================================================== -->
 
     <section
       id="inicio"
@@ -1580,31 +1672,15 @@
 
         <div class="intro-content">
 
-
-          <div class="intro-photo">
-
-            <div class="story-ring">
-
-              <img
-                src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
-                alt="Samuel Menezes"
-              >
-
-            </div>
-
-          </div>
-
-
           <div class="intro-text">
 
             <h1 class="intro-name">
-              SAMUEL<br>
-              MENEZES
+              SAMUEL MENEZES
             </h1>
 
 
             <p class="intro-subtitle">
-              Pastor e escritor.
+              PASTOR&nbsp; | &nbsp;PREGADOR&nbsp; | &nbsp;ESCRITOR
             </p>
 
           </div>
@@ -1616,9 +1692,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          SOBRE
-    ========================== -->
+    =================================================== -->
 
     <section
       id="sobre"
@@ -1630,7 +1706,6 @@
         <div class="about-content">
 
           <div class="about-text">
-
 
             <p>
               Casado com Melissa Menezes, é bacharel em Administração pela Estácio de Sá, pós-graduado em Gestão de Processos e em Ciências da Religião. Atualmente, é estudante do curso de Bacharelado em Teologia pela Unicesumar.
@@ -1646,7 +1721,6 @@
               Apaixonado pela Palavra de Deus desde a adolescência, prega o Evangelho há quase duas décadas, levando a mensagem de Cristo com fidelidade às Escrituras e o fervor do Espírito Santo em seu coração.
             </p>
 
-
           </div>
 
         </div>
@@ -1656,9 +1730,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          LIVROS
-    ========================== -->
+    =================================================== -->
 
     <section
       id="livros"
@@ -1694,10 +1768,11 @@
 
             <!-- NAS RÉDEAS DA VOCAÇÃO -->
 
-            <article class="book-card featured-book">
+            <article
+              class="book-card featured-book"
+            >
 
               <div class="book-cover">
-
 
                 <img
                   src="assets/IMG_2861.webp"
@@ -1734,7 +1809,6 @@
 
               <div class="book-cover">
 
-
                 <img
                   src="assets/IMG_2855.jpeg"
                   alt="Capa do livro Identidade: Obtendo o caráter de Cristo"
@@ -1765,7 +1839,6 @@
 
               <div class="book-cover">
 
-
                 <img
                   src="assets/IMG_2854.jpeg"
                   alt="Capa do livro Lealdade sob ataque"
@@ -1795,7 +1868,6 @@
             <article class="book-card">
 
               <div class="book-cover">
-
 
                 <img
                   src="assets/IMG_2856.jpeg"
@@ -1842,9 +1914,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          AGENDA
-    ========================== -->
+    =================================================== -->
 
     <section
       id="agenda"
@@ -1853,12 +1925,16 @@
 
       <div class="container">
 
-        <div class="agenda-simple-content">
-
+        <div class="agenda-box">
 
           <h2>
-            CONTATOS PARA AGENDAS
+            AGENDA
           </h2>
+
+
+          <p class="agenda-text">
+            Para convites, ministrações e compromissos, consulte previamente a disponibilidade de datas.
+          </p>
 
 
           <a
@@ -1867,9 +1943,8 @@
             rel="noopener"
             class="agenda-button"
           >
-            Verificar disponibilidade
+            VERIFICAR DISPONIBILIDADE
           </a>
-
 
         </div>
 
@@ -1878,9 +1953,9 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          PREGAÇÕES
-    ========================== -->
+    =================================================== -->
 
     <section
       id="youtube"
@@ -1888,7 +1963,6 @@
     >
 
       <div class="container">
-
 
         <h2>
           PREGAÇÕES
@@ -1899,7 +1973,6 @@
 
 
           <article class="video-item">
-
 
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
@@ -1923,15 +1996,13 @@
               rel="noopener"
               class="youtube-button"
             >
-              Assistir no YouTube
+              ASSISTIR NO YOUTUBE
             </a>
-
 
           </article>
 
 
           <article class="video-item">
-
 
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
@@ -1955,9 +2026,8 @@
               rel="noopener"
               class="youtube-button"
             >
-              Assistir no YouTube
+              ASSISTIR NO YOUTUBE
             </a>
-
 
           </article>
 
@@ -1967,27 +2037,24 @@
 
         <div class="youtube-channel">
 
-
           <a
             href="https://youtube.com/@samuelmeenezes?si=ueKLQpiju411n2gg"
             target="_blank"
             rel="noopener"
           >
-            Ver canal completo
+            VER CANAL COMPLETO
           </a>
 
-
         </div>
-
 
       </div>
 
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          FOTOS
-    ========================== -->
+    =================================================== -->
 
     <section
       id="fotos"
@@ -1995,7 +2062,6 @@
     >
 
       <div class="container">
-
 
         <h2>
           FOTOS PARA CARTAZ
@@ -2039,7 +2105,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2062,7 +2128,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2085,7 +2151,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2108,10 +2174,13 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
+
+
+            <!-- IMG_2849 FOI REMOVIDA -->
 
 
             <article class="photo-card">
@@ -2131,7 +2200,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2154,7 +2223,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2177,7 +2246,7 @@
                 download
                 class="photo-download"
               >
-                Baixar foto
+                BAIXAR FOTO
               </a>
 
             </article>
@@ -2207,30 +2276,28 @@
   </main>
 
 
-  <!-- =========================
+  <!-- ==================================================
        FOOTER
-  ========================== -->
+  =================================================== -->
 
   <footer id="contato">
 
     <div class="container">
 
-
       <div class="footer-main">
-
 
         <div class="footer-column">
 
-
           <h4>
-            Contato
+            CONTATO
           </h4>
 
 
           <div class="footer-links">
 
-
-            <a href="mailto:pregador.samuelmenezes@gmail.com">
+            <a
+              href="mailto:pregador.samuelmenezes@gmail.com"
+            >
               pregador.samuelmenezes@gmail.com
             </a>
 
@@ -2252,35 +2319,29 @@
               @samuelmenezes.ievad
             </a>
 
-
           </div>
 
-
         </div>
-
 
       </div>
 
 
       <div class="footer-bottom">
 
-
         <p>
           © 2026 Samuel Menezes. Todos os direitos reservados.
         </p>
 
-
       </div>
-
 
     </div>
 
   </footer>
 
 
-  <!-- =========================
+  <!-- ==================================================
        WHATSAPP
-  ========================== -->
+  =================================================== -->
 
   <a
     class="whatsapp-float"
@@ -2289,7 +2350,6 @@
     rel="noopener"
     aria-label="Entrar em contato pelo WhatsApp"
   >
-
 
     <svg
       viewBox="0 0 24 24"
@@ -2300,16 +2360,14 @@
 
     </svg>
 
-
   </a>
 
 
-  <!-- =========================
+  <!-- ==================================================
        SETAS VERTICAIS
-  ========================== -->
+  =================================================== -->
 
   <div class="scroll-arrows">
-
 
     <button
       id="arrowUp"
@@ -2330,70 +2388,71 @@
       ↓
     </button>
 
-
   </div>
 
 
-  <!-- =========================
+  <!-- ==================================================
        JAVASCRIPT
-  ========================== -->
+  =================================================== -->
 
   <script>
 
 
-    /* =========================
-       ÁUDIO DO VÍDEO DE FUNDO
+    /* ==================================================
+       ÁUDIO DO VÍDEO
 
-       O vídeo não aparece na página.
+       O áudio é liberado na primeira interação.
 
-       O áudio:
-       - começa na primeira interação;
-       - começa do início;
-       - volume médio;
-       - não possui loop;
-       - reinicia quando a página é recarregada.
-    ========================== */
+       Qualquer:
+       - toque
+       - clique
+       - tecla
+       - movimento do mouse
 
-    const backgroundAudio =
+       pode liberar o áudio.
+
+       Volume = 50%
+       Loop = OFF
+    =================================================== */
+
+    const backgroundVideo =
       document.getElementById(
-        "backgroundAudio"
+        "backgroundVideo"
       );
 
 
-    let audioStarted = false;
+    let audioUnlocked = false;
 
 
-    function startBackgroundAudio() {
+    function unlockBackgroundAudio() {
 
       if (
-        !backgroundAudio ||
-        audioStarted
+        !backgroundVideo ||
+        audioUnlocked
       ) {
         return;
       }
 
 
-      audioStarted = true;
+      audioUnlocked = true;
 
 
-      backgroundAudio.loop = false;
+      backgroundVideo.muted = false;
 
+      backgroundVideo.volume = 0.5;
 
-      backgroundAudio.muted = false;
-
-
-      backgroundAudio.volume = 0.55;
+      backgroundVideo.loop = false;
 
 
       try {
 
-        backgroundAudio.currentTime = 0;
+        backgroundVideo.currentTime = 0;
 
       } catch (error) {}
 
 
       const playPromise =
-        backgroundAudio.play();
+        backgroundVideo.play();
 
 
       if (
@@ -2403,46 +2462,78 @@
         playPromise.catch(() => {
 
           /*
-           * Se o navegador bloquear,
-           * a próxima interação tentará
-           * novamente.
+           * Caso o navegador ainda bloqueie
+           * a reprodução, uma nova interação
+           * poderá tentar novamente.
            */
 
-          audioStarted = false;
+          audioUnlocked = false;
 
         });
 
       }
 
+
+      document.removeEventListener(
+        "pointerdown",
+        unlockBackgroundAudio
+      );
+
+      document.removeEventListener(
+        "touchstart",
+        unlockBackgroundAudio
+      );
+
+      document.removeEventListener(
+        "keydown",
+        unlockBackgroundAudio
+      );
+
     }
 
 
-    /*
-     * Qualquer interação do usuário
-     * libera o áudio.
-     */
-
-    [
+    document.addEventListener(
       "pointerdown",
+      unlockBackgroundAudio,
+      {
+        passive: true,
+        once: false
+      }
+    );
+
+
+    document.addEventListener(
       "touchstart",
-      "keydown"
-    ].forEach(eventName => {
-
-      document.addEventListener(
-        eventName,
-        startBackgroundAudio,
-        {
-          once: true,
-          passive: true
-        }
-      );
-
-    });
+      unlockBackgroundAudio,
+      {
+        passive: true,
+        once: false
+      }
+    );
 
 
-    /* =========================
+    document.addEventListener(
+      "keydown",
+      unlockBackgroundAudio,
+      {
+        passive: true,
+        once: false
+      }
+    );
+
+
+    if (backgroundVideo) {
+
+      backgroundVideo.loop = false;
+
+      backgroundVideo.volume = 0.5;
+
+    }
+
+
+    /* ==================================================
        MENU
-    ========================= */
+    =================================================== */
 
     const menuButton =
       document.getElementById(
@@ -2461,7 +2552,6 @@
       menuOverlay
     ) {
 
-
       menuButton.addEventListener(
         "click",
         () => {
@@ -2474,7 +2564,9 @@
 
           menuButton.setAttribute(
             "aria-expanded",
-            active ? "true" : "false"
+            active
+              ? "true"
+              : "false"
           );
 
         }
@@ -2483,33 +2575,35 @@
 
       menuOverlay
         .querySelectorAll("a")
-        .forEach(link => {
+        .forEach(
+          link => {
 
-          link.addEventListener(
-            "click",
-            () => {
+            link.addEventListener(
+              "click",
+              () => {
 
-              menuOverlay.classList.remove(
-                "active"
-              );
+                menuOverlay.classList.remove(
+                  "active"
+                );
 
 
-              menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-              );
+                menuButton.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
 
-            }
-          );
+              }
+            );
 
-        });
+          }
+        );
 
     }
 
 
-    /* =========================
+    /* ==================================================
        SETAS VERTICAIS
-    ========================= */
+    =================================================== */
 
     const arrowUp =
       document.getElementById(
@@ -2524,6 +2618,13 @@
 
 
     function updateVerticalArrows() {
+
+      if (
+        !arrowUp ||
+        !arrowDown
+      ) {
+        return;
+      }
 
 
       const scrollTop =
@@ -2544,59 +2645,72 @@
 
       arrowDown.classList.toggle(
         "hidden",
-        scrollTop >= maxScroll - 10
+        scrollTop >=
+          maxScroll - 10
       );
 
     }
 
 
-    arrowUp.addEventListener(
-      "click",
-      () => {
+    if (arrowUp) {
 
-        window.scrollBy({
+      arrowUp.addEventListener(
+        "click",
+        () => {
 
-          top:
-            -window.innerHeight * .75,
+          window.scrollBy({
 
-          behavior: "smooth"
+            top:
+              -window.innerHeight * .75,
 
-        });
+            behavior:
+              "smooth"
 
-      }
-    );
+          });
+
+        }
+      );
+
+    }
 
 
-    arrowDown.addEventListener(
-      "click",
-      () => {
+    if (arrowDown) {
 
-        window.scrollBy({
+      arrowDown.addEventListener(
+        "click",
+        () => {
 
-          top:
-            window.innerHeight * .75,
+          window.scrollBy({
 
-          behavior: "smooth"
+            top:
+              window.innerHeight * .75,
 
-        });
+            behavior:
+              "smooth"
 
-      }
-    );
+          });
+
+        }
+      );
+
+    }
 
 
     window.addEventListener(
       "scroll",
       updateVerticalArrows,
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
     updateVerticalArrows();
 
 
-    /* =========================
+    /* ==================================================
        SLIDERS HORIZONTAIS
-    ========================= */
+    =================================================== */
 
     const sliderButtons =
       document.querySelectorAll(
@@ -2607,7 +2721,6 @@
     function updateSliderButtons(
       track
     ) {
-
 
       const wrapper =
         track.closest(
@@ -2668,30 +2781,35 @@
       .querySelectorAll(
         ".books-track, .photos-track"
       )
-      .forEach(track => {
+      .forEach(
+        track => {
+
+          updateSliderButtons(
+            track
+          );
 
 
-        updateSliderButtons(track);
+          track.addEventListener(
+            "scroll",
+            () =>
+              updateSliderButtons(
+                track
+              ),
+            {
+              passive: true
+            }
+          );
 
-
-        track.addEventListener(
-          "scroll",
-          () =>
-            updateSliderButtons(track),
-          { passive: true }
-        );
-
-      });
+        }
+      );
 
 
     sliderButtons.forEach(
       button => {
 
-
         button.addEventListener(
           "click",
           () => {
-
 
             const targetId =
               button.dataset.target;
@@ -2726,7 +2844,8 @@
               left:
                 amount * direction,
 
-              behavior: "smooth"
+              behavior:
+                "smooth"
 
             });
 
@@ -2747,7 +2866,9 @@
           )
           .forEach(
             track =>
-              updateSliderButtons(track)
+              updateSliderButtons(
+                track
+              )
           );
 
       }
@@ -2758,4 +2879,5 @@
 
 
 </body>
+
 </html>
