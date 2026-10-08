@@ -18,11 +18,12 @@
   <style>
 
     :root {
-      --vinho: #6f1024;
-      --vinho-dark: #4e0b1a;
+      --dourado: #B08A52;
+      --dourado-dark: #8F6D3F;
       --branco: #ffffff;
       --preto: #050505;
     }
+
 
     * {
       margin: 0;
@@ -30,65 +31,86 @@
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background:
-
-        linear-gradient(
-          rgba(0,0,0,.40),
-          rgba(0,0,0,.40)
-        ),
-
-        url("assets/background.jpg")
-        center center /
-        cover
-        fixed
-        no-repeat;
-
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050505;
       color: #ffffff;
-
       overflow-x: hidden;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
     button {
       font-family: inherit;
     }
 
+
     .container {
-
-      width:
-        min(
-          1180px,
-          calc(100% - 40px)
-        );
-
+      width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
     }
 
 
     /* =========================
-       VÍDEO / ÁUDIO DE FUNDO
+       FUNDO COM FOTO
+    ========================= */
 
-       O vídeo fica invisível.
+    .site-background-image {
+      position: fixed;
+
+      inset: -5%;
+
+      width: 110%;
+      height: 110%;
+
+      z-index: -3;
+
+      object-fit: cover;
+      object-position: center 35%;
+
+      filter: blur(3px);
+
+      opacity: .72;
+
+      transform: scale(1.05);
+
+      pointer-events: none;
+    }
+
+
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: -2;
+
+      background: rgba(0,0,0,.40);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       ÁUDIO DO VÍDEO
+       O vídeo não aparece.
        Apenas o áudio é reproduzido.
     ========================= */
 
-    .site-background-video {
-
+    .background-audio {
       position: fixed;
 
       width: 1px;
@@ -98,28 +120,8 @@
 
       pointer-events: none;
 
-      z-index: -10;
-    }
-
-
-    /* =========================
-       CAMADA ESCURA
-    ========================= */
-
-    body::after {
-
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      z-index: -2;
-
-      background:
-        rgba(0,0,0,.40);
-
-      pointer-events: none;
+      left: -9999px;
+      top: -9999px;
     }
 
 
@@ -128,7 +130,6 @@
     ========================= */
 
     .topbar {
-
       position: fixed;
 
       top: 0;
@@ -142,28 +143,26 @@
       align-items: center;
       justify-content: space-between;
 
-      padding:
-        18px 24px;
+      padding: 18px 24px;
 
       pointer-events: none;
     }
 
-    .topbar-name {
 
+    .topbar-name {
       font-size: 10px;
 
       font-weight: 800;
 
       letter-spacing: 1.5px;
 
-      color:
-        rgba(255,255,255,.75);
+      color: rgba(255,255,255,.75);
 
       pointer-events: auto;
     }
 
-    .menu-button {
 
+    .menu-button {
       width: 32px;
       height: 32px;
 
@@ -186,8 +185,8 @@
       pointer-events: auto;
     }
 
-    .menu-button span {
 
+    .menu-button span {
       display: block;
 
       height: 2px;
@@ -199,13 +198,16 @@
       transition: .25s ease;
     }
 
+
     .menu-button span:nth-child(1) {
       width: 22px;
     }
 
+
     .menu-button span:nth-child(2) {
       width: 17px;
     }
+
 
     .menu-button span:nth-child(3) {
       width: 22px;
@@ -217,15 +219,13 @@
     ========================= */
 
     .menu-overlay {
-
       position: fixed;
 
       inset: 0;
 
       z-index: 999;
 
-      background:
-        rgba(5,5,5,.96);
+      background: rgba(5,5,5,.96);
 
       display: flex;
 
@@ -233,7 +233,6 @@
       justify-content: center;
 
       opacity: 0;
-
       visibility: hidden;
 
       transition:
@@ -241,15 +240,14 @@
         visibility .3s ease;
     }
 
+
     .menu-overlay.active {
-
       opacity: 1;
-
       visibility: visible;
     }
 
-    .menu-links {
 
+    .menu-links {
       display: flex;
 
       flex-direction: column;
@@ -259,10 +257,9 @@
       gap: 22px;
     }
 
-    .menu-links a {
 
-      font-size:
-        clamp(24px,4vw,42px);
+    .menu-links a {
+      font-size: clamp(24px, 4vw, 42px);
 
       font-weight: 900;
 
@@ -270,14 +267,12 @@
 
       letter-spacing: -1px;
 
-      transition:
-        color .2s ease;
+      transition: color .2s ease;
     }
 
-    .menu-links a:hover {
 
-      color:
-        var(--vinho);
+    .menu-links a:hover {
+      color: var(--dourado);
     }
 
 
@@ -286,23 +281,29 @@
     ========================= */
 
     .intro {
-
-      min-height: auto;
+      min-height: 34vh;
 
       display: flex;
 
       align-items: center;
 
-      background:
-        rgba(0,0,0,.16);
+      background: rgba(0,0,0,.16);
 
       color: #fff;
 
-      padding-bottom: 5px;
+      /*
+       * Espaço para a barra superior.
+       * Evita que o primeiro bloco fique
+       * escondido atrás do menu fixo.
+       */
+
+      padding-top: 105px;
+
+      padding-bottom: 18px;
     }
 
-    .intro-content {
 
+    .intro-content {
       width: 100%;
 
       display: flex;
@@ -313,17 +314,11 @@
 
       gap: 22px;
 
-      padding:
-        25px 0 5px;
+      padding: 0;
     }
 
 
-    /* =========================
-       FOTO DO PERFIL
-    ========================= */
-
     .story-ring {
-
       width: 125px;
       height: 125px;
 
@@ -332,14 +327,13 @@
       border-radius: 50%;
 
       background:
-
         conic-gradient(
           from 0deg,
-          #6f1024,
+          var(--dourado),
           #ffffff,
-          #6f1024,
+          var(--dourado),
           #ffffff,
-          #6f1024
+          var(--dourado)
         );
 
       display: flex;
@@ -352,8 +346,8 @@
       overflow: hidden;
     }
 
-    .story-ring img {
 
+    .story-ring img {
       width: 100%;
       height: 100%;
 
@@ -362,39 +356,29 @@
       object-fit: cover;
 
       /*
-       * Aumenta o rosto
+       * Aumenta visualmente o rosto
+       * dentro do círculo.
        */
-      transform:
-        scale(1.28);
 
-      /*
-       * Centraliza melhor o rosto
-       */
-      object-position:
-        center 42%;
+      object-position: center 30%;
 
-      border:
-        3px solid #050505;
+      transform: scale(1.28);
+
+      border: 3px solid #050505;
 
       display: block;
     }
 
 
-    /* =========================
-       NOME
-    ========================= */
-
     .intro-text {
-
       text-align: left;
     }
 
-    .intro-name {
 
+    .intro-name {
       margin: 0;
 
-      font-size:
-        clamp(45px,8vw,92px);
+      font-size: clamp(45px, 8vw, 92px);
 
       line-height: .80;
 
@@ -405,13 +389,11 @@
       text-transform: uppercase;
     }
 
+
     .intro-subtitle {
+      margin: 11px 0 0;
 
-      margin:
-        9px 0 0;
-
-      font-size:
-        clamp(16px,2.2vw,23px);
+      font-size: clamp(16px, 2.2vw, 23px);
 
       font-weight: 500;
     }
@@ -422,20 +404,16 @@
     ========================= */
 
     .section {
+      padding: 55px 0;
 
-      padding:
-        55px 0;
-
-      background:
-        rgba(0,0,0,.10);
+      background: rgba(0,0,0,.10);
     }
 
-    .section h2 {
 
+    .section h2 {
       margin-bottom: 25px;
 
-      font-size:
-        clamp(22px,3vw,34px);
+      font-size: clamp(22px, 3vw, 34px);
 
       line-height: 1;
 
@@ -452,74 +430,50 @@
     ========================= */
 
     #sobre {
+      padding-top: 5px;
 
-      padding-top: 0;
+      /*
+       * Aproxima o final do primeiro bloco
+       * da próxima seção.
+       */
 
-      padding-bottom: 30px;
+      padding-bottom: 8px;
     }
 
-    .about-content {
 
+    .about-content {
       max-width: 900px;
     }
 
-    .about-text {
 
+    .about-text {
       text-align: left;
     }
 
+
     .about-text p {
+      margin-bottom: 12px;
 
-      margin-bottom: 10px;
-
-      color:
-        rgba(255,255,255,.82);
+      color: rgba(255,255,255,.88);
 
       font-size: 17px;
 
       /*
-       * Entrelinha reduzida
+       * Entrelinha menor.
        */
-      line-height: 1.38;
+
+      line-height: 1.42;
 
       /*
-       * Tracking reduzido
+       * Tracking mais fechado.
        */
-      letter-spacing: -.25px;
 
-      text-align: left;
+      letter-spacing: -0.35px;
     }
 
-    .tags {
 
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 15px;
-    }
-
-    .tag {
-
-      padding:
-        6px 10px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.22);
-
-      color:
-        rgba(255,255,255,.78);
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      letter-spacing: .5px;
-
-      text-transform: uppercase;
+    .about-text p:last-child {
+      margin-bottom: 0;
     }
 
 
@@ -528,13 +482,12 @@
     ========================= */
 
     .horizontal-slider {
-
       position: relative;
     }
 
+
     .books-track,
     .photos-track {
-
       display: grid;
 
       grid-auto-flow: column;
@@ -543,22 +496,21 @@
 
       overflow-y: hidden;
 
-      scroll-snap-type:
-        x mandatory;
+      scroll-snap-type: x mandatory;
 
       scrollbar-width: none;
 
       padding-bottom: 5px;
     }
 
+
     .books-track::-webkit-scrollbar,
     .photos-track::-webkit-scrollbar {
-
       display: none;
     }
 
-    .slider-arrow {
 
+    .slider-arrow {
       position: absolute;
 
       top: 50%;
@@ -568,12 +520,9 @@
       width: 38px;
       height: 38px;
 
-      border:
-        1px solid
-        rgba(255,255,255,.22);
+      border: 1px solid rgba(255,255,255,.22);
 
-      background:
-        rgba(0,0,0,.72);
+      background: rgba(0,0,0,.72);
 
       color: #ffffff;
 
@@ -586,30 +535,30 @@
 
       font-size: 18px;
 
-      transform:
-        translateY(-50%);
+      transform: translateY(-50%);
 
       transition:
         opacity .2s ease,
         background .2s ease;
     }
 
-    .slider-arrow:hover {
 
-      background:
-        var(--vinho);
+    .slider-arrow:hover {
+      background: var(--dourado);
     }
+
 
     .slider-arrow.left {
       left: -18px;
     }
 
+
     .slider-arrow.right {
       right: -18px;
     }
 
-    .slider-arrow.hidden {
 
+    .slider-arrow.hidden {
       opacity: 0;
 
       pointer-events: none;
@@ -620,15 +569,26 @@
        LIVROS
     ========================= */
 
-    .books-track {
+    #livros {
+      /*
+       * Livros ficam mais próximos
+       * do texto acima.
+       */
 
+      padding-top: 32px;
+
+      padding-bottom: 55px;
+    }
+
+
+    .books-track {
       grid-auto-columns: 280px;
 
       gap: 18px;
     }
 
-    .book-card {
 
+    .book-card {
       position: relative;
 
       overflow: hidden;
@@ -637,32 +597,23 @@
 
       background: #111;
 
-      border:
-        1px solid
-        rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.12);
 
       box-shadow:
-        0 10px 28px
-        rgba(0,0,0,.35);
+        0 10px 28px rgba(0,0,0,.35);
     }
+
 
     .book-card.featured-book {
-
-      border:
-        1px solid
-        rgba(255,255,255,.45);
+      border: 1px solid rgba(255,255,255,.45);
 
       box-shadow:
-
-        0 12px 35px
-        rgba(0,0,0,.50),
-
-        0 0 0 1px
-        rgba(111,16,36,.35);
+        0 12px 35px rgba(0,0,0,.50),
+        0 0 0 1px rgba(176,138,82,.35);
     }
 
-    .book-cover {
 
+    .book-cover {
       position: relative;
 
       width: 100%;
@@ -674,8 +625,8 @@
       background: #111;
     }
 
-    .book-cover img {
 
+    .book-cover img {
       width: 100%;
       height: 100%;
 
@@ -684,8 +635,8 @@
       display: block;
     }
 
-    .prelaunch-badge {
 
+    .prelaunch-badge {
       position: absolute;
 
       top: 12px;
@@ -693,11 +644,9 @@
 
       z-index: 5;
 
-      padding:
-        7px 10px;
+      padding: 7px 10px;
 
-      background:
-        var(--vinho);
+      background: var(--dourado);
 
       color: #fff;
 
@@ -710,20 +659,18 @@
       text-transform: uppercase;
 
       box-shadow:
-        0 5px 15px
-        rgba(0,0,0,.35);
+        0 5px 15px rgba(0,0,0,.35);
     }
 
-    .book-info {
 
+    .book-info {
       position: absolute;
 
       left: 0;
       right: 0;
       bottom: 0;
 
-      padding:
-        18px 15px 16px;
+      padding: 18px 15px 16px;
 
       display: flex;
 
@@ -734,7 +681,6 @@
       justify-content: flex-end;
 
       background:
-
         linear-gradient(
           to top,
           rgba(0,0,0,.92),
@@ -743,61 +689,51 @@
         );
     }
 
+
     .book-info h4 {
       display: none;
     }
 
-    .book-button {
 
+    .book-button {
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 44px;
+      min-height: 38px;
 
-      padding:
-        0 22px;
+      padding: 0 18px;
 
-      background:
-        var(--vinho);
+      background: var(--dourado);
 
       color: #fff;
 
-      font-size: 11px;
+      font-size: 10px;
 
-      font-weight: 900;
+      font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .7px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.18);
+      letter-spacing: .5px;
 
       box-shadow:
-        0 8px 22px
-        rgba(0,0,0,.45);
+        0 5px 15px rgba(0,0,0,.35);
 
       transition:
-
         background .2s ease,
         transform .2s ease,
         box-shadow .2s ease;
     }
 
+
     .book-button:hover {
+      background: var(--dourado-dark);
 
-      background:
-        var(--vinho-dark);
-
-      transform:
-        translateY(-2px);
+      transform: translateY(-1px);
 
       box-shadow:
-        0 12px 28px
-        rgba(0,0,0,.55);
+        0 8px 20px rgba(0,0,0,.45);
     }
 
 
@@ -806,15 +742,17 @@
     ========================= */
 
     #agenda {
+      padding-top: 35px;
 
-      padding-top: 25px;
+      padding-bottom: 45px;
 
-      padding-bottom: 35px;
+      background:
+        rgba(0,0,0,.20);
     }
 
-    .agenda-simple-content {
 
-      min-height: 150px;
+    .agenda-simple-content {
+      min-height: 180px;
 
       display: flex;
 
@@ -825,27 +763,29 @@
       justify-content: center;
     }
 
-    .agenda-simple-content h2 {
 
-      margin-bottom: 18px;
+    .agenda-simple-content h2 {
+      margin-bottom: 22px;
     }
 
-    .agenda-button {
 
+    /*
+     * BOTÃO DE AGENDA COM MAIS DESTAQUE
+     */
+
+    .agenda-button {
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 48px;
+      min-height: 52px;
 
-      padding:
-        0 25px;
+      padding: 0 28px;
 
-      background:
-        var(--vinho);
+      background: var(--dourado);
 
-      color: #fff;
+      color: #ffffff;
 
       font-size: 11px;
 
@@ -853,34 +793,28 @@
 
       text-transform: uppercase;
 
-      letter-spacing: .7px;
+      letter-spacing: .9px;
 
-      border:
-        1px solid
-        rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.35);
 
       box-shadow:
-        0 9px 25px
-        rgba(0,0,0,.45);
+        0 10px 30px rgba(0,0,0,.45),
+        0 0 0 1px rgba(176,138,82,.20);
 
       transition:
-
-        background .2s ease,
         transform .2s ease,
+        background .2s ease,
         box-shadow .2s ease;
     }
 
+
     .agenda-button:hover {
+      background: var(--dourado-dark);
 
-      background:
-        var(--vinho-dark);
-
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
 
       box-shadow:
-        0 13px 30px
-        rgba(0,0,0,.55);
+        0 14px 35px rgba(0,0,0,.55);
     }
 
 
@@ -889,19 +823,18 @@
     ========================= */
 
     #youtube {
+      padding-top: 45px;
 
-      padding-top: 30px;
-
-      padding-bottom: 32px;
+      padding-bottom: 45px;
     }
 
-    #youtube > .container > h2 {
 
+    #youtube > .container > h2 {
       margin-bottom: 22px;
     }
 
-    .youtube-grid {
 
+    .youtube-grid {
       display: grid;
 
       grid-template-columns:
@@ -910,8 +843,8 @@
       gap: 20px;
     }
 
-    .video-item {
 
+    .video-item {
       display: flex;
 
       flex-direction: column;
@@ -919,8 +852,8 @@
       gap: 9px;
     }
 
-    .video-thumb {
 
+    .video-thumb {
       display: block;
 
       aspect-ratio: 16/9;
@@ -929,13 +862,11 @@
 
       background: #111;
 
-      border:
-        1px solid
-        rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.10);
     }
 
-    .video-thumb img {
 
+    .video-thumb img {
       width: 100%;
       height: 100%;
 
@@ -946,51 +877,48 @@
       transition: .3s ease;
     }
 
-    .video-thumb:hover img {
 
-      transform:
-        scale(1.03);
+    .video-thumb:hover img {
+      transform: scale(1.03);
     }
 
-    .youtube-button {
 
+    .youtube-button {
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 42px;
+      min-height: 36px;
 
-      padding:
-        0 18px;
+      padding: 0 15px;
 
-      background:
-        var(--vinho);
+      background: var(--dourado);
 
-      font-size: 10px;
+      font-size: 9px;
 
-      font-weight: 900;
+      font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .6px;
+      letter-spacing: .5px;
 
-      border:
-        1px solid
-        rgba(255,255,255,.18);
-
-      box-shadow:
-        0 7px 20px
-        rgba(0,0,0,.35);
+      transition:
+        background .2s ease;
     }
 
-    .youtube-channel {
 
+    .youtube-button:hover {
+      background: var(--dourado-dark);
+    }
+
+
+    .youtube-channel {
       margin-top: 17px;
     }
 
-    .youtube-channel a {
 
+    .youtube-channel a {
       font-size: 10px;
 
       font-weight: 800;
@@ -999,12 +927,10 @@
 
       letter-spacing: .6px;
 
-      color:
-        rgba(255,255,255,.65);
+      color: rgba(255,255,255,.65);
 
       border-bottom:
-        1px solid
-        rgba(255,255,255,.30);
+        1px solid rgba(255,255,255,.30);
 
       padding-bottom: 3px;
     }
@@ -1015,20 +941,19 @@
     ========================= */
 
     .photos-track {
-
       grid-auto-columns:
         calc((100% - 48px)/3);
 
       gap: 24px;
     }
 
-    .photo-card {
 
+    .photo-card {
       scroll-snap-align: start;
     }
 
-    .photo-image {
 
+    .photo-image {
       width: 100%;
 
       aspect-ratio: 1/1;
@@ -1043,12 +968,11 @@
       justify-content: center;
 
       border:
-        1px solid
-        rgba(255,255,255,.10);
+        1px solid rgba(255,255,255,.10);
     }
 
-    .photo-image img {
 
+    .photo-image img {
       width: 100%;
       height: 100%;
 
@@ -1061,57 +985,41 @@
       transition: .3s ease;
     }
 
-    .photo-image:hover img {
 
-      transform:
-        scale(1.03);
+    .photo-image:hover img {
+      transform: scale(1.03);
     }
 
-    .photo-download {
 
+    .photo-download {
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      min-height: 40px;
+      min-height: 34px;
 
       margin-top: 7px;
 
-      background:
-        var(--vinho);
+      background: var(--dourado);
 
       color: #ffffff;
 
-      font-size: 9px;
+      font-size: 8px;
 
-      font-weight: 900;
+      font-weight: 800;
 
       text-transform: uppercase;
 
-      letter-spacing: .6px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.15);
-
-      box-shadow:
-        0 6px 18px
-        rgba(0,0,0,.30);
+      letter-spacing: .5px;
 
       transition:
-
-        background .2s ease,
-        transform .2s ease;
+        background .2s ease;
     }
 
+
     .photo-download:hover {
-
-      background:
-        var(--vinho-dark);
-
-      transform:
-        translateY(-1px);
+      background: var(--dourado-dark);
     }
 
 
@@ -1120,20 +1028,16 @@
     ========================= */
 
     footer {
+      padding: 22px 0 12px;
 
-      padding:
-        22px 0 12px;
-
-      background:
-        rgba(0,0,0,.76);
+      background: rgba(0,0,0,.76);
 
       border-top:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
     }
 
-    .footer-column h4 {
 
+    .footer-column h4 {
       margin-bottom: 8px;
 
       font-size: 9px;
@@ -1145,43 +1049,39 @@
       letter-spacing: 1px;
     }
 
-    .footer-links {
 
+    .footer-links {
       display: flex;
 
       flex-direction: row;
 
       flex-wrap: wrap;
 
-      gap:
-        5px 14px;
+      gap: 5px 14px;
     }
+
 
     .footer-links a {
-
       font-size: 9px;
 
-      color:
-        rgba(255,255,255,.60);
+      color: rgba(255,255,255,.60);
     }
 
-    .footer-bottom {
 
+    .footer-bottom {
       margin-top: 12px;
 
       padding-top: 8px;
 
       border-top:
-        1px solid
-        rgba(255,255,255,.06);
+        1px solid rgba(255,255,255,.06);
     }
 
-    .footer-bottom p {
 
+    .footer-bottom p {
       font-size: 8px;
 
-      color:
-        rgba(255,255,255,.30);
+      color: rgba(255,255,255,.30);
     }
 
 
@@ -1190,7 +1090,6 @@
     ========================= */
 
     .whatsapp-float {
-
       position: fixed;
 
       right: 20px;
@@ -1211,12 +1110,11 @@
       justify-content: center;
 
       box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.40);
+        0 8px 25px rgba(0,0,0,.40);
     }
 
-    .whatsapp-float svg {
 
+    .whatsapp-float svg {
       width: 27px;
       height: 27px;
 
@@ -1229,7 +1127,6 @@
     ========================= */
 
     .scroll-arrows {
-
       position: fixed;
 
       right: 20px;
@@ -1244,14 +1141,13 @@
       gap: 5px;
     }
 
-    .scroll-arrow {
 
+    .scroll-arrow {
       width: 30px;
       height: 30px;
 
       border:
-        1px solid
-        rgba(255,255,255,.20);
+        1px solid rgba(255,255,255,.20);
 
       background:
         rgba(0,0,0,.58);
@@ -1270,14 +1166,13 @@
       transition: .2s ease;
     }
 
-    .scroll-arrow:hover {
 
-      background:
-        var(--vinho);
+    .scroll-arrow:hover {
+      background: var(--dourado);
     }
 
-    .scroll-arrow.hidden {
 
+    .scroll-arrow.hidden {
       display: none;
     }
 
@@ -1289,56 +1184,57 @@
     @media (max-width: 700px) {
 
       .container {
-
-        width:
-          min(
-            100% - 30px,
-            1180px
-          );
+        width: min(
+          100% - 30px,
+          1180px
+        );
       }
+
 
       .topbar {
-
-        padding:
-          15px 17px;
+        padding: 15px 17px;
       }
+
 
       .intro {
-
         min-height: auto;
 
-        padding-bottom: 2px;
+        /*
+         * Mais espaço para não encostar
+         * na barra superior.
+         */
+
+        padding-top: 105px;
+
+        padding-bottom: 20px;
       }
+
 
       .intro-content {
-
         gap: 15px;
 
-        padding:
-          17px 0 4px;
+        padding: 0;
       }
 
-      .story-ring {
 
+      .story-ring {
         width: 88px;
         height: 88px;
 
         padding: 3px;
       }
 
-      .story-ring img {
 
+      .story-ring img {
         border-width: 2px;
 
-        transform:
-          scale(1.30);
+        transform: scale(1.30);
 
-        object-position:
-          center 42%;
+        object-position: center 30%;
       }
 
-      .intro-name {
 
+      .intro-name {
         font-size: 43px;
 
         line-height: .80;
@@ -1346,163 +1242,168 @@
         letter-spacing: -3px;
       }
 
-      .intro-subtitle {
 
-        margin-top: 7px;
+      .intro-subtitle {
+        margin-top: 9px;
 
         font-size: 16px;
       }
 
+
       #sobre {
+        padding-top: 5px;
 
-        padding-top: 0;
-
-        padding-bottom: 25px;
+        padding-bottom: 5px;
       }
 
-      .about-text p {
 
+      .about-text p {
         font-size: 15px;
+
+        /*
+         * Entrelinha menor no celular.
+         */
 
         line-height: 1.38;
 
-        letter-spacing: -.2px;
+        /*
+         * Tracking mais fechado.
+         */
+
+        letter-spacing: -0.38px;
 
         margin-bottom: 9px;
-
-        text-align: left;
       }
 
-      .books-track {
 
+      #livros {
+        padding-top: 25px;
+
+        padding-bottom: 40px;
+      }
+
+
+      .books-track {
         grid-auto-columns: 210px;
 
         gap: 14px;
       }
 
-      .book-info {
 
-        padding:
-          15px 10px 13px;
+      .book-info {
+        padding: 15px 10px 13px;
       }
 
+
       .book-button {
+        min-height: 35px;
 
-        min-height: 40px;
-
-        padding:
-          0 17px;
+        padding: 0 15px;
 
         font-size: 9px;
       }
 
-      .prelaunch-badge {
 
+      .prelaunch-badge {
         top: 9px;
         left: 9px;
 
-        padding:
-          6px 8px;
+        padding: 6px 8px;
 
         font-size: 7px;
       }
 
+
       #agenda {
+        padding-top: 30px;
 
-        padding-top: 25px;
-
-        padding-bottom: 27px;
+        padding-bottom: 35px;
       }
+
 
       .agenda-simple-content {
-
-        min-height: 120px;
+        min-height: 145px;
       }
 
+
+      .agenda-simple-content h2 {
+        margin-bottom: 18px;
+      }
+
+
       .agenda-button {
+        min-height: 50px;
 
-        min-height: 46px;
-
-        padding:
-          0 21px;
+        padding: 0 23px;
 
         font-size: 10px;
       }
 
-      .youtube-grid {
 
+      .youtube-grid {
         grid-template-columns: 1fr;
 
         gap: 16px;
       }
 
-      .youtube-button {
-
-        min-height: 40px;
-
-        font-size: 9px;
-      }
 
       .photos-track {
-
         grid-auto-columns:
           calc((100% - 10px)/2);
 
         gap: 10px;
       }
 
-      .photo-download {
 
-        min-height: 37px;
+      .photo-download {
+        min-height: 33px;
       }
+
 
       footer {
-
-        padding:
-          16px 0 9px;
+        padding: 16px 0 9px;
       }
+
 
       .footer-links {
-
-        gap:
-          4px 10px;
+        gap: 4px 10px;
       }
 
-      .footer-links a {
 
+      .footer-links a {
         font-size: 8px;
       }
 
-      .footer-bottom {
 
+      .footer-bottom {
         margin-top: 9px;
 
         padding-top: 6px;
       }
 
-      .footer-bottom p {
 
+      .footer-bottom p {
         font-size: 7px;
       }
 
-      .slider-arrow {
 
+      .slider-arrow {
         width: 32px;
         height: 32px;
       }
 
-      .slider-arrow.left {
 
+      .slider-arrow.left {
         left: -8px;
       }
 
-      .slider-arrow.right {
 
+      .slider-arrow.right {
         right: -8px;
       }
 
-      .whatsapp-float {
 
+      .whatsapp-float {
         right: 15px;
         bottom: 15px;
 
@@ -1510,69 +1411,54 @@
         height: 48px;
       }
 
-      .scroll-arrows {
 
+      .scroll-arrows {
         right: 15px;
         bottom: 73px;
       }
+
     }
 
 
-    /* =========================
-       MOBILE PEQUENO
-    ========================= */
-
     @media (max-width: 480px) {
 
-      .intro-content {
+      .intro {
+        padding-top: 103px;
 
-        padding-top: 14px;
-
-        padding-bottom: 3px;
+        padding-bottom: 18px;
       }
+
+
+      .intro-content {
+        padding: 0;
+      }
+
 
       .intro-name {
-
         font-size: 40px;
-
-        letter-spacing: -3px;
       }
+
 
       .intro-subtitle {
-
         font-size: 15px;
-
-        margin-top: 6px;
       }
 
-      .story-ring {
 
+      .story-ring {
         width: 80px;
         height: 80px;
       }
 
+
       .story-ring img {
-
-        transform:
-          scale(1.32);
-
-        object-position:
-          center 42%;
+        transform: scale(1.32);
       }
 
-      .about-text p {
-
-        font-size: 15px;
-
-        line-height: 1.36;
-
-        letter-spacing: -.25px;
-      }
 
       .books-track {
-
         grid-auto-columns: 205px;
       }
+
     }
 
   </style>
@@ -1583,20 +1469,28 @@
 
 
   <!-- =========================
-       VÍDEO DE FUNDO
+       FOTO DE FUNDO
+       MESMA FOTO DO CÍRCULO
+  ========================== -->
 
-       O vídeo NÃO aparece.
-       Ele funciona somente como áudio.
+  <img
+    class="site-background-image"
+    src="assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg"
+    alt=""
+    aria-hidden="true"
+  >
 
-       Começa na primeira interação
-       do usuário com a página.
+
+  <!-- =========================
+       VÍDEO OCULTO
+       SOMENTE O ÁUDIO É UTILIZADO
   ========================== -->
 
   <video
-    class="site-background-video"
+    class="background-audio"
+    id="backgroundAudio"
     playsinline
     preload="auto"
-    aria-hidden="true"
   >
 
     <source
@@ -1649,29 +1543,17 @@
 
     <nav class="menu-links">
 
-      <a href="#sobre">
-        Sobre
-      </a>
+      <a href="#sobre">Sobre</a>
 
-      <a href="#livros">
-        Livros
-      </a>
+      <a href="#livros">Livros</a>
 
-      <a href="#agenda">
-        Agenda
-      </a>
+      <a href="#agenda">Agenda</a>
 
-      <a href="#youtube">
-        Pregações
-      </a>
+      <a href="#youtube">Pregações</a>
 
-      <a href="#fotos">
-        Fotos
-      </a>
+      <a href="#fotos">Fotos</a>
 
-      <a href="#contato">
-        Contato
-      </a>
+      <a href="#contato">Contato</a>
 
     </nav>
 
@@ -1716,18 +1598,13 @@
           <div class="intro-text">
 
             <h1 class="intro-name">
-
               SAMUEL<br>
-
               MENEZES
-
             </h1>
 
 
             <p class="intro-subtitle">
-
               Pastor e escritor.
-
             </p>
 
           </div>
@@ -1752,49 +1629,23 @@
 
         <div class="about-content">
 
-
           <div class="about-text">
 
-            <p>
 
+            <p>
               Casado com Melissa Menezes, é bacharel em Administração pela Estácio de Sá, pós-graduado em Gestão de Processos e em Ciências da Religião. Atualmente, é estudante do curso de Bacharelado em Teologia pela Unicesumar.
-
             </p>
 
 
             <p>
-
               Escritor, pregador e pastor vice-presidente da Igreja Evangélica Valentes de Davi (IEVAD), em Curicica, Rio de Janeiro, é idealizador da Conferência Identidade, um projeto voltado à ministração e à edificação de jovens cristãos.
-
             </p>
 
 
             <p>
-
               Apaixonado pela Palavra de Deus desde a adolescência, prega o Evangelho há quase duas décadas, levando a mensagem de Cristo com fidelidade às Escrituras e o fervor do Espírito Santo em seu coração.
-
             </p>
 
-          </div>
-
-
-          <div class="tags">
-
-            <span class="tag">
-              Teologia
-            </span>
-
-            <span class="tag">
-              Administração
-            </span>
-
-            <span class="tag">
-              Escritor
-            </span>
-
-            <span class="tag">
-              Ministério
-            </span>
 
           </div>
 
@@ -1843,11 +1694,10 @@
 
             <!-- NAS RÉDEAS DA VOCAÇÃO -->
 
-            <article
-              class="book-card featured-book"
-            >
+            <article class="book-card featured-book">
 
               <div class="book-cover">
+
 
                 <img
                   src="assets/IMG_2861.webp"
@@ -1856,9 +1706,7 @@
 
 
                 <span class="prelaunch-badge">
-
                   Pré-lançamento
-
                 </span>
 
 
@@ -1870,9 +1718,7 @@
                     rel="noopener"
                     class="book-button"
                   >
-
                     Garantir pré-venda
-
                   </a>
 
                 </div>
@@ -1888,6 +1734,7 @@
 
               <div class="book-cover">
 
+
                 <img
                   src="assets/IMG_2855.jpeg"
                   alt="Capa do livro Identidade: Obtendo o caráter de Cristo"
@@ -1902,9 +1749,7 @@
                     rel="noopener"
                     class="book-button"
                   >
-
                     Comprar livro
-
                   </a>
 
                 </div>
@@ -1920,6 +1765,7 @@
 
               <div class="book-cover">
 
+
                 <img
                   src="assets/IMG_2854.jpeg"
                   alt="Capa do livro Lealdade sob ataque"
@@ -1934,9 +1780,7 @@
                     rel="noopener"
                     class="book-button"
                   >
-
                     Comprar e-book
-
                   </a>
 
                 </div>
@@ -1952,6 +1796,7 @@
 
               <div class="book-cover">
 
+
                 <img
                   src="assets/IMG_2856.jpeg"
                   alt="Capa do livro A Escolha de Deus"
@@ -1966,9 +1811,7 @@
                     rel="noopener"
                     class="book-button"
                   >
-
                     Comprar e-book
-
                   </a>
 
                 </div>
@@ -1988,10 +1831,9 @@
             type="button"
             aria-label="Próximos livros"
           >
-
             →
-
           </button>
+
 
         </div>
 
@@ -2025,10 +1867,9 @@
             rel="noopener"
             class="agenda-button"
           >
-
             Verificar disponibilidade
-
           </a>
+
 
         </div>
 
@@ -2059,6 +1900,7 @@
 
           <article class="video-item">
 
+
             <a
               href="https://youtu.be/EkQAF_J76v0?si=QQFQZmGfpVr-rtqc"
               target="_blank"
@@ -2081,15 +1923,15 @@
               rel="noopener"
               class="youtube-button"
             >
-
               Assistir no YouTube
-
             </a>
+
 
           </article>
 
 
           <article class="video-item">
+
 
             <a
               href="https://youtu.be/nJARUdrWcsU?si=Bk2oSDz1FctDB4Jl"
@@ -2113,10 +1955,9 @@
               rel="noopener"
               class="youtube-button"
             >
-
               Assistir no YouTube
-
             </a>
+
 
           </article>
 
@@ -2126,17 +1967,18 @@
 
         <div class="youtube-channel">
 
+
           <a
             href="https://youtube.com/@samuelmeenezes?si=ueKLQpiju411n2gg"
             target="_blank"
             rel="noopener"
           >
-
             Ver canal completo
-
           </a>
 
+
         </div>
+
 
       </div>
 
@@ -2170,9 +2012,7 @@
             type="button"
             aria-label="Fotos anteriores"
           >
-
             ←
-
           </button>
 
 
@@ -2181,8 +2021,6 @@
             id="photosTrack"
           >
 
-
-            <!-- FOTO 2845 -->
 
             <article class="photo-card">
 
@@ -2201,15 +2039,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!-- FOTO 2846 -->
 
             <article class="photo-card">
 
@@ -2228,15 +2062,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!-- FOTO 2847 -->
 
             <article class="photo-card">
 
@@ -2255,15 +2085,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!-- FOTO 2848 -->
 
             <article class="photo-card">
 
@@ -2282,20 +2108,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!--
-              IMG_2849 REMOVIDA
-            -->
-
-
-            <!-- FOTO 2850 -->
 
             <article class="photo-card">
 
@@ -2314,15 +2131,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!-- FOTO 2851 -->
 
             <article class="photo-card">
 
@@ -2341,15 +2154,11 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
 
-
-            <!-- FOTO 2852 -->
 
             <article class="photo-card">
 
@@ -2368,9 +2177,7 @@
                 download
                 class="photo-download"
               >
-
                 Baixar foto
-
               </a>
 
             </article>
@@ -2386,10 +2193,9 @@
             type="button"
             aria-label="Próximas fotos"
           >
-
             →
-
           </button>
+
 
         </div>
 
@@ -2412,7 +2218,9 @@
 
       <div class="footer-main">
 
+
         <div class="footer-column">
+
 
           <h4>
             Contato
@@ -2422,12 +2230,8 @@
           <div class="footer-links">
 
 
-            <a
-              href="mailto:pregador.samuelmenezes@gmail.com"
-            >
-
+            <a href="mailto:pregador.samuelmenezes@gmail.com">
               pregador.samuelmenezes@gmail.com
-
             </a>
 
 
@@ -2436,9 +2240,7 @@
               target="_blank"
               rel="noopener"
             >
-
               (21) 96958-1007
-
             </a>
 
 
@@ -2447,26 +2249,26 @@
               target="_blank"
               rel="noopener"
             >
-
               @samuelmenezes.ievad
-
             </a>
 
 
           </div>
 
+
         </div>
+
 
       </div>
 
 
       <div class="footer-bottom">
 
+
         <p>
-
           © 2026 Samuel Menezes. Todos os direitos reservados.
-
         </p>
+
 
       </div>
 
@@ -2498,6 +2300,7 @@
 
     </svg>
 
+
   </a>
 
 
@@ -2514,9 +2317,7 @@
       aria-label="Voltar para cima"
       type="button"
     >
-
       ↑
-
     </button>
 
 
@@ -2526,9 +2327,7 @@
       aria-label="Descer a página"
       type="button"
     >
-
       ↓
-
     </button>
 
 
@@ -2545,97 +2344,92 @@
     /* =========================
        ÁUDIO DO VÍDEO DE FUNDO
 
-       - Vídeo invisível
-       - Som em 50%
-       - Primeira interação inicia
-       - Sem loop
-       - Começa do zero
-       - Recarregar a página reinicia
-    ========================= */
+       O vídeo não aparece na página.
 
-    const backgroundVideo =
-      document.querySelector(
-        ".site-background-video"
+       O áudio:
+       - começa na primeira interação;
+       - começa do início;
+       - volume médio;
+       - não possui loop;
+       - reinicia quando a página é recarregada.
+    ========================== */
+
+    const backgroundAudio =
+      document.getElementById(
+        "backgroundAudio"
       );
 
 
-    if (backgroundVideo) {
-
-      backgroundVideo.loop = false;
-
-      backgroundVideo.muted = false;
-
-      backgroundVideo.volume = 0.5;
+    let audioStarted = false;
 
 
-      let audioStarted = false;
+    function startBackgroundAudio() {
 
-
-      function startBackgroundAudio() {
-
-        if (audioStarted) {
-          return;
-        }
-
-
-        /*
-         * Garante que o vídeo
-         * sempre comece do início.
-         */
-
-        try {
-
-          backgroundVideo.currentTime = 0;
-
-        } catch (error) {}
-
-
-        backgroundVideo.muted = false;
-
-        backgroundVideo.volume = 0.5;
-
-
-        const playPromise =
-          backgroundVideo.play();
-
-
-        if (
-          playPromise !== undefined
-        ) {
-
-          playPromise
-            .then(() => {
-
-              audioStarted = true;
-
-            })
-            .catch(() => {
-
-              /*
-               * Se o navegador bloquear,
-               * permite nova tentativa.
-               */
-
-              audioStarted = false;
-
-            });
-
-        } else {
-
-          audioStarted = true;
-
-        }
-
+      if (
+        !backgroundAudio ||
+        audioStarted
+      ) {
+        return;
       }
 
 
-      /*
-       * QUALQUER interação na tela
-       * pode liberar o áudio.
-       */
+      audioStarted = true;
+
+
+      backgroundAudio.loop = false;
+
+
+      backgroundAudio.muted = false;
+
+
+      backgroundAudio.volume = 0.55;
+
+
+      try {
+
+        backgroundAudio.currentTime = 0;
+
+      } catch (error) {}
+
+
+      const playPromise =
+        backgroundAudio.play();
+
+
+      if (
+        playPromise !== undefined
+      ) {
+
+        playPromise.catch(() => {
+
+          /*
+           * Se o navegador bloquear,
+           * a próxima interação tentará
+           * novamente.
+           */
+
+          audioStarted = false;
+
+        });
+
+      }
+
+    }
+
+
+    /*
+     * Qualquer interação do usuário
+     * libera o áudio.
+     */
+
+    [
+      "pointerdown",
+      "touchstart",
+      "keydown"
+    ].forEach(eventName => {
 
       document.addEventListener(
-        "pointerdown",
+        eventName,
         startBackgroundAudio,
         {
           once: true,
@@ -2643,20 +2437,7 @@
         }
       );
 
-
-      /*
-       * Também funciona com teclado.
-       */
-
-      document.addEventListener(
-        "keydown",
-        startBackgroundAudio,
-        {
-          once: true
-        }
-      );
-
-    }
+    });
 
 
     /* =========================
@@ -2685,7 +2466,6 @@
         "click",
         () => {
 
-
           const active =
             menuOverlay.classList.toggle(
               "active"
@@ -2694,11 +2474,8 @@
 
           menuButton.setAttribute(
             "aria-expanded",
-            active
-              ? "true"
-              : "false"
+            active ? "true" : "false"
           );
-
 
         }
       );
@@ -2706,32 +2483,26 @@
 
       menuOverlay
         .querySelectorAll("a")
-        .forEach(
-          link => {
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              menuOverlay.classList.remove(
+                "active"
+              );
 
 
-            link.addEventListener(
-              "click",
-              () => {
+              menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+              );
 
+            }
+          );
 
-                menuOverlay.classList.remove(
-                  "active"
-                );
-
-
-                menuButton.setAttribute(
-                  "aria-expanded",
-                  "false"
-                );
-
-
-              }
-            );
-
-
-          }
-        );
+        });
 
     }
 
@@ -2773,8 +2544,7 @@
 
       arrowDown.classList.toggle(
         "hidden",
-        scrollTop >=
-          maxScroll - 10
+        scrollTop >= maxScroll - 10
       );
 
     }
@@ -2784,17 +2554,14 @@
       "click",
       () => {
 
-
         window.scrollBy({
 
           top:
             -window.innerHeight * .75,
 
-          behavior:
-            "smooth"
+          behavior: "smooth"
 
         });
-
 
       }
     );
@@ -2804,17 +2571,14 @@
       "click",
       () => {
 
-
         window.scrollBy({
 
           top:
             window.innerHeight * .75,
 
-          behavior:
-            "smooth"
+          behavior: "smooth"
 
         });
-
 
       }
     );
@@ -2823,9 +2587,7 @@
     window.addEventListener(
       "scroll",
       updateVerticalArrows,
-      {
-        passive: true
-      }
+      { passive: true }
     );
 
 
@@ -2880,28 +2642,22 @@
 
       if (leftButton) {
 
-
         leftButton.classList.toggle(
           "hidden",
           track.scrollLeft <= 5
         );
-
 
       }
 
 
       if (rightButton) {
 
-
         rightButton.classList.toggle(
           "hidden",
-
           maxScroll <= 5 ||
-
           track.scrollLeft >=
             maxScroll - 5
         );
-
 
       }
 
@@ -2912,29 +2668,20 @@
       .querySelectorAll(
         ".books-track, .photos-track"
       )
-      .forEach(
-        track => {
+      .forEach(track => {
 
 
-          updateSliderButtons(
-            track
-          );
+        updateSliderButtons(track);
 
 
-          track.addEventListener(
-            "scroll",
-            () =>
-              updateSliderButtons(
-                track
-              ),
-            {
-              passive: true
-            }
-          );
+        track.addEventListener(
+          "scroll",
+          () =>
+            updateSliderButtons(track),
+          { passive: true }
+        );
 
-
-        }
-      );
+      });
 
 
     sliderButtons.forEach(
@@ -2977,18 +2724,14 @@
             track.scrollBy({
 
               left:
-                amount *
-                direction,
+                amount * direction,
 
-              behavior:
-                "smooth"
+              behavior: "smooth"
 
             });
 
-
           }
         );
-
 
       }
     );
@@ -2998,18 +2741,14 @@
       "resize",
       () => {
 
-
         document
           .querySelectorAll(
             ".books-track, .photos-track"
           )
           .forEach(
             track =>
-              updateSliderButtons(
-                track
-              )
+              updateSliderButtons(track)
           );
-
 
       }
     );
