@@ -959,11 +959,22 @@
 
 
     .youtube-channel {
-      margin-top: 14px;
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
     }
 
 
     .youtube-channel a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 18px;
+      border: 1px solid rgba(215,183,121,.35);
+      border-radius: 6px;
+      background: rgba(118,43,59,.2);
       font-size: 10px;
 
       font-weight: 800;
@@ -1539,10 +1550,224 @@
 
 
       .books-track {
-        grid-auto-columns:
-          205px;
+        grid-auto-columns: 205px;
       }
 
+    }
+
+  
+
+    /* Refinamento visual: layout compacto e detalhes em vinho e dourado */
+    :root { --dourado-claro: #d7b779; }
+    .topbar { border-bottom: 1px solid rgba(215,183,121,.24); }
+    .topbar-name { color: #f3e6ce; letter-spacing: 2px; }
+    main section h2 { color: #e3c58c; letter-spacing: 1.8px; }
+    main section h2::after { background: linear-gradient(90deg, #9d3548, #d7b779); }
+    #livros .books-track { grid-auto-columns: clamp(118px, 13vw, 158px); gap: 13px; align-items: start; justify-content: safe center; }
+    #livros .book-card { border: 1px solid rgba(215,183,121,.18); border-radius: 9px; overflow: hidden; }
+    #livros .book-info { padding: 8px; }
+    #livros .book-button { min-height: 34px; font-size: 9px; letter-spacing: .25px; background: #762b3b; color: #fff8ee; border: 1px solid rgba(215,183,121,.35); }
+    #livros .book-button:hover { background: #9a3a4c; color: #fff; }
+    .agenda-box { max-width: 780px; margin: 0 auto; padding: clamp(24px, 4vw, 42px); border: 1px solid rgba(215,183,121,.38); border-radius: 16px; background: radial-gradient(ellipse at top right, rgba(135,42,61,.32), transparent 60%), linear-gradient(135deg, rgba(30,25,26,.98), rgba(12,12,12,.98)); box-shadow: 0 18px 50px rgba(0,0,0,.22); text-align: center; }
+    .agenda-box h2 { margin-bottom: 12px; }
+    .agenda-text { max-width: 540px; margin: 0 auto 24px; line-height: 1.65; color: rgba(255,255,255,.82); }
+    .agenda-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 26px; border-radius: 7px; background: linear-gradient(135deg, #8f3044, #642332); border: 1px solid #d7b779; color: #fff8ed; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-decoration: none; box-shadow: 0 8px 22px rgba(100,35,50,.3); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .agenda-button::after { content: '→'; font-size: 17px; line-height: 1; }
+    .agenda-button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #a43c52, #7b2a3d); box-shadow: 0 12px 28px rgba(100,35,50,.4); }
+    #youtube .youtube-grid { grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 22px; }
+    #youtube .video-item { width: 100%; max-width: 300px; margin: 0 auto; }
+    #youtube .video-thumb { aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; border: 1px solid rgba(215,183,121,.22); }
+    #youtube .youtube-button { min-height: 36px; margin-top: 9px; border-radius: 5px; background: #762b3b; border: 1px solid rgba(215,183,121,.32); color: #fff8ed; }
+    #youtube .youtube-button:hover { background: #96384c; }
+    #fotos .photos-track { grid-auto-columns: clamp(115px, 14vw, 165px); gap: 13px; }
+    #fotos .photo-card { gap: 7px; }
+    #fotos .photo-image { aspect-ratio: 3 / 4; border: 1px solid rgba(215,183,121,.18); border-radius: 8px; overflow: hidden; }
+    #fotos .photo-download { min-height: 32px; background: #762b3b; color: #fff8ed; border: 1px solid rgba(215,183,121,.3); font-size: 9px; }
+    #fotos .photo-download:hover { background: #96384c; }
+    footer { border-top: 1px solid rgba(215,183,121,.28); background: linear-gradient(145deg, #171314, #080808); }
+    .footer-column h4 { color: #e3c58c; }
+    .footer-links a { border: 1px solid rgba(215,183,121,.2); border-radius: 7px; background: rgba(118,43,59,.14); }
+    .footer-links a:hover { background: rgba(118,43,59,.35); border-color: rgba(215,183,121,.5); }
+    @media (max-width: 760px) {
+      #livros .books-track { grid-auto-columns: 128px; gap: 12px; }
+      #youtube .youtube-grid { grid-template-columns: minmax(0, 280px); gap: 24px; }
+      #youtube .video-item { max-width: 280px; }
+      #fotos .photos-track { grid-auto-columns: 125px; gap: 11px; }
+      .agenda-button { width: 100%; max-width: 340px; padding: 0 14px; font-size: 10px; }
+      .agenda-box { padding: 26px 18px; }
+    }
+
+
+
+    /* AJUSTES FINAIS: FUNDO, CENTRALIZAÇÃO E CONTATOS */
+    body {
+      background-color: #050505;
+      background-image: url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg");
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    body::before {
+      opacity: .76;
+      filter: blur(7px);
+    }
+
+    body::after {
+      background: rgba(0, 0, 0, .55);
+    }
+
+    .intro-content,
+    .intro-text {
+      align-items: center;
+      text-align: center;
+    }
+
+    .intro-content {
+      justify-content: center;
+    }
+
+    .intro-name {
+      width: 100%;
+      text-align: center;
+      letter-spacing: clamp(-3px, -.25vw, -1px);
+      white-space: normal;
+    }
+
+    .intro-subtitle {
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    main section h2,
+    .section h2,
+    #sobre h2,
+    #agenda h2 {
+      width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-content,
+    .about-text {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer .container,
+    .footer-main,
+    .footer-column {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .footer-links {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-bottom {
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .intro-name {
+        font-size: clamp(32px, 9vw, 52px);
+        letter-spacing: -1.5px;
+      }
+
+      .intro-subtitle {
+        font-size: 11px;
+        line-height: 1.6;
+        letter-spacing: .12em;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+
+    /* CONTATOS: MAIS ESPAÇO E BOTÕES MAIS FÁCEIS DE LER/CLICAR */
+    footer {
+      padding: 30px 0 16px;
+    }
+
+    .footer-column {
+      width: min(100%, 920px);
+    }
+
+    .footer-column h4 {
+      margin-bottom: 14px;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+    }
+
+    .footer-links {
+      gap: 10px 12px;
+      width: 100%;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      font-size: 11px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+      text-align: center;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+
+    .footer-links a:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      padding-top: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      footer {
+        padding: 24px 0 14px;
+      }
+
+      .footer-column {
+        width: 100%;
+      }
+
+      .footer-links {
+        gap: 9px;
+      }
+
+      .footer-links a {
+        width: min(100%, 360px);
+        min-height: 44px;
+        padding: 11px 14px;
+        font-size: 11px;
+      }
     }
 
   </style>
@@ -1692,36 +1917,39 @@
     </section>
 
 
-    <!-- ==================================================
-         SOBRE
+    
+
+<!-- ==================================================
+         AGENDA
     =================================================== -->
 
     <section
-      id="sobre"
+      id="agenda"
       class="section"
     >
 
       <div class="container">
 
-        <div class="about-content">
+        <div class="agenda-box">
 
-          <div class="about-text">
-
-            <p>
-              Casado com Melissa Menezes, é bacharel em Administração pela Estácio de Sá, pós-graduado em Gestão de Processos e em Ciências da Religião. Atualmente, é estudante do curso de Bacharelado em Teologia pela Unicesumar.
-            </p>
+          <h2>
+            AGENDA
+          </h2>
 
 
-            <p>
-              Escritor, pregador e pastor vice-presidente da Igreja Evangélica Valentes de Davi (IEVAD), em Curicica, Rio de Janeiro, é idealizador da Conferência Identidade, um projeto voltado à ministração e à edificação de jovens cristãos.
-            </p>
+          <p class="agenda-text">
+            Para convites, ministrações e compromissos, consulte previamente a disponibilidade de datas.
+          </p>
 
 
-            <p>
-              Apaixonado pela Palavra de Deus desde a adolescência, prega o Evangelho há quase duas décadas, levando a mensagem de Cristo com fidelidade às Escrituras e o fervor do Espírito Santo em seu coração.
-            </p>
-
-          </div>
+          <a
+            href="agenda.html"
+            target="_blank"
+            rel="noopener"
+            class="agenda-button"
+          >
+            VERIFICAR DISPONIBILIDADE
+          </a>
 
         </div>
 
@@ -1730,7 +1958,9 @@
     </section>
 
 
-    <!-- ==================================================
+    
+
+<!-- ==================================================
          LIVROS
     =================================================== -->
 
@@ -1906,45 +2136,6 @@
             →
           </button>
 
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         AGENDA
-    =================================================== -->
-
-    <section
-      id="agenda"
-      class="section"
-    >
-
-      <div class="container">
-
-        <div class="agenda-box">
-
-          <h2>
-            AGENDA
-          </h2>
-
-
-          <p class="agenda-text">
-            Para convites, ministrações e compromissos, consulte previamente a disponibilidade de datas.
-          </p>
-
-
-          <a
-            href="agenda.html"
-            target="_blank"
-            rel="noopener"
-            class="agenda-button"
-          >
-            VERIFICAR DISPONIBILIDADE
-          </a>
 
         </div>
 
@@ -2273,7 +2464,49 @@
     </section>
 
 
-  </main>
+  
+
+<!-- ==================================================
+         SOBRE
+    =================================================== -->
+
+    <section
+      id="sobre"
+      class="section"
+    >
+
+      <div class="container">
+
+        <div class="about-content">
+
+          <div class="about-text">
+
+            <p>
+              Casado com Melissa Menezes, é bacharel em Administração pela Estácio de Sá, pós-graduado em Gestão de Processos e em Ciências da Religião. Atualmente, é estudante do curso de Bacharelado em Teologia pela Unicesumar.
+            </p>
+
+
+            <p>
+              Escritor, pregador e pastor vice-presidente da Igreja Evangélica Valentes de Davi (IEVAD), em Curicica, Rio de Janeiro, é idealizador da Conferência Identidade, um projeto voltado à ministração e à edificação de jovens cristãos.
+            </p>
+
+
+            <p>
+              Apaixonado pela Palavra de Deus desde a adolescência, prega o Evangelho há quase duas décadas, levando a mensagem de Cristo com fidelidade às Escrituras e o fervor do Espírito Santo em seu coração.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    
+
+</main>
 
 
   <!-- ==================================================
@@ -2317,6 +2550,15 @@
               rel="noopener"
             >
               @samuelmenezes.ievad
+            </a>
+
+
+            <a
+              href="https://youtube.com/@samuelmeenezes?si=ueKLQpiju411n2gg"
+              target="_blank"
+              rel="noopener"
+            >
+              YouTube — Samuel Menezes
             </a>
 
           </div>
