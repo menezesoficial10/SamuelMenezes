@@ -1,826 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verificar disponibilidade | Samuel Menezes</title>
-
-  <meta
-    name="description"
-    content="Verifique a disponibilidade de agenda de Samuel Menezes."
-  >
-
+  <meta name="description" content="Verifique a disponibilidade de agenda de Samuel Menezes.">
   <style>
-
-    :root {
-      --vinho: #6f1024;
-      --vinho-escuro: #4d0b19;
-      --branco: #ffffff;
-      --texto: #ffffff;
-      --cinza: rgba(255,255,255,.68);
-      --borda: rgba(255,255,255,.16);
-      --preto: #050505;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--preto);
-      color: var(--texto);
-      line-height: 1.5;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* =========================
-       FOTO DE FUNDO
-    ========================= */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-
-      background-image:
-        url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg");
-
-      background-size: cover;
-      background-position: center;
-
-      opacity: .32;
-
-      transform: scale(1.03);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-
-      background: rgba(0,0,0,.68);
-
-      pointer-events: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================
-       PÁGINA
-    ========================= */
-
-    .page {
-      min-height: 100vh;
-      padding: 18px 15px 25px;
-    }
-
-    .container {
-      width: min(650px, 100%);
-      margin: 0 auto;
-    }
-
-    /* =========================
-       TOPO
-    ========================= */
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 25px;
-    }
-
-    .brand {
-      font-size: 11px;
-      font-weight: 800;
-
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-    }
-
-    .brand span {
-      color: var(--vinho);
-    }
-
-    .back-link {
-      font-size: 8px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: .7px;
-
-      color: rgba(255,255,255,.58);
-
-      border-bottom: 1px solid rgba(255,255,255,.25);
-
-      padding-bottom: 2px;
-    }
-
-    /* =========================
-       CABEÇALHO
-    ========================= */
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      color: var(--vinho);
-
-      font-size: 9px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-      letter-spacing: 1.6px;
-
-      margin-bottom: 7px;
-    }
-
-    .eyebrow::before {
-      content: "";
-
-      width: 22px;
-      height: 2px;
-
-      background: var(--vinho);
-    }
-
-    h1 {
-      font-size: clamp(31px, 6vw, 48px);
-
-      line-height: .98;
-
-      letter-spacing: -1.7px;
-
-      margin-bottom: 12px;
-
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .intro {
-      color: var(--cinza);
-
-      max-width: 650px;
-
-      margin-bottom: 18px;
-
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .intro strong {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    /* =========================
-       FORMULÁRIO
-    ========================= */
-
-    form {
-      background: rgba(5,5,5,.70);
-
-      border: 1px solid var(--borda);
-
-      padding: 18px;
-
-      border-radius: 10px;
-
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .form-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 11px 22px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 8px;
-
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: .7px;
-
-      color: rgba(255,255,255,.82);
-    }
-
-    input,
-    textarea {
-      width: 100%;
-
-      border: 1px solid var(--borda);
-
-      background: rgba(255,255,255,.06);
-
-      color: #ffffff;
-
-      padding: 9px 11px;
-
-      font-family: inherit;
-      font-size: 12px;
-
-      outline: none;
-
-      border-radius: 7px;
-
-      transition:
-        border-color .2s ease,
-        background .2s ease;
-    }
-
-    input {
-      height: 39px;
-    }
-
-    textarea {
-      min-height: 68px;
-
-      resize: vertical;
-
-      line-height: 1.4;
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(255,255,255,.35);
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: var(--vinho);
-
-      background: rgba(255,255,255,.08);
-    }
-
-    /* =========================
-       BOTÃO
-    ========================= */
-
-    button {
-      width: 100%;
-
-      min-height: 43px;
-
-      margin-top: 15px;
-
-      border: 0;
-
-      background: var(--vinho);
-
-      color: #ffffff;
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: .7px;
-
-      cursor: pointer;
-
-      border-radius: 7px;
-
-      transition:
-        background .2s ease,
-        transform .2s ease;
-    }
-
-    button:hover {
-      background: var(--vinho-escuro);
-
-      transform: translateY(-1px);
-    }
-
-    .note {
-      margin-top: 8px;
-
-      color: rgba(255,255,255,.38);
-
-      font-size: 8px;
-
-      line-height: 1.4;
-    }
-
-    /* =========================
-       RODAPÉ
-    ========================= */
-
-    .footer {
-      margin-top: 14px;
-
-      text-align: center;
-
-      color: rgba(255,255,255,.30);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .6px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      .page {
-        padding: 14px 12px 20px;
-      }
-
-      .topbar {
-        margin-bottom: 21px;
-      }
-
-      .brand {
-        font-size: 9px;
-      }
-
-      .back-link {
-        font-size: 7px;
-      }
-
-      .eyebrow {
-        font-size: 8px;
-        margin-bottom: 6px;
-      }
-
-      .eyebrow::before {
-        width: 18px;
-      }
-
-      h1 {
-        font-size: 31px;
-        letter-spacing: -1.4px;
-        margin-bottom: 10px;
-      }
-
-      .intro {
-        font-size: 12px;
-        margin-bottom: 14px;
-        line-height: 1.4;
-      }
-
-      form {
-        padding: 14px;
-        border-radius: 9px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px 16px;
-      }
-
-      .field.full {
-        grid-column: 1 / -1;
-      }
-
-      label {
-        font-size: 7px;
-      }
-
-      input,
-      textarea {
-        font-size: 11px;
-        padding: 8px 9px;
-        border-radius: 7px;
-      }
-
-      input {
-        height: 36px;
-      }
-
-      textarea {
-        min-height: 62px;
-      }
-
-      button {
-        min-height: 40px;
-        margin-top: 12px;
-        font-size: 8px;
-        border-radius: 7px;
-      }
-
-      .note {
-        font-size: 7px;
-        margin-top: 7px;
-      }
-
-      .footer {
-        margin-top: 10px;
-      }
-
-    }
-
-    /* =========================
-       TELAS MUITO PEQUENAS
-    ========================= */
-
-    @media (max-width: 380px) {
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .page {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      form {
-        padding: 12px;
-      }
-
-    }
-
+    :root{--vinho:#762b3b;--vinho-claro:#96384c;--dourado:#d7b779;--creme:#fff8ed;--branco:#fff;--cinza:rgba(255,255,255,.66);--borda:rgba(215,183,121,.25);--preto:#080808}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--preto);color:var(--branco);line-height:1.45;min-height:100vh;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url("assets/8cdfab04-1737-4e22-bfdf-8f49b86e4ae4.jpeg") center/cover no-repeat;opacity:.24;transform:scale(1.02)}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(8,8,8,.88),rgba(8,8,8,.78));pointer-events:none}
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px 14px}
+    .container{width:min(540px,100%);margin:0 auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 0 11px;margin-bottom:20px;border-bottom:1px solid var(--borda)}
+    .brand{font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#f3e6ce}
+    .brand span{color:var(--dourado)}
+    .back-link{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.65);border:1px solid var(--borda);border-radius:5px;padding:6px 10px;transition:.2s}
+    .back-link:hover{border-color:var(--dourado);color:var(--creme)}
+    header{text-align:center;margin:0 auto 16px;max-width:490px}
+    .eyebrow{display:inline-flex;align-items:center;justify-content:center;gap:8px;color:var(--dourado);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:7px}
+    .eyebrow::before,.eyebrow::after{content:"";width:19px;height:1px;background:var(--dourado);opacity:.8}
+    h1{font-size:clamp(25px,5vw,36px);line-height:1.03;letter-spacing:-1.1px;margin-bottom:9px;font-weight:900;text-transform:uppercase}
+    .intro{color:var(--cinza);font-size:12px;line-height:1.5;max-width:450px;margin:0 auto}
+    .intro strong{color:var(--creme);font-weight:700}
+    form{padding:17px;background:radial-gradient(ellipse at top right,rgba(118,43,59,.22),transparent 58%),linear-gradient(135deg,rgba(25,21,22,.96),rgba(10,10,10,.96));border:1px solid rgba(215,183,121,.32);border-radius:11px;box-shadow:0 14px 36px rgba(0,0,0,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 13px}
+    .field{display:flex;flex-direction:column;gap:4px;min-width:0}
+    .field.full{grid-column:1/-1}
+    label{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,248,237,.85)}
+    input,textarea{width:100%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045);color:#fff;padding:8px 10px;font-family:inherit;font-size:12px;outline:none;border-radius:5px;transition:border-color .2s,background .2s}
+    input{height:35px}
+    textarea{min-height:57px;resize:vertical;line-height:1.4}
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.35)}
+    input:focus,textarea:focus{border-color:var(--dourado);background:rgba(255,255,255,.07)}
+    input[type="date"],input[type="time"]{color-scheme:dark}
+    button{width:100%;min-height:41px;margin-top:13px;border:1px solid var(--dourado);background:linear-gradient(135deg,#8f3044,#642332);color:var(--creme);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;cursor:pointer;border-radius:5px;transition:transform .2s,background .2s,box-shadow .2s}
+    button:hover{background:linear-gradient(135deg,#a43c52,#7b2a3d);transform:translateY(-1px);box-shadow:0 7px 18px rgba(100,35,50,.3)}
+    .note{margin-top:7px;color:rgba(255,255,255,.42);font-size:9px;line-height:1.4;text-align:center}
+    .footer{margin-top:12px;text-align:center;color:rgba(255,255,255,.36);font-size:8px;text-transform:uppercase;letter-spacing:1px}
+    @media(max-width:480px){.page{padding:15px 11px}.topbar{margin-bottom:17px}.brand{font-size:10px}.back-link{font-size:8px;padding:5px 8px}header{margin-bottom:13px}h1{font-size:27px}.intro{font-size:11px}.form-grid{gap:9px 9px}form{padding:13px}.field.full{grid-column:1/-1}input,textarea{font-size:11px;padding:8px}input{height:34px}label{font-size:7px}button{min-height:39px;margin-top:11px}}
+    @media(max-width:350px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.page{padding:12px 9px}}
   </style>
-
 </head>
-
 <body>
-
   <main class="page">
-
     <div class="container">
-
-      <!-- TOPO -->
-
       <div class="topbar">
-
-        <a
-          href="index.html"
-          class="brand"
-        >
-          Samuel <span>Menezes</span>
-        </a>
-
-        <a
-          href="index.html"
-          class="back-link"
-        >
-          Voltar
-        </a>
-
+        <a href="index.html" class="brand">Samuel <span>Menezes</span></a>
+        <a href="index.html" class="back-link">Voltar</a>
       </div>
-
-
-      <!-- CABEÇALHO -->
-
-      <span class="eyebrow">
-        Agenda
-      </span>
-
-      <h1>
-        Verificar disponibilidade
-      </h1>
-
-      <p class="intro">
-        Paz do Senhor! A fim de agilizarmos e otimizar o tempo de resposta,
-        preencha os campos abaixo e clique em
-        <strong>verificar disponibilidade</strong>
-        para iniciar a conversa no WhatsApp.
-      </p>
-
-
-      <!-- FORMULÁRIO -->
-
+      <header>
+        <span class="eyebrow">Agenda ministerial</span>
+        <h1>Verificar disponibilidade</h1>
+        <p class="intro">Paz do Senhor! Preencha os campos abaixo para iniciar uma conversa no WhatsApp e consultar a disponibilidade da agenda.</p>
+      </header>
       <form id="agendaForm">
-
         <div class="form-grid">
-
-
-          <!-- DATA -->
-
-          <div class="field">
-
-            <label for="data">
-              Data
-            </label>
-
-            <input
-              type="date"
-              id="data"
-              required
-            >
-
-          </div>
-
-
-          <!-- HORA -->
-
-          <div class="field">
-
-            <label for="hora">
-              Hora
-            </label>
-
-            <input
-              type="time"
-              id="hora"
-              required
-            >
-
-          </div>
-
-
-          <!-- IGREJA -->
-
-          <div class="field full">
-
-            <label for="igreja">
-              Igreja
-            </label>
-
-            <input
-              type="text"
-              id="igreja"
-              placeholder="Nome da igreja"
-              required
-            >
-
-          </div>
-
-
-          <!-- ENDEREÇO -->
-
-          <div class="field full">
-
-            <label for="endereco">
-              Endereço
-            </label>
-
-            <input
-              type="text"
-              id="endereco"
-              placeholder="Endereço da igreja"
-              required
-            >
-
-          </div>
-
-
-          <!-- INSTAGRAM -->
-
-          <div class="field full">
-
-            <label for="instagram">
-              Instagram da Igreja
-            </label>
-
-            <input
-              type="text"
-              id="instagram"
-              placeholder="@instagramdaigreja"
-            >
-
-          </div>
-
-
-          <!-- PASTOR -->
-
-          <div class="field full">
-
-            <label for="pastor">
-              Pastor da Igreja
-            </label>
-
-            <input
-              type="text"
-              id="pastor"
-              placeholder="Nome do pastor"
-              required
-            >
-
-          </div>
-
-
-          <!-- PROGRAMAÇÃO -->
-
-          <div class="field full">
-
-            <label for="programacao">
-              Qual a programação?
-            </label>
-
-            <textarea
-              id="programacao"
-              placeholder="Ex.: Culto de celebração, campanha, congresso, conferência..."
-              required
-            ></textarea>
-
-          </div>
-
-
-          <!-- RESPONSÁVEL -->
-
-          <div class="field full">
-
-            <label for="responsavel">
-              Responsável pelo contato
-            </label>
-
-            <input
-              type="text"
-              id="responsavel"
-              placeholder="Seu nome"
-              required
-            >
-
-          </div>
-
-
-          <!-- TELEFONE -->
-
-          <div class="field full">
-
-            <label for="telefone">
-              Telefone
-            </label>
-
-            <input
-              type="tel"
-              id="telefone"
-              placeholder="(00) 00000-0000"
-              required
-            >
-
-          </div>
-
+          <div class="field"><label for="data">Data</label><input type="date" id="data" required></div>
+          <div class="field"><label for="hora">Hora</label><input type="time" id="hora" required></div>
+          <div class="field full"><label for="igreja">Igreja</label><input type="text" id="igreja" placeholder="Nome da igreja" required></div>
+          <div class="field full"><label for="endereco">Endereço</label><input type="text" id="endereco" placeholder="Endereço da igreja" required></div>
+          <div class="field"><label for="instagram">Instagram da igreja</label><input type="text" id="instagram" placeholder="@instagramdaigreja"></div>
+          <div class="field"><label for="pastor">Pastor da igreja</label><input type="text" id="pastor" placeholder="Nome do pastor" required></div>
+          <div class="field full"><label for="programacao">Qual a programação?</label><textarea id="programacao" placeholder="Ex.: culto, campanha, congresso, conferência..." required></textarea></div>
+          <div class="field"><label for="responsavel">Responsável pelo contato</label><input type="text" id="responsavel" placeholder="Seu nome" required></div>
+          <div class="field"><label for="telefone">Telefone</label><input type="tel" id="telefone" placeholder="(00) 00000-0000" required></div>
         </div>
-
-
-        <!-- BOTÃO -->
-
-        <button type="submit">
-          Verificar disponibilidade
-        </button>
-
-
-        <p class="note">
-          O envio não confirma a agenda. Apenas inicia a consulta
-          de disponibilidade pelo WhatsApp.
-        </p>
-
+        <button type="submit">Verificar disponibilidade</button>
+        <p class="note">O envio não confirma a agenda; apenas inicia a consulta pelo WhatsApp.</p>
       </form>
-
-
-      <div class="footer">
-        Samuel Menezes • Agenda ministerial
-      </div>
-
+      <div class="footer">Samuel Menezes · Agenda ministerial</div>
     </div>
-
   </main>
-
-
   <script>
-
-    const form =
-      document.getElementById("agendaForm");
-
-    form.addEventListener(
-      "submit",
-      function(event) {
-
-        event.preventDefault();
-
-
-        const data =
-          document
-            .getElementById("data")
-            .value;
-
-
-        const hora =
-          document
-            .getElementById("hora")
-            .value;
-
-
-        const igreja =
-          document
-            .getElementById("igreja")
-            .value
-            .trim();
-
-
-        const endereco =
-          document
-            .getElementById("endereco")
-            .value
-            .trim();
-
-
-        const instagram =
-          document
-            .getElementById("instagram")
-            .value
-            .trim();
-
-
-        const programacao =
-          document
-            .getElementById("programacao")
-            .value
-            .trim();
-
-
-        const responsavel =
-          document
-            .getElementById("responsavel")
-            .value
-            .trim();
-
-
-        const telefone =
-          document
-            .getElementById("telefone")
-            .value
-            .trim();
-
-
-        const partes =
-          data.split("-");
-
-
-        const dataFormatada =
-          `${partes[2]}/${partes[1]}/${partes[0]}`;
-
-
-        const mensagem =
-`Paz do Senhor Jesus.
-
-Me chamo ${responsavel}, falo em nome ${igreja} e o motivo do meu contato é para verificar a disponibilidade de data.
-
-Vou deixar abaixo as informações:
-Data: ${dataFormatada} às ${hora},
-Igreja: ${igreja}, Endereço ${endereco}, Instagram ${instagram || "Não informado"}
-Programação: ${programacao}
-Responsável: ${responsavel}
-telefone para contato ${telefone}.
-
-Aguardo um retorno. Fique na paz.`;
-
-
-        const numeroWhatsApp =
-          "5521969581007";
-
-
-        const url =
-          `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-
-        window.location.href = url;
-
-      }
-    );
-
+    const form = document.getElementById("agendaForm");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const data = document.getElementById("data").value;
+      const hora = document.getElementById("hora").value;
+      const igreja = document.getElementById("igreja").value.trim();
+      const endereco = document.getElementById("endereco").value.trim();
+      const instagram = document.getElementById("instagram").value.trim();
+      const pastor = document.getElementById("pastor").value.trim();
+      const programacao = document.getElementById("programacao").value.trim();
+      const responsavel = document.getElementById("responsavel").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const partes = data.split("-");
+      const dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+      const mensagem = `Paz do Senhor Jesus.\n\nMe chamo ${responsavel}, falo em nome da ${igreja} e entro em contato para verificar a disponibilidade de data.\n\nSeguem as informações:\nData: ${dataFormatada} às ${hora}\nIgreja: ${igreja}\nEndereço: ${endereco}\nInstagram: ${instagram || "Não informado"}\nPastor: ${pastor}\nProgramação: ${programacao}\nResponsável: ${responsavel}\nTelefone para contato: ${telefone}.\n\nAguardo um retorno. Fique na paz.`;
+      const numeroWhatsApp = "5521969581007";
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+      window.location.href = url;
+    });
   </script>
-
 </body>
-
 </html>
